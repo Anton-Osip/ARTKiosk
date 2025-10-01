@@ -1,0 +1,68 @@
+.cornerBox {
+  position: relative;
+  max-width: 75%;
+  width: 100%;
+  aspect-ratio: 3/4;
+  padding: var(--space-5);
+  margin-bottom: 32px;
+}
+
+/* Левый верхний угол */
+.cornerTopLeft {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: var(--space-8);
+  height: var(--space-8);
+  border: 2px solid var(--color-text-muted);
+  border-right: none;
+  border-bottom: none;
+  border-top-left-radius: var(--radius-lg);
+}
+
+/* Правый верхний угол */
+.cornerTopRight {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: var(--space-8);
+  height: var(--space-8);
+  border: 2px solid var(--color-text-muted);
+  border-left: none;
+  border-bottom: none;
+  border-top-right-radius: var(--radius-lg);
+}
+
+/* Левый нижний угол */
+.cornerBottomLeft {
+  position: absolute;
+  bottom: -2px;
+  left: -2px;
+  width: var(--space-8);
+  height: var(--space-8);
+  border: 2px solid var(--color-text-muted);
+  border-right: none;
+  border-top: none;
+  border-bottom-left-radius: var(--radius-lg);
+}
+
+/* Правый нижний угол */
+.cornerBottomRight {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: var(--space-8);
+  height: var(--space-8);
+  border: 2px solid var(--color-text-muted);
+  border-left: none;
+  border-top: none;
+  border-bottom-right-radius: var(--radius-lg);
+}
+
+.cornerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+}

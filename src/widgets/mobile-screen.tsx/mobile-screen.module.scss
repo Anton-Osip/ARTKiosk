@@ -1,24 +1,28 @@
 .mobileSection {
   position: relative;
-  padding: var(--space-6);
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: var(--space-5);
-  height: 100vh;
-  max-height: 100vh;
+  height: 100%;
+  max-height: 100dvh;
   overflow: hidden;
+  padding: var(--space-6);
+  background-image: url("../../../public/bg/mobile-bg.png");
+  background-size: cover;
 }
 
 .container {
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: 100%;
   width: 100%;
   max-width: 390px;
+
 }
 
 .content {
@@ -27,169 +31,14 @@
   justify-content: center;
   align-items: center;
   height: 100%;
-}
-
-.cornerBox {
-  position: relative;
-  width: 76%;
-  aspect-ratio: 3/4;
-  padding: var(--space-5);
-  margin-bottom: 32px;
-}
-
-/* Левый верхний угол */
-.cornerTopLeft {
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  width: var(--space-8);
-  height: var(--space-8);
-  border: 2px solid var(--color-text-muted);
-  border-right: none;
-  border-bottom: none;
-  border-top-left-radius: var(--radius-lg);
-}
-
-/* Правый верхний угол */
-.cornerTopRight {
-  position: absolute;
-  top: -2px;
-  right: -2px;
-  width: var(--space-8);
-  height: var(--space-8);
-  border: 2px solid var(--color-text-muted);
-  border-left: none;
-  border-bottom: none;
-  border-top-right-radius: var(--radius-lg);
-}
-
-/* Левый нижний угол */
-.cornerBottomLeft {
-  position: absolute;
-  bottom: -2px;
-  left: -2px;
-  width: var(--space-8);
-  height: var(--space-8);
-  border: 2px solid var(--color-text-muted);
-  border-right: none;
-  border-top: none;
-  border-bottom-left-radius: var(--radius-lg);
-}
-
-/* Правый нижний угол */
-.cornerBottomRight {
-  position: absolute;
-  bottom: -2px;
-  right: -2px;
-  width: var(--space-8);
-  height: var(--space-8);
-  border: 2px solid var(--color-text-muted);
-  border-left: none;
-  border-top: none;
-  border-bottom-right-radius: var(--radius-lg);
-}
-
-.cornerContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  height: 100%;
-}
-
-.title {
-  font-size: var(--text-2xl);
-  font-weight: var(--font-medium);
-  line-height: var(--leading-normal);
-  letter-spacing: var(--tracking-normal);
-  text-align: center;
-  margin-top: 4px;
-  margin-bottom: 10px;
-}
-
-.subTitle {
-  font-size: var(--text-lg);
-  font-weight: var(--font-medium);
-  line-height: var(--leading-normal);
-  letter-spacing: var(--tracking-normal);
-  text-align: center;
-  opacity: 0.5;
-}
-
-.downloadBtn {
-  width: 100%;
-  gap: 0;
-  font-size: var(--text-lg);
-  font-weight: var(--font-normal);
-  line-height: var(--leading-normal);
-  letter-spacing: var(--tracking-normal);
-  text-align: center;
-}
-
-.instructionPanel {
-  z-index: 999;
-  padding: 12px;
-  align-items: flex-start;
-  gap: 12px;
-  margin-bottom: 12px;
-
-  & > div {
-    padding: 0;
-  }
-}
-
-.instructionText {
-  font-size: var(--text-xs);
-  font-weight: var(--font-normal);
-  line-height: var(--leading-relaxed);
-  text-align: left;
+  padding: 54px 0 20px;
 }
 
 .hidden {
   display: none;
 }
 
-.photoContainer {
-  position: relative;
-  width: 76%;
-  max-height: 50%;
-  padding: var(--space-5);
-  margin-bottom: 32px;
-  display: flex;
-  align-items: flex-end;
-}
 
-.photo {
-  height: 100%;
-  border-radius: var(--radius-lg);
-}
 
-.errorBox {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 10px;
-  gap: 10px;
-}
 
-.btnContainer {
-  width: 100%;
-  display: flex;
-  gap: 8px;
 
-  & button {
-    border-radius: var(--radius-2xl);
-  }
-}
-
-.loadingSpinner {
-  border: 3px solid var(--color-black);
-  border-top: 3px solid var(--color-text-disabled);
-}
-
-.sentPhoto {
-  background-color: rgb(195 255 0 / 10%) !important;
-  color: var(--color-accent) !important;
-  border: 0 !important;
-  width: 100%;
-}

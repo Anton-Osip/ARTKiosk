@@ -11,7 +11,7 @@ export interface UploadError {
 interface UploadStore {
   isUploading: boolean;
   isCommit: boolean;
-  error: UploadError | null;
+  isError: boolean;
   uploadFile: (file: File, sessionId: string) => Promise<void>;
   clearError: () => void;
 }
@@ -19,17 +19,18 @@ interface UploadStore {
 export const useUploadStore = create<UploadStore>(set => ({
   isCommit: false,
   isUploading: false,
-  error: null,
+  isError: false,
 
   uploadFile: async (file: File, sessionId: string) => {
     try {
-      set({ isUploading: true, error: null });
+      set({ isUploading: true, isError: false });
 
       // 1. Получаем presign URL
       const featchPresignData = await uploadAPI.getPresignUrl(sessionId);
       const presignData = featchPresignData.data.data;
       // 2. Проверяем размер файла
       if (file.size > presignData.maxBytes) {
+        set({ isError: true });
         throw new Error(
           `Файл слишком большой. Максимальный размер: ${presignData.maxBytes} байт`
         );
@@ -37,6 +38,7 @@ export const useUploadStore = create<UploadStore>(set => ({
 
       // 3. Проверяем MIME тип
       if (!presignData.allowedMime.includes(file.type)) {
+        set({ isError: true });
         throw new Error(
           `Неподдерживаемый формат файла. Разрешены: ${presignData.allowedMime.join(', ')}`
         );
@@ -49,6 +51,7 @@ export const useUploadStore = create<UploadStore>(set => ({
         body: file,
       });
       if (!uploadResponse.ok) {
+        set({ isError: true });
         throw new Error(`Ошибка загрузки файла: ${uploadResponse.status}`);
       }
 
@@ -62,6 +65,7 @@ export const useUploadStore = create<UploadStore>(set => ({
       await uploadAPI.commitUpload(commitRequest);
       set({ isCommit: true });
     } catch (err: unknown) {
+      set({ isError: true });
       console.log(err);
     } finally {
       set({ isUploading: false });
@@ -69,6 +73,6 @@ export const useUploadStore = create<UploadStore>(set => ({
   },
 
   clearError: () => {
-    set({ error: null });
+    set({ isError: false });
   },
 }));

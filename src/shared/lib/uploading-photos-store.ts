@@ -3,6 +3,7 @@ import { create } from 'zustand';
 interface UploadingPhotosStore {
   image: string | null;
   isLoading: boolean;
+  isError: boolean;
   uploadingError: string | null;
   setImage: (file: File) => void;
   setUploadingError: (error: Error | string | null) => void;
@@ -12,21 +13,27 @@ export const useUploadingPhotosStore = create<UploadingPhotosStore>(set => ({
   image: null,
   isLoading: false,
   uploadingError: null,
+  isError: false,
 
   setUploadingError: (error: Error | string | null) => {
     const errorValue = error instanceof Error ? error.message : error;
     set({ uploadingError: errorValue });
+    if (error) {
+      set({ isError: true });
+    } else {
+      set({ isError: false });
+    }
   },
 
   setImage: (file: File): void => {
     const validationError = validateFile(file);
     if (validationError) {
-      set({ uploadingError: validationError });
+      set({ uploadingError: validationError, isError: true });
 
       return;
     }
 
-    set({ uploadingError: null });
+    set({ uploadingError: null, isError: false });
     const imageUrl = URL.createObjectURL(file);
     set({ image: imageUrl });
   },

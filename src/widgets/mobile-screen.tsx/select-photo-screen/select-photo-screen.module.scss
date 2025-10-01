@@ -1,0 +1,48 @@
+.title {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-medium);
+  line-height: var(--leading-normal);
+  letter-spacing: var(--tracking-normal);
+  text-align: center;
+  margin-top: var(--space-1);
+  margin-bottom: 10px;
+  max-width: 193px;
+}
+
+.subTitle {
+  font-size: var(--text-lg);
+  font-weight: var(--font-medium);
+  line-height: var(--leading-normal);
+  letter-spacing: var(--tracking-normal);
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.instructionPanel {
+  padding: var(--space-3);
+  align-items: flex-start;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+
+
+  & > div {
+    padding: 0;
+
+  }
+
+  & > p {
+    font-size: var(--text-xs);
+    font-weight: var(--font-normal);
+    line-height: var(--leading-relaxed);
+    letter-spacing: var(--tracking-normal);
+  }
+}
+
+.downloadBtn {
+  width: 100%;
+  gap: 0;
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  line-height: var(--leading-normal);
+  letter-spacing: var(--tracking-normal);
+}

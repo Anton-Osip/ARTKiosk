@@ -100,7 +100,7 @@ export function CameraPreview({
       });
       setIsLoading(false);
     }
-  }, [openModal]);
+  }, [openModal, tm]);
 
   useEffect(() => {
     if (isOpen) {
@@ -112,7 +112,7 @@ export function CameraPreview({
     } else {
       stopCamera();
     }
-  }, [isOpen]);
+  }, [isOpen, startCamera, stopCamera]);
 
   const handleCapture = () => {
     if (videoRef.current && canvasRef.current) {
