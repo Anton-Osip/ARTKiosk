@@ -1,0 +1,99 @@
+/* Modal overlay with backdrop blur */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modalWrapper {
+  width: 80%;
+  max-height: 960px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+/* Base modal container */
+.modal {
+  background: var(--color-surface-light, #1A1A1A);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 30px;
+  position: relative;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+
+  /* Modal sizes */
+  //&.sm {
+  //  width: 100%;
+  //  max-width: 400px;
+  //  min-height: 200px;
+  //}
+  //
+  //&.md {
+  //  width: 100%;
+  //  max-width: 500px;
+  //  min-height: 300px;
+  //}
+  //
+  //&.lg {
+  //  width: 100%;
+  //  max-width: 630px;
+  //  min-height: 400px;
+  //}
+  //
+  //&.xl {
+  //  width: 100%;
+  //  max-width: 670px;
+  //  min-height: 500px;
+  //}
+  //
+  //&.full {
+  //  width: 100%;
+  //  max-width: 90vw;
+  //  min-height: 60vh;
+  //}
+}
+
+/* Close button */
+.closeButton {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 70px;
+  height: 70px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px);
+  border: none;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0.7;
+  z-index: 10;
+
+  &:hover {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+
+  svg {
+    color: var(--color-text-primary, #FFFFFF);
+  }
+}
+

@@ -1,0 +1,88 @@
+.modalContent {
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  min-height: 200px;
+  padding-top: var(--space-32);
+}
+
+.container {
+  background-color: var(--color-element-bg);
+  border-radius: var(--radius-3xl);
+  padding: var(--space-10);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1;
+
+  & p {
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: var(--font-normal);
+    font-family: var(--font-primary), sans-serif;
+    text-align: center;
+    margin-bottom: var(--space-16);
+  }
+}
+
+.cornerBox {
+  position: relative;
+  width: 76%;
+  aspect-ratio: 1;
+  padding: var(--space-5);
+}
+
+.cornerBox::before,
+.cornerBox::after,
+.cornerBox > ::before,
+.cornerBox > ::after {
+  content: '';
+  position: absolute;
+  width: var(--space-8);
+  height: var(--space-8);
+  border: 2px solid var(--color-accent);
+}
+
+/* Левый верхний угол */
+.cornerBox::before {
+  top: -2px;
+  left: -2px;
+  border-right: none;
+  border-bottom: none;
+  border-top-left-radius: var(--radius-lg);
+}
+
+/* Правый верхний угол */
+.cornerBox::after {
+  top: -2px;
+  right: -2px;
+  border-left: none;
+  border-bottom: none;
+  border-top-right-radius: var(--radius-lg);
+}
+
+/* Левый нижний угол */
+.cornerBox > ::before {
+  bottom: -2px;
+  left: -2px;
+  border-right: none;
+  border-top: none;
+  border-bottom-left-radius: var(--radius-lg);
+}
+
+/* Правый нижний угол */
+.cornerBox > ::after {
+  bottom: -2px;
+  right: -2px;
+  border-left: none;
+  border-top: none;
+  border-bottom-right-radius: var(--radius-lg);
+}
+
+.loaderContainer {
+  background-color: var(--color-background-button);
+  border-radius: var(--radius-2xl);
+  aspect-ratio: 1;
+  width: 100%;
+}

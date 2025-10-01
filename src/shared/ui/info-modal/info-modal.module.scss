@@ -1,0 +1,102 @@
+/* Modal container */
+.modal {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: var(--color-element-bg) !important;
+}
+
+/* Content wrapper */
+.content {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  flex: 1;
+}
+
+/* Header section with icon and text */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Title styling */
+.title {
+  font-family: var(--font-primary), sans-serif;
+  font-weight: var(--font-medium);
+  font-size: var(--text-4xl);
+  line-height: var(--leading-relaxed);
+  color: #FFFFFF;
+  margin: 0;
+  text-align: left;
+}
+
+/* Description styling */
+.description {
+  font-family: var(--font-primary), sans-serif;
+  font-weight: var(--font-normal);
+  font-size: var(--text-2xl);
+  line-height: var(--leading-relaxed);
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+  text-align: left;
+  padding: var(--space-10) var(--space-6);
+  background-color: var(--color-surface-lighter);
+  border-radius: var(--radius-3xl);
+}
+
+/* Button container */
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-3);
+
+  & button {
+    flex: 1;
+  }
+
+  & .cancelButton {
+    background-color: #626262;
+  }
+}
+
+/* Mobile variant styles */
+.mobile {
+  max-width: 90vw;
+  max-height: 80vh;
+}
+
+.mobileContent {
+  padding: 20px;
+  gap: 20px;
+}
+
+.mobileHeader {
+  flex-direction: column;
+  text-align: center;
+  gap: 16px;
+}
+
+.mobileTitle {
+  font-size: var(--text-3xl);
+  text-align: center;
+}
+
+.mobileDescription {
+  font-size: var(--text-lg);
+  padding: var(--space-8) var(--space-4);
+  text-align: center;
+}
+
+.mobileButtonContainer {
+  flex-direction: column;
+  gap: var(--space-4);
+  
+  & button {
+    width: 100%;
+  }
+}

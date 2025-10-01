@@ -1,0 +1,44 @@
+.spinner {
+  border: 3px solid var(--color-text-disabled);
+  border-top: 3px solid var(--color-accent);
+  border-radius: var(--radius-full);
+  animation: spin 1s linear infinite;
+
+  &.sm {
+    width: var(--space-6);
+    height: var(--space-6);
+    border-width: 2px;
+  }
+
+  &.md {
+    width: var(--space-10);
+    height: var(--space-10);
+    border-width: 3px;
+  }
+
+  &.lg {
+    width: var(--space-12);
+    height: var(--space-12);
+    border-width: 4px;
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive adjustments */
+@media (width <= 768px) {
+  .spinner.lg {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+@media (width <= 480px) {
+  .spinner.lg {
+    width: var(--space-10);
+    height: var(--space-10);
+  }
+}

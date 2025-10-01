@@ -1,0 +1,49 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: var(--radius-xl);
+
+  /* Sizes */
+  &.sm {
+    width: var(--space-8);
+    height: var(--space-8);
+  }
+
+  &.md {
+    padding: var(--space-3);
+    border-radius: var(--radius-sm);
+  }
+
+  &.lg {
+    padding: var(--space-4);
+    border-radius: var(--radius-lg);
+  }
+
+  &.xl {
+    width: 70px;
+    height: 70px;
+  }
+
+  /* Variants */
+  &.default {
+    background: transparent;
+  }
+
+  &.surface {
+    background: var(--color-element-bg);
+  }
+
+  &.accent {
+    background: var(--color-accent);
+  }
+
+  svg {
+    color: var(--color-text-primary);
+  }
+
+  &.accent svg {
+    color: var(--color-background);
+  }
+}

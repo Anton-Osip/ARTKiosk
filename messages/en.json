@@ -1,0 +1,69 @@
+{
+  "StartPhotoAddingScreen": {
+    "title": "Want to use a photo in the composition?",
+    "or": "or",
+    "card1": {
+      "title": "Take a selfie now",
+      "description": "The photo will be taken with the terminal's camera"
+    },
+    "card2": {
+      "title": "Upload photo from phone",
+      "button": "Scan QR"
+    },
+    "bottomButtons": {
+      "continue": "Continue without photo",
+      "changeLang": "Change language",
+      "quit": "Quit & Delete Everything",
+      "next": "Next",
+      "club": "AIClub",
+      "help": "Help"
+    },
+    "CaptureModal": {
+      "info1": "There should be only one person in the photo.",
+      "info2": "Make sure the selfie is successful and of good quality."
+    }
+  },
+  "Header": {
+    "step1": "Photo",
+    "step2": "Catalog",
+    "step3": "Creation",
+    "step4": "Tuning"
+  },
+  "MainScreen": {
+    "startButton": "Start Creating"
+  },
+  "Modals": {
+    "cancel": "Отмена",
+    "cancelLoading": {
+      "title": "Вы уверены, что хотите отменить загрузку фото?",
+      "buttonCancel": "Выйти",
+      "buttonApply": "Остаться"
+    },
+    "wrongFormat": {
+      "title": "Не верный формат",
+      "description": "Формат/размер фотографии не соответствует требованиям системы",
+      "buttonApply": "Заменить фото"
+    },
+    "infoError": {
+      "title": "Упс, что-то пошло не так",
+      "reloadImage": "Повторите загрузку фото"
+    },
+    "genderAge": {
+      "infoText": "Для улучшения результата можно указать:",
+      "gender": {
+        "title": "Sex",
+        "male": "Male",
+        "female": "Female"
+      },
+      "age": {
+        "title": "Age",
+        "child": "Child",
+        "teen": "Teen",
+        "young": "Young",
+        "adult": "Adult",
+        "mature": "Mature"
+      },
+      "deletePhoto": "Delete photo"
+    }
+  }
+}

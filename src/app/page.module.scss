@@ -1,0 +1,227 @@
+.landingPage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--color-background);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Background Image */
+.backgroundImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(0deg, rgb(20 20 20 / 64%) 7%, rgb(20 20 20 / 39%) 17%, rgb(20 20 20 / 0%) 27%),
+  linear-gradient(0deg, rgb(20 20 20 / 100%) 10%, rgb(20 20 20 / 0%) 30%),
+  url('/bg/artwork.jpg'), rgb(20 20 20);
+  background-size: contain;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+
+/* Content */
+.content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  padding: var(--space-16) var(--space-10);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow-y: auto;
+}
+
+.mainTitle {
+  font-family: var(--font-primary), sans-serif;
+  font-weight: var(--font-medium);
+  font-size: var(--text-9xl);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text-primary);
+  margin: 0 0 var(--space-8);
+  opacity: 1;
+}
+
+.subtitle {
+  font-family: var(--font-primary), sans-serif;
+  font-weight: var(--font-medium);
+  font-size: var(--text-2xl);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-primary);
+  margin: 0 0 20px;
+}
+
+.stepsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin: 0 0 var(--space-5);
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.stepIndicator {
+  width: var(--space-2);
+  height: var(--space-2);
+  background: var(--color-accent);
+  border-radius: 50%;
+}
+
+.step span {
+  font-family: var(--font-primary), sans-serif;
+  font-weight: var(--font-medium);
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-primary);
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.descriptionText {
+  font-family: var(--font-primary), sans-serif;
+  font-weight: var(--font-medium);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* Bottom Section */
+.bottomSection {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 4;
+  padding: 50px;
+}
+
+.bottomTitle {
+  font-family: var(--font-primary), sans-serif;
+  font-weight: var(--font-medium);
+  font-size: var(--text-8xl);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text-primary);
+  margin: 0 0 var(--space-5);
+  text-align: center;
+}
+
+.bottomSection .startButton {
+  border-radius: var(--space-5);
+  padding: 0 !important;
+  width: 100%;
+
+  & > a {
+    padding: var(--space-8);
+    display: block;
+    width: 100%;
+  }
+}
+
+/* Language Selector */
+.languageSelector {
+  position: absolute;
+  top: var(--space-5);
+  right: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  z-index: 5;
+}
+
+.languageButton {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) 0 0;
+  width: calc(1vh * 3.75);
+  height: calc(1vh * 3.75);
+  background: rgb(159 159 159 / 38%);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(14px);
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgb(159 159 159 / 50%);
+    transform: scale(1.05);
+  }
+}
+
+.flag {
+  font-size: var(--text-base);
+}
+
+.languageButton span {
+  font-family: var(--font-primary), sans-serif;
+  font-weight: var(--font-medium);
+  font-size: var(--text-sm);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text-primary);
+  text-align: center;
+}
+
+/* Logo */
+.logo {
+  position: absolute;
+  top: var(--space-5);
+  left: var(--space-5);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  z-index: 5;
+}
+
+.logoIcon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoCircle {
+  width: calc(1vh * 2.5);
+  height: calc(1vh * 0.9375);
+  background: var(--color-accent);
+  border-radius: 50%;
+}
+
+.logoText {
+  position: absolute;
+  font-family: var(--font-primary), sans-serif;
+  font-weight: var(--font-medium);
+  font-size: var(--text-xl);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-accent);
+}
+
+.logoTextMain {
+  font-family: var(--font-secondary) sans-serif;
+  font-weight: var(--font-bold);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-text-primary);
+}
