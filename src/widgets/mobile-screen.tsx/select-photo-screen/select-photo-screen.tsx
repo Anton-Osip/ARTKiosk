@@ -15,11 +15,13 @@ export const SelectPhotoScreen = ({ buttonClick }: Props) => {
 
   return (
     <>
-      <CornerBox onClick={buttonClick}>
-        <PhotoCamera />
-        <h2 className={styles.title}>{t('selectPhoto.title')}</h2>
-        <span className={styles.subTitle}>{t('selectPhoto.subtitle')}</span>
-      </CornerBox>
+      <div className={styles.cornerBoxWrapper}>
+        <CornerBox onClick={buttonClick}>
+          <PhotoCamera />
+          <h2 className={styles.title}>{t('selectPhoto.title')}</h2>
+          <span className={styles.subTitle}>{t('selectPhoto.subtitle')}</span>
+        </CornerBox>
+      </div>
       <InstructionPanel
         className={styles.instructionPanel}
         icon={<Warning width={24} height={24} />}

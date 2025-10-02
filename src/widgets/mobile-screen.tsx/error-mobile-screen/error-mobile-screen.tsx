@@ -19,16 +19,18 @@ export const ErrorMobileScreen = ({
 
   return (
     <div className={styles.container}>
-      <CornerBox>
-        <div className={styles.errorBox}>
-          <SadFace />
-          <span className={styles.title}>{t('errorMobile.title')}</span>
-        </div>
-        <span className={styles.subTitle}>
-          {uploadIsError && t('errorMobile.uploadError')}
-          {uploadingIsError && t('errorMobile.uploadingIsError')}
-        </span>
-      </CornerBox>
+      <div className={styles.cornerBoxWrapper}>
+        <CornerBox>
+          <div className={styles.errorBox}>
+            <SadFace />
+            <span className={styles.title}>{t('errorMobile.title')}</span>
+          </div>
+          <span className={styles.subTitle}>
+            {uploadIsError && t('errorMobile.uploadError')}
+            {uploadingIsError && t('errorMobile.uploadingIsError')}
+          </span>
+        </CornerBox>
+      </div>
       {uploadingIsError && (
         <Button onClick={buttonClick} className={styles.downloadBtn}>
           {t('errorMobile.uploadingIsErrorButton')}
