@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { Button, useLocaleStore, useModalStore } from '@/shared';
 import ArrowLeftToRight from '@/shared/assets/arrowLeftToRight';
@@ -36,12 +36,28 @@ export function PhotoSection() {
 
   const { errorData } = useErrorStore();
 
+  const showWrongModal = useCallback(
+    (error?: ErrorData | null) => {
+      openModal({
+        type: 'info-confirm',
+        title: error ? error.message : tm('wrongFormat.title'),
+        description: error?.description || tm('wrongFormat.description'),
+        icon: <WarningTriangle />,
+        onConfirm: () => {},
+        confirmButtonText: tm('wrongFormat.buttonApply'),
+        onClose: () => {},
+        buttonVariant: 'primary',
+      });
+    },
+    [openModal, tm]
+  );
+
   useEffect(() => {
     if (errorData && showStatusError) {
       showWrongModal(errorData);
       setShowStatusError(false);
     }
-  }, [errorData, showStatusError]);
+  }, [errorData, showStatusError, showWrongModal]);
 
   useEffect(() => {
     fetchSessionData(locale);
@@ -58,7 +74,7 @@ export function PhotoSection() {
     return () => {
       clearInterval(interval);
     };
-  }, [sessionData?.session_id]);
+  }, [sessionData?.session_id, fetchSessionStatus]);
 
   const handleContinueWithoutPhoto = () => {
     console.log('Continue without photo');
@@ -82,19 +98,6 @@ export function PhotoSection() {
     });
   };
 
-  const showWrongModal = (error?: ErrorData | null) => {
-    openModal({
-      type: 'info-confirm',
-      title: error ? error.message : tm('wrongFormat.title'),
-      description: error?.description || tm('wrongFormat.description'),
-      icon: <WarningTriangle />,
-      onConfirm: () => {},
-      confirmButtonText: tm('wrongFormat.buttonApply'),
-      onClose: () => {},
-      buttonVariant: 'primary',
-    });
-  };
-
   const showLoader = () => {
     openModal({
       type: 'photo-loader',
@@ -104,14 +107,14 @@ export function PhotoSection() {
     });
   };
 
-  const showError = () => {
+  const showError = useCallback(() => {
     openModal({
       type: 'info-error',
       title: tm('infoError.title'),
       buttonText: tm('infoError.reloadImage'),
       onConfirm: () => {},
     });
-  };
+  }, [openModal, tm]);
 
   useEffect(() => {
     if (sessionStatusData?.status === 'pending') {
@@ -131,7 +134,7 @@ export function PhotoSection() {
     } else if (sessionStatusData?.status === 'expired') {
       showError();
     }
-  }, [sessionStatusData?.status]);
+  }, [openModal, sessionStatusData?.status, showError]);
 
   return (
     <div className={styles.photoSection}>

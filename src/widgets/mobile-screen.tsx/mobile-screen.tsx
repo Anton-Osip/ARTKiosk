@@ -70,16 +70,10 @@ export const MobileScreen = ({ qrToken }: MobileScreenProps) => {
   const handleUpload = async () => {
     if (!image || !sessionData?.session_id) return;
 
-    let file: File;
-    if (typeof image === 'string') {
-      // Если image это URL, нужно получить файл из input
-      const inputFile = fileInputRef.current?.files?.[0];
-      if (!inputFile) return;
-      file = inputFile;
-    } else {
-      file = image;
-    }
-    await uploadFile(file, sessionData.session_id);
+    const inputFile = fileInputRef.current?.files?.[0];
+    if (!inputFile) return;
+
+    await uploadFile(inputFile, sessionData.session_id);
   };
 
   return (
