@@ -1,4 +1,28 @@
 {
+  "MobileScreen": {
+    "common": {
+      "instruction": "There should be only one person in the photo. Make sure the selfie is successful and of good quality."
+    },
+    "selectPhoto": {
+      "title": "Select photo from gallery",
+      "subtitle": "JPG/PNG up to 5 mb",
+      "uploadButton": "Upload"
+    },
+    "submittedPhoto": {
+      "sentButton": "Photo sent"
+    },
+    "uploadedPhoto": {
+      "replaceButton": "Replace",
+      "sendButton": "Send"
+    },
+    "errorMobile": {
+      "title": "Oops...",
+      "uploadError": "An error occurred!",
+      "uploadingIsError": "Photo does not meet system requirements",
+      "uploadErrorButton": "Replace photo",
+      "uploadingIsErrorButton": "Try again"
+    }
+  },
   "StartPhotoAddingScreen": {
     "title": "Want to use a photo in the composition?",
     "or": "or",
@@ -33,23 +57,26 @@
     "startButton": "Start Creating"
   },
   "Modals": {
-    "cancel": "Отмена",
+    "cancel": "Cancel",
     "cancelLoading": {
-      "title": "Вы уверены, что хотите отменить загрузку фото?",
-      "buttonCancel": "Выйти",
-      "buttonApply": "Остаться"
+      "title": "Are you sure you want to cancel photo upload?",
+      "buttonCancel": "Exit",
+      "buttonApply": "Stay"
     },
     "wrongFormat": {
-      "title": "Не верный формат",
-      "description": "Формат/размер фотографии не соответствует требованиям системы",
-      "buttonApply": "Заменить фото"
+      "title": "Wrong format",
+      "description": "Photo format/size does not meet system requirements",
+      "buttonApply": "Replace photo"
     },
     "infoError": {
-      "title": "Упс, что-то пошло не так",
-      "reloadImage": "Повторите загрузку фото"
+      "title": "Oops, something went wrong",
+      "reloadImage": "Retry photo upload"
+    },
+    "photoLoader": {
+      "loadingText": "Loading photo from phone..."
     },
     "genderAge": {
-      "infoText": "Для улучшения результата можно указать:",
+      "infoText": "To improve the result, you can specify:",
       "gender": {
         "title": "Sex",
         "male": "Male",

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 
-import { useTranslations } from '@/shared/lib/locale-provider';
+import { useTranslations } from '@/shared/lib';
 import { Button } from '@/shared/ui';
 import { Header } from '@/widgets';
 

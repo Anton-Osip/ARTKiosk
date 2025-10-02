@@ -1,12 +1,13 @@
 'use client';
 
-import React from 'react';
-
-import { useModalStore } from '@/shared/lib/modal-store';
-import { InfoErrorModal } from '@/shared/ui/info-error-modal/info-error-modal';
-import { InfoModal } from '@/shared/ui/info-modal/info-modal';
-import { CameraPreview } from '@/widgets';
-import { GenderAgeModal, PhotoLoaderModal, PhotoPreviewModal } from '@/widgets';
+import { useModalStore } from '@/shared/lib';
+import { InfoErrorModal, InfoModal } from '@/shared/ui';
+import {
+  CameraPreview,
+  GenderAgeModal,
+  PhotoLoaderModal,
+  PhotoPreviewModal,
+} from '@/widgets';
 
 export function ModalManager() {
   const { modalData, closeModal } = useModalStore();

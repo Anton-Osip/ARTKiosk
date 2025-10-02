@@ -1,4 +1,4 @@
-import { useModalStore } from '@/shared';
+import { useModalStore } from '@/shared/lib';
 
 export const useTakePhoto = () => {
   const { openModal } = useModalStore();

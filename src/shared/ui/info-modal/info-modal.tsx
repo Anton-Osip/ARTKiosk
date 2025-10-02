@@ -1,8 +1,6 @@
 'use client';
 
-import React from 'react';
-
-import { Button, IconContainer, Modal } from '@/shared';
+import { Button, IconContainer, Modal } from '@/shared/ui';
 
 import styles from './info-modal.module.scss';
 
@@ -39,16 +37,32 @@ export function InfoModal({
       className={`${styles.modal} ${variant === 'mobile' ? styles.mobile : ''}`}
       showCloseButton={false}
     >
-      <div className={`${styles.content} ${variant === 'mobile' ? styles.mobileContent : ''}`}>
-        <div className={`${styles.header} ${variant === 'mobile' ? styles.mobileHeader : ''}`}>
+      <div
+        className={`${styles.content} ${variant === 'mobile' ? styles.mobileContent : ''}`}
+      >
+        <div
+          className={`${styles.header} ${variant === 'mobile' ? styles.mobileHeader : ''}`}
+        >
           {icon && <IconContainer size="md">{icon}</IconContainer>}
-          <h2 className={`${styles.title} ${variant === 'mobile' ? styles.mobileTitle : ''}`}>{title}</h2>
+          <h2
+            className={`${styles.title} ${variant === 'mobile' ? styles.mobileTitle : ''}`}
+          >
+            {title}
+          </h2>
         </div>
 
-        {description && <p className={`${styles.description} ${variant === 'mobile' ? styles.mobileDescription : ''}`}>{description}</p>}
+        {description && (
+          <p
+            className={`${styles.description} ${variant === 'mobile' ? styles.mobileDescription : ''}`}
+          >
+            {description}
+          </p>
+        )}
 
-        <div className={`${styles.buttonContainer} ${variant === 'mobile' ? styles.mobileButtonContainer : ''}`}>
-          {cancelButtonText &&
+        <div
+          className={`${styles.buttonContainer} ${variant === 'mobile' ? styles.mobileButtonContainer : ''}`}
+        >
+          {cancelButtonText && (
             <Button
               variant={'secondary'}
               size="md"
@@ -57,7 +71,7 @@ export function InfoModal({
             >
               {cancelButtonText}
             </Button>
-          }
+          )}
           <Button variant={mainButtonVariant} size="md" onClick={onConfirm}>
             {confirmButtonText}
           </Button>

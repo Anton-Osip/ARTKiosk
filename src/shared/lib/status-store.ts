@@ -1,8 +1,7 @@
 import { create } from 'zustand';
 
-import { sessionAPI } from '@/shared/api/session/session-api';
-import { SessionStatusResponse } from '@/shared/api/session/session-api.types';
-import { useErrorStore } from '@/shared/lib/error-store';
+import { sessionAPI, SessionStatusResponse } from '@/shared/api';
+import { useErrorStore } from '@/shared/lib';
 
 export interface SessionStatusError {
   status: number;
@@ -44,12 +43,14 @@ export const useSessionStatusStore = create<SessionStore>(set => ({
         set({ sessionStatusData: response.data.data });
       }
     } catch (err: unknown) {
-      
-        if (err && typeof err === 'object' && 'response' in err) {
-          const axiosError = err as AxiosError;
+      if (err && typeof err === 'object' && 'response' in err) {
+        const axiosError = err as AxiosError;
         useErrorStore.getState().setErrorData({
           status: axiosError.response?.status || 500,
-          message: axiosError.response?.data?.error || axiosError.message || 'Failed to fetch session status',
+          message:
+            axiosError.response?.data?.error ||
+            axiosError.message ||
+            'Failed to fetch session status',
           description: `Session status error: ${axiosError.response?.data?.error || axiosError.message || 'Unknown error'}`,
         });
       } else {

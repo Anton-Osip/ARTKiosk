@@ -1,12 +1,12 @@
 'use client';
 
-import React from 'react';
+import { ReactNode } from 'react';
 
 import styles from './instruction-panel.module.scss';
 
 interface InstructionPanelProps {
-  icon: React.ReactNode;
-  text: string | React.ReactNode;
+  icon: ReactNode;
+  text: string | ReactNode;
   className?: string;
 }
 

@@ -1,22 +1,22 @@
 'use client';
 
-import React from 'react';
+import { ReactNode } from 'react';
 
-import { Button } from '@/shared';
+import { Button } from '@/shared/ui';
 
 import styles from './modal.module.scss';
 
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
   overlayClassName?: string;
   closeButtonClassName?: string;
   showCloseButton?: boolean;
   closeOnOverlayClick?: boolean;
   size?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
-  infoElement?: React.ReactNode;
+  infoElement?: ReactNode;
 }
 
 export function Modal({
@@ -40,8 +40,8 @@ export function Modal({
   };
 
   return (
-    <div 
-      className={`${styles.overlay} ${overlayClassName}`} 
+    <div
+      className={`${styles.overlay} ${overlayClassName}`}
       onClick={handleOverlayClick}
     >
       <div className={styles.modalWrapper}>

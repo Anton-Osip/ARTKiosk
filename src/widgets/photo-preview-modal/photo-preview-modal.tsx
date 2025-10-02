@@ -5,8 +5,7 @@ import Image from 'next/image';
 import Apply from '@/shared/assets/apply';
 import Retry from '@/shared/assets/retry';
 import Warning from '@/shared/assets/warningRound';
-import { useTranslations } from '@/shared/lib/locale-provider';
-import { usePhotoStore } from '@/shared/lib/photo-store';
+import { usePhotoStore, useTranslations } from '@/shared/lib';
 import { Button, InstructionPanel, Modal } from '@/shared/ui';
 
 import styles from './photo-preview-modal.module.scss';
@@ -34,12 +33,19 @@ export function PhotoPreviewModal({
         onClose={onClose}
         size="lg"
         className={styles.modalContainer}
-        infoElement={isOpen && (
-          <InstructionPanel
-            icon={<Warning />}
-            text={<span className={styles.info}><span>{t('info1')}</span><span>{t('info2')}</span></span>}
-          />
-        )}
+        infoElement={
+          isOpen && (
+            <InstructionPanel
+              icon={<Warning />}
+              text={
+                <span className={styles.info}>
+                  <span>{t('info1')}</span>
+                  <span>{t('info2')}</span>
+                </span>
+              }
+            />
+          )
+        }
       >
         {/* Photo Preview */}
         <div className={styles.photoPreview}>

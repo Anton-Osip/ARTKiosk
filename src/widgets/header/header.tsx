@@ -3,10 +3,9 @@
 import { clsx } from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
 
 import Logotype from '@/shared/assets/logotype';
-import { useTranslations } from '@/shared/lib/locale-provider';
+import { useTranslations } from '@/shared/lib';
 
 import styles from './header.module.scss';
 
@@ -16,10 +15,30 @@ const useGetStepItems = () => {
   const t = useTranslations('Header');
 
   return [
-    { id: 'photo', label: t('step1'), icon: '/crystals/Gem1.png', percent: '85%' },
-    { id: 'catalog', label: t('step2'), icon: '/crystals/Gem2.png', percent: '0%' },
-    { id: 'creativity', label: t('step3'), icon: '/crystals/Gem3.png', percent: '0%' },
-    { id: 'tuning', label: t('step4'), icon: '/crystals/Gem4.png', percent: '0%' },
+    {
+      id: 'photo',
+      label: t('step1'),
+      icon: '/crystals/Gem1.png',
+      percent: '85%',
+    },
+    {
+      id: 'catalog',
+      label: t('step2'),
+      icon: '/crystals/Gem2.png',
+      percent: '0%',
+    },
+    {
+      id: 'creativity',
+      label: t('step3'),
+      icon: '/crystals/Gem3.png',
+      percent: '0%',
+    },
+    {
+      id: 'tuning',
+      label: t('step4'),
+      icon: '/crystals/Gem4.png',
+      percent: '0%',
+    },
   ] as const;
 };
 
@@ -42,7 +61,7 @@ export function Header({ activeTab, className }: HeaderProps) {
       </div>
 
       {/* Navigation */}
-      {activeTab &&
+      {activeTab && (
         <ul className={styles.navigation}>
           {steps.map((item, index) => (
             <li
@@ -52,13 +71,19 @@ export function Header({ activeTab, className }: HeaderProps) {
               }`}
               style={{ '--after-width': '50%' } as React.CSSProperties}
             >
-              <Image src={item.icon} alt={'Gem'} width={40} height={40} style={{ height: 'auto' }} />
+              <Image
+                src={item.icon}
+                alt={'Gem'}
+                width={40}
+                height={40}
+                style={{ height: 'auto' }}
+              />
               <span>{`${index + 1}. ${item.label}`}</span>
             </li>
           ))}
           <li className={styles.line} style={{ width: current?.percent }}></li>
         </ul>
-      }
+      )}
     </header>
   );
 }

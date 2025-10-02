@@ -3,7 +3,7 @@ import './globals.scss';
 import type { Metadata } from 'next';
 import React from 'react';
 
-import { LocaleProvider } from '@/shared/lib/locale-provider';
+import { LocaleProvider } from '@/shared/lib';
 import { MainLayout } from '@/widgets';
 
 type LayoutProps = {

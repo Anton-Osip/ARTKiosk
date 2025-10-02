@@ -2,12 +2,11 @@
 
 import { useState } from 'react';
 
-import { Button } from '@/shared';
 import EnIcon from '@/shared/assets/lang/en';
 import FrIcon from '@/shared/assets/lang/fr';
 import RuIcon from '@/shared/assets/lang/ru';
-import { useLocale, useTranslations } from '@/shared/lib/locale-provider';
-import { Overlay } from '@/shared/ui/overlay/overlay';
+import { useLocale, useTranslations } from '@/shared/lib';
+import { Button, Overlay } from '@/shared/ui';
 import { LangButton } from '@/widgets/change-language/lang-button/lang-button';
 
 import styles from './change-language.module.scss';

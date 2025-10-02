@@ -1,5 +1,6 @@
-import { Button, CornerBox } from '@/shared';
 import SadFace from '@/shared/assets/sadFace';
+import { useTranslations } from '@/shared/lib';
+import { Button, CornerBox } from '@/shared/ui';
 
 import styles from './error-mobile-screen.module.scss';
 
@@ -14,25 +15,29 @@ export const ErrorMobileScreen = ({
   uploadingIsError,
   buttonClick,
 }: Props) => {
+  const t = useTranslations('MobileScreen');
+
   return (
     <div className={styles.container}>
       <CornerBox>
         <div className={styles.errorBox}>
           <SadFace />
-          <span className={styles.title}>Упс...</span>
+          <span className={styles.title}>{t('errorMobile.title')}</span>
         </div>
         <span className={styles.subTitle}>
-          {uploadIsError && 'Произошёл сбой'}
-          {uploadingIsError && 'Фото не соответствует требованиям системы'}
+          {uploadIsError && t('errorMobile.uploadError')}
+          {uploadingIsError && t('errorMobile.uploadingIsError')}
         </span>
       </CornerBox>
       {uploadingIsError && (
         <Button onClick={buttonClick} className={styles.downloadBtn}>
-          Заменить фото
+          {t('errorMobile.uploadingIsErrorButton')}
         </Button>
       )}
       {uploadIsError && (
-        <Button className={styles.downloadBtn}>Повторить попытку</Button>
+        <Button className={styles.downloadBtn}>
+          {t('errorMobile.uploadErrorButton')}
+        </Button>
       )}
     </div>
   );

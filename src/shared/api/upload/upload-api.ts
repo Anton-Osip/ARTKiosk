@@ -1,17 +1,12 @@
-import { BaseResponse } from '@/shared/api/base-api.type';
-import { instance } from '@/shared/api/instance';
 import {
-  ClaimRequest,
-  ClaimResponse,
+  BaseResponse,
   CommitRequest,
   CommitResponse,
+  instance,
   PresignResponse,
-} from '@/shared/api/upload/upload-api.types';
+} from '@/shared/api';
 
 export const uploadAPI = {
-  claimSession(request: ClaimRequest) {
-    return instance.post<BaseResponse<ClaimResponse>>('session/claim', request);
-  },
   getPresignUrl(session_id: string) {
     return instance.get<BaseResponse<PresignResponse>>(
       `upload/presign?session_id=${session_id}`

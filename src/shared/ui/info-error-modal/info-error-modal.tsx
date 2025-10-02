@@ -1,9 +1,7 @@
 'use client';
 
-import React from 'react';
-
-import { Button, Modal } from '@/shared';
 import SadFace from '@/shared/assets/sadFace';
+import { Button, Modal } from '@/shared/ui';
 
 import styles from './info-error-modal.module.scss';
 
@@ -31,9 +29,13 @@ export function InfoErrorModal({
       showCloseButton={false}
     >
       <div className={styles.wrapper}>
-        <SadFace/>
+        <SadFace />
         <p>{title}</p>
-        <Button className={styles.button} onClick={onConfirm} variant={'primary'}>
+        <Button
+          className={styles.button}
+          onClick={onConfirm}
+          variant={'primary'}
+        >
           {buttonText}
         </Button>
       </div>

@@ -1,12 +1,6 @@
 import { create } from 'zustand';
 
-import { uploadAPI } from '@/shared/api/upload/upload-api';
-import { CommitRequest } from '@/shared/api/upload/upload-api.types';
-
-export interface UploadError {
-  status: number;
-  message: string;
-}
+import { CommitRequest, uploadAPI } from '@/shared/api';
 
 interface UploadStore {
   isUploading: boolean;
@@ -26,8 +20,8 @@ export const useUploadStore = create<UploadStore>(set => ({
       set({ isUploading: true, isError: false });
 
       // 1. Получаем presign URL
-      const featchPresignData = await uploadAPI.getPresignUrl(sessionId);
-      const presignData = featchPresignData.data.data;
+      const fetchPresignData = await uploadAPI.getPresignUrl(sessionId);
+      const presignData = fetchPresignData.data.data;
       // 2. Проверяем размер файла
       if (file.size > presignData.maxBytes) {
         set({ isError: true });

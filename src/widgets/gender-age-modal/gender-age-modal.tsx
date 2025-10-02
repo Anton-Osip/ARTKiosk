@@ -9,14 +9,13 @@ import Retry from '@/shared/assets/retry';
 import SquareStar from '@/shared/assets/squareStar';
 import User from '@/shared/assets/user';
 import UserGroup from '@/shared/assets/userGroup';
-import { useTakePhoto } from '@/shared/hooks/useTakePhoto';
-import { useTranslations } from '@/shared/lib/locale-provider';
-import { type AgeGroup, Gender, usePhotoStore } from '@/shared/lib/photo-store';
+import { useTakePhoto } from '@/shared/hooks';
+import { AgeGroup, Gender, usePhotoStore, useTranslations } from '@/shared/lib';
 import { Button, IconContainer, Modal } from '@/shared/ui';
-import { SelectBlock } from '@/widgets/gender-age-modal/select-block/select-block';
-import { Variant } from '@/widgets/gender-age-modal/select-block/types';
 
 import styles from './gender-age-modal.module.scss';
+import { SelectBlock } from './select-block/select-block';
+import { Variant } from './select-block/types';
 
 interface GenderAgeModalProps {
   isOpen: boolean;

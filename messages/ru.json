@@ -1,4 +1,28 @@
 {
+  "MobileScreen": {
+    "common": {
+      "instruction": "На фото должен быть только один человек.Убедитесь что селфи удачное и хорошего качества."
+    },
+    "selectPhoto": {
+      "title": "Выберите фото из галереи",
+      "subtitle": "JPG/PNG до 5 mb",
+      "uploadButton": "Загрузить"
+    },
+    "submittedPhoto": {
+      "sentButton": "Фото отправлено"
+    },
+    "uploadedPhoto": {
+      "replaceButton": "Заменить",
+      "sendButton": "Отправить"
+    },
+    "errorMobile": {
+      "title": "Упс...",
+      "uploadError": "Произошёл сбой!!!!!!!!!!!!!!",
+      "uploadingIsError": "Фото не соответствует требованиям системы",
+      "uploadErrorButton": "Заменить фото",
+      "uploadingIsErrorButton": "Повторить попытку"
+    }
+  },
   "StartPhotoAddingScreen": {
     "title": "Хотите использовать фото в композиции?",
     "or": "или",
@@ -47,6 +71,9 @@
     "infoError": {
       "title": "Упс, что-то пошло не так",
       "reloadImage": "Повторите загрузку фото"
+    },
+    "photoLoader": {
+      "loadingText": "Загрузка фото с телефона..."
     },
     "genderAge": {
       "infoText": "Для улучшения результата можно указать:",

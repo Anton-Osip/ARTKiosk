@@ -1,12 +1,12 @@
-import { BaseResponse } from '@/shared/api/base-api.type';
-import { instance } from '@/shared/api/instance';
 import {
+  BaseResponse,
   ClaimRequest,
   ClaimResponse,
   InitSessionRequest,
-  InitSessionResponse,
+  instance,
   SessionStatusResponse,
-} from '@/shared/api/session/session-api.types';
+} from '@/shared/api';
+import { InitSessionResponse } from '@/shared/api/session/session-api.types';
 
 export const sessionAPI = {
   getSessionStatus(sessionId: string) {

@@ -2,22 +2,17 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import {
-  Button,
-  InstructionPanel,
-  LoadingSpinner,
-  Modal,
-  useModalStore,
-} from '@/shared';
 import Camera from '@/shared/assets/camera';
 import Loader from '@/shared/assets/loader';
 import Warning from '@/shared/assets/warningRound';
-import { useTranslations } from '@/shared/lib/locale-provider';
 import {
-  type AgeGroup,
-  type Gender,
+  AgeGroup,
+  Gender,
+  useModalStore,
   usePhotoStore,
-} from '@/shared/lib/photo-store';
+  useTranslations,
+} from '@/shared/lib';
+import { Button, InstructionPanel, LoadingSpinner, Modal } from '@/shared/ui';
 
 import styles from './camera-preview.module.scss';
 

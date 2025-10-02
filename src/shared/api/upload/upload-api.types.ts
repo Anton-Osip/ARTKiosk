@@ -1,13 +1,3 @@
-export interface ClaimRequest {
-  qr_token: string;
-  device_fp: string;
-}
-
-export interface ClaimResponse {
-  session_id: string;
-  status: 'pending' | 'uploaded' | 'expired';
-}
-
 export interface PresignResponse {
   objectKey: string;
   upload: {

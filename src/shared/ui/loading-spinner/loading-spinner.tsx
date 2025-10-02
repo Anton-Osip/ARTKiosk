@@ -1,7 +1,5 @@
 'use client';
 
-import React from 'react';
-
 import styles from './loading-spinner.module.scss';
 
 interface LoadingSpinnerProps {
@@ -9,7 +7,10 @@ interface LoadingSpinnerProps {
   className?: string;
 }
 
-export function LoadingSpinner({ size = 'md', className }: LoadingSpinnerProps) {
+export function LoadingSpinner({
+  size = 'md',
+  className,
+}: LoadingSpinnerProps) {
   return (
     <div className={`${styles.spinner} ${styles[size]} ${className || ''}`} />
   );

@@ -1,7 +1,8 @@
 import Image from 'next/image';
 
-import { Button, InstructionPanel } from '@/shared';
 import Warning from '@/shared/assets/warningRound';
+import { useTranslations } from '@/shared/lib';
+import { Button, InstructionPanel } from '@/shared/ui';
 
 import styles from './submitted-photo-screen.module.scss';
 
@@ -11,6 +12,8 @@ interface Props {
 }
 
 export const SubmittedPhotoScreen = ({ image, closeWindow }: Props) => {
+  const t = useTranslations('MobileScreen');
+
   return (
     <>
       <div className={styles.photoContainer}>
@@ -28,13 +31,12 @@ export const SubmittedPhotoScreen = ({ image, closeWindow }: Props) => {
         icon={<Warning width={24} height={24} />}
         text={
           <span className={styles.instructionText}>
-            На фото должен быть только один человек.Убедитесь что селфи удачное
-            и хорошего качества.
+            {t('common.instruction')}
           </span>
         }
       />
       <Button onClick={closeWindow} className={styles.sentPhoto}>
-        Фото отправлено
+        {t('submittedPhoto.sentButton')}
       </Button>
     </>
   );

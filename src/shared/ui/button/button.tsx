@@ -2,7 +2,7 @@
 
 import { cva, VariantProps } from 'class-variance-authority';
 import { clsx } from 'clsx';
-import React, { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react';
+import { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react';
 
 import styles from './button.module.scss';
 
@@ -32,7 +32,8 @@ export type ButtonProps<T extends ElementType = 'button'> = {
   variant?: 'link' | 'primary' | 'secondary' | 'light' | 'ghost' | 'close';
   icon?: ReactNode;
   iconPosition?: 'left' | 'right';
-} & ComponentPropsWithoutRef<T> & VariantProps<typeof buttonVariants>;
+} & ComponentPropsWithoutRef<T> &
+  VariantProps<typeof buttonVariants>;
 
 export const Button = <T extends ElementType = 'button'>(
   props: ButtonProps<T>
@@ -43,7 +44,8 @@ export const Button = <T extends ElementType = 'button'>(
     variant = 'primary',
     children,
     iconPosition,
-    icon, size,
+    icon,
+    size,
     ...rest
   } = props;
 

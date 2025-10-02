@@ -1,8 +1,9 @@
 import { clsx } from 'clsx';
 import Image from 'next/image';
 
-import { Button, InstructionPanel, LoadingSpinner } from '@/shared';
 import Warning from '@/shared/assets/warningRound';
+import { useTranslations } from '@/shared/lib';
+import { Button, InstructionPanel, LoadingSpinner } from '@/shared/ui';
 
 import styles from './uploaded-photo-section.module.scss';
 
@@ -19,6 +20,8 @@ export const UploadedPhotoSection = ({
   isUploading,
   handleUpload,
 }: Props) => {
+  const t = useTranslations('MobileScreen');
+
   return (
     <>
       <div className={styles.photoContainer}>
@@ -39,8 +42,7 @@ export const UploadedPhotoSection = ({
         icon={<Warning width={24} height={24} />}
         text={
           <span className={styles.instructionText}>
-            На фото должен быть только один человек.Убедитесь что селфи удачное
-            и хорошего качества.
+            {t('common.instruction')}
           </span>
         }
       />
@@ -51,7 +53,7 @@ export const UploadedPhotoSection = ({
           className={styles.downloadBtn}
           disabled={isUploading}
         >
-          Заменить
+          {t('uploadedPhoto.replaceButton')}
         </Button>
         <Button
           className={styles.downloadBtn}
@@ -61,7 +63,7 @@ export const UploadedPhotoSection = ({
           {isUploading ? (
             <LoadingSpinner size="md" className={styles.loadingSpinner} />
           ) : (
-            'Отправить'
+            t('uploadedPhoto.sendButton')
           )}
         </Button>
       </div>

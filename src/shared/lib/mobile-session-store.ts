@@ -1,10 +1,6 @@
 import { create } from 'zustand';
 
-import { uploadAPI } from '@/shared/api/upload/upload-api';
-import {
-  ClaimRequest,
-  ClaimResponse,
-} from '@/shared/api/upload/upload-api.types';
+import { ClaimRequest, ClaimResponse, sessionAPI } from '@/shared/api';
 
 export interface MobileSessionError {
   status: number;
@@ -89,7 +85,7 @@ export const useMobileSessionStore = create<MobileSessionStore>((set, get) => ({
         device_fp: currentDeviceFp,
       };
 
-      const response = await uploadAPI.claimSession(request);
+      const response = await sessionAPI.claimSession(request);
       set({ sessionData: response.data.data });
     } catch (err: unknown) {
       console.log(err);

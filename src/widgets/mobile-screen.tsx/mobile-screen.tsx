@@ -4,12 +4,13 @@ import React, { useEffect, useRef } from 'react';
 
 import Logotype from '@/shared/assets/logotype';
 import {
+  useLocaleStore,
   useMobileSessionStore,
   useUploadingPhotosStore,
   useUploadStore,
 } from '@/shared/lib';
-import { ErrorMobileScreen } from '@/widgets/mobile-screen.tsx/error-mobile-screen';
 
+import { ErrorMobileScreen } from './error-mobile-screen';
 import styles from './mobile-screen.module.scss';
 import { SelectPhotoScreen } from './select-photo-screen';
 import { SubmittedPhotoScreen } from './submitted-photo-screen';
@@ -17,10 +18,12 @@ import { UploadedPhotoSection } from './uploaded-photo-section';
 
 interface MobileScreenProps {
   qrToken?: string;
+  initialLang?: string;
 }
 
-export const MobileScreen = ({ qrToken }: MobileScreenProps) => {
+export const MobileScreen = ({ qrToken, initialLang }: MobileScreenProps) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const { setLocale } = useLocaleStore();
   const {
     setImage,
     image,
@@ -51,8 +54,18 @@ export const MobileScreen = ({ qrToken }: MobileScreenProps) => {
     }
   }, [qrToken, setQrToken, claimSession]);
 
+  // Устанавливаем язык из URL параметра
+  useEffect(() => {
+    if (
+      initialLang &&
+      (initialLang === 'en' || initialLang === 'ru' || initialLang === 'fr')
+    ) {
+      setLocale(initialLang);
+    }
+  }, [initialLang, setLocale]);
+
   const closeWindow = () => {
-    // window.close();
+    window.close();
   };
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {

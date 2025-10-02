@@ -4,9 +4,9 @@ import Image from 'next/image';
 import QRCode from 'qrcode';
 import { useEffect, useState } from 'react';
 
-import { Button, useLocaleStore } from '@/shared';
 import Loader from '@/shared/assets/loader';
-import { Locale } from '@/shared/lib/locale-store';
+import { Locale, useLocaleStore } from '@/shared/lib';
+import { Button } from '@/shared/ui';
 
 import styles from './qr-display.module.scss';
 

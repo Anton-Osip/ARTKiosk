@@ -1,6 +1,7 @@
 'use client';
 
-import Loader  from '@/shared/assets/loader';
+import Loader from '@/shared/assets/loader';
+import { useTranslations } from '@/shared/lib';
 import { Modal } from '@/shared/ui';
 
 import styles from './photo-loader-modal.module.scss';
@@ -11,6 +12,8 @@ type Props = {
 };
 
 export function PhotoLoaderModal({ isOpen, onCloseAction }: Props) {
+  const t = useTranslations('Modals');
+
   return (
     <Modal
       isOpen={isOpen}
@@ -19,11 +22,12 @@ export function PhotoLoaderModal({ isOpen, onCloseAction }: Props) {
       className={styles.modalContent}
     >
       <div className={styles.container}>
-        <p>Загрузка фото с телефона...</p>
-        <div className={styles.cornerBox}><div className={styles.loaderContainer}>
-          <Loader/>
-        </div></div>
-
+        <p>{t('photoLoader.loadingText')}</p>
+        <div className={styles.cornerBox}>
+          <div className={styles.loaderContainer}>
+            <Loader />
+          </div>
+        </div>
       </div>
     </Modal>
   );

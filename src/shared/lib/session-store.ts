@@ -1,8 +1,7 @@
 import { create } from 'zustand';
 
-import { sessionAPI } from '@/shared/api/session/session-api';
-import { InitSessionResponse } from '@/shared/api/session/session-api.types';
-import { Locale } from '@/shared/lib/locale-store';
+import { InitSessionResponse, sessionAPI } from '@/shared/api';
+import { Locale } from '@/shared/lib';
 
 export interface SessionError {
   status: number;

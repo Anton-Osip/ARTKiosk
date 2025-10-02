@@ -3,7 +3,6 @@
 import Image from 'next/image';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import { Button, useLocaleStore, useModalStore } from '@/shared';
 import ArrowLeftToRight from '@/shared/assets/arrowLeftToRight';
 import ArrowScan from '@/shared/assets/arrowScan';
 import Basket from '@/shared/assets/basket';
@@ -12,13 +11,18 @@ import OrElement from '@/shared/assets/orBgElement';
 import SimpleArrow from '@/shared/assets/simpleArrow';
 import UserCube from '@/shared/assets/userCube';
 import WarningTriangle from '@/shared/assets/warningTriangle';
-import { useTakePhoto } from '@/shared/hooks/useTakePhoto';
-import { ErrorData, useErrorStore } from '@/shared/lib/error-store';
-import { useTranslations } from '@/shared/lib/locale-provider';
-import { useSessionStore } from '@/shared/lib/session-store';
-import { useSessionStatusStore } from '@/shared/lib/status-store';
-import { QRDisplay } from '@/widgets';
-import { ChangeLanguage } from '@/widgets/change-language/change-language';
+import { useTakePhoto } from '@/shared/hooks';
+import {
+  ErrorData,
+  useErrorStore,
+  useLocaleStore,
+  useModalStore,
+  useSessionStatusStore,
+  useSessionStore,
+  useTranslations,
+} from '@/shared/lib';
+import { Button } from '@/shared/ui';
+import { ChangeLanguage, QRDisplay } from '@/widgets';
 
 import styles from './photo-section.module.scss';
 

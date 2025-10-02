@@ -6,10 +6,10 @@ import { ReactNode, useEffect, useRef, useState } from 'react';
 import {
   addFullscreenListener,
   enterFullscreen,
+  fullscreenManager,
   isFullscreen,
   removeFullscreenListener,
-} from '@/shared/lib/fullscreen';
-import { fullscreenManager } from '@/shared/lib/fullscreen-manager';
+} from '@/shared/lib';
 import { ModalManager } from '@/shared/ui';
 
 import styles from './main-layout.module.scss';
