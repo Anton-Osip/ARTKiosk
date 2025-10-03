@@ -1,0 +1,63 @@
+.container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 115px;
+}
+
+.content {
+  position: relative;
+  width: 608px;
+  height: 540px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader {
+  width: 100%;
+}
+
+.time {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--color-accent);
+  font-size: var(--text-5xl);
+  font-weight: var(--font-medium);
+  line-height: var(--leading-relaxed);
+}
+
+.indicator {
+  position: absolute;
+  bottom: -50px;
+  width: 440px;
+  height: 88px;
+  padding: var(--space-6);
+  border-radius: var(--radius-2xl);
+  backdrop-filter: blur(74.5px);
+  background: rgba(24, 24, 24, 0.8);
+
+  & p {
+    font-size: var(--text-base);
+    font-weight: var(--font-medium);
+    line-height: var(--leading-relaxed);
+
+    & span {
+      color: var(--color-text-muted);
+    }
+  }
+
+  & .triangleClip {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 28px;
+    height: 21px;
+    background: rgba(24, 24, 24, 0.8);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  }
+}

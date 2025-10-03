@@ -25,6 +25,11 @@
         "title": "Regenerate",
         "description": "Generation based on selected image. \n Improves similarity with photo and more"
       }
+    },
+    "loadingIndicator": {
+      "messagePrefix": "Generation of the first four images has started",
+      "durationPrefix": "approximate duration",
+      "secondsShort": "sec"
     }
   },
   "MobileScreen": {

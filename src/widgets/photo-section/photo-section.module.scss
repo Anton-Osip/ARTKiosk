@@ -143,7 +143,8 @@
 
   &.cardLeft {
     position: relative;
-    background: url('../../../public/bg/cards/bg_lines.svg'), var(--color-surface);
+    background:
+      url('../../../public/bg/cards/bg_lines.svg'), var(--color-surface);
     background-position: 0 50%;
     background-size: contain;
     background-repeat: no-repeat;
@@ -151,7 +152,8 @@
 
   &.cardRight {
     padding: var(--space-6);
-    background: url('../../../public/bg/cards/card2Bg.jpg'), var(--color-surface);
+    background:
+      url('../../../public/bg/cards/card2Bg.jpg'), var(--color-surface);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
