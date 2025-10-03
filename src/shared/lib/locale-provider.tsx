@@ -1,10 +1,10 @@
 'use client';
 
-import { createContext, ReactNode,useContext, useEffect } from 'react';
+import { createContext, ReactNode, useContext, useEffect } from 'react';
 
 import enMessages from '../../../messages/en.json';
 import ruMessages from '../../../messages/ru.json';
-import { Locale,useLocaleStore } from './locale-store';
+import { Locale, useLocaleStore } from './locale-store';
 
 const messages = {
   en: enMessages,
@@ -25,7 +25,12 @@ interface LocaleProviderProps {
 }
 
 export function LocaleProvider({ children }: LocaleProviderProps) {
-  const { locale, setLocale, messages: storeMessages, setMessages } = useLocaleStore();
+  const {
+    locale,
+    setLocale,
+    messages: storeMessages,
+    setMessages,
+  } = useLocaleStore();
 
   useEffect(() => {
     setMessages(messages[locale]);
@@ -34,7 +39,7 @@ export function LocaleProvider({ children }: LocaleProviderProps) {
   const t = (key: string): string => {
     const keys = key.split('.');
     let value: unknown = storeMessages;
-    
+
     for (const k of keys) {
       if (value && typeof value === 'object' && k in value) {
         value = (value as Record<string, unknown>)[k];
@@ -42,7 +47,7 @@ export function LocaleProvider({ children }: LocaleProviderProps) {
         return key;
       }
     }
-    
+
     return typeof value === 'string' ? value : key;
   };
 
@@ -64,7 +69,7 @@ export function useLocale() {
 
 export function useTranslations(namespace?: string) {
   const { t } = useLocale();
-  
+
   return (key: string) => {
     const fullKey = namespace ? `${namespace}.${key}` : key;
 

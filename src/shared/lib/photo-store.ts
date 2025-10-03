@@ -14,20 +14,23 @@ interface PhotoStore {
   clearPhotoData: () => void;
 }
 
-export const usePhotoStore = create<PhotoStore>((set) => ({
+export const usePhotoStore = create<PhotoStore>(set => ({
   capturedPhoto: null,
   gender: 'male',
   ageGroup: null,
-  
+
   setCapturedPhoto: (photo: string) => {
     try {
-      console.log('Setting captured photo:', photo ? 'Photo data present' : 'No photo data');
+      console.log(
+        'Setting captured photo:',
+        photo ? 'Photo data present' : 'No photo data'
+      );
       set({ capturedPhoto: photo });
     } catch (error) {
       console.error('Error setting captured photo:', error);
     }
   },
-  
+
   setGender: (gender: Gender) => {
     try {
       console.log('Setting gender:', gender);
@@ -36,7 +39,7 @@ export const usePhotoStore = create<PhotoStore>((set) => ({
       console.error('Error setting gender:', error);
     }
   },
-  
+
   setAgeGroup: (ageGroup: AgeGroup) => {
     try {
       console.log('Setting age group:', ageGroup);
@@ -45,7 +48,7 @@ export const usePhotoStore = create<PhotoStore>((set) => ({
       console.error('Error setting age group:', error);
     }
   },
-  
+
   clearCapturedPhoto: () => {
     try {
       console.log('Clearing captured photo');
@@ -54,7 +57,7 @@ export const usePhotoStore = create<PhotoStore>((set) => ({
       console.error('Error clearing captured photo:', error);
     }
   },
-  
+
   clearPhotoData: () => {
     try {
       console.log('Clearing all photo data');

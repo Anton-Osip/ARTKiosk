@@ -8,7 +8,7 @@ export async function POST() {
     data: {
       session_id: 'session-1758636332788-8ck5dvnxu',
       status: 'pending',
-    }
+    },
   });
 
   // return NextResponse.json({ error: 'Сессия истекла' }, { status: 410 });

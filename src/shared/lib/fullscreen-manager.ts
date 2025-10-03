@@ -21,20 +21,20 @@ class FullscreenManager {
 
   async initialize(container: HTMLElement): Promise<void> {
     if (this.isInitialized) return;
-    
+
     this.containerElement = container;
     this.isInitialized = true;
 
     // Wait for the next frame to ensure DOM is ready
     await new Promise(resolve => requestAnimationFrame(resolve));
-    
+
     // Check if element is still connected to DOM
     if (!container.isConnected) {
       console.warn('Container element is not connected to DOM');
 
       return;
     }
-    
+
     // Enter fullscreen if not already in fullscreen
     if (!isFullscreen()) {
       try {
@@ -70,7 +70,7 @@ class FullscreenManager {
   // Method to handle route changes - reinitialize if needed
   async handleRouteChange(container: HTMLElement): Promise<void> {
     this.containerElement = container;
-    
+
     // If we should maintain fullscreen but we're not in fullscreen, re-enter
     if (this.shouldMaintainFullscreen && !isFullscreen()) {
       await this.ensureFullscreen();

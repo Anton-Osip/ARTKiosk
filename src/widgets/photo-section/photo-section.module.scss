@@ -46,7 +46,7 @@
     height: var(--space-24);
     width: var(--space-8);
     left: var(--space-12);
-    background: radial-gradient(ellipse at right,  #26758F 0%, transparent 40%);
+    background: radial-gradient(ellipse at right, #26758f 0%, transparent 40%);
     border-radius: 50%;
   }
 }
@@ -70,7 +70,7 @@
   height: 76px;
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     inset: 0;
     border-radius: 14px;
@@ -106,7 +106,9 @@
   right: 0;
   height: 200px;
   border-radius: var(--radius-xl);
-  background-image: linear-gradient(to top, #161616 0%, transparent 40%), url("/bg/knightBg.png");
+  background-image:
+    linear-gradient(to top, #161616 0%, transparent 40%),
+    url('/bg/knightBg.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -141,7 +143,7 @@
 
   &.cardLeft {
     position: relative;
-    background: url("/bg/cards/bg_lines.svg"), var(--color-surface);
+    background: url('/bg/cards/bg_lines.svg'), var(--color-surface);
     background-position: 0 50%;
     background-size: contain;
     background-repeat: no-repeat;
@@ -149,7 +151,7 @@
 
   &.cardRight {
     padding: var(--space-6);
-    background: url("/bg/cards/card2Bg.jpg"), var(--color-surface);
+    background: url('/bg/cards/card2Bg.jpg'), var(--color-surface);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -166,12 +168,16 @@
   width: 100%;
 
   &::after {
-    content: "";
+    content: '';
     width: 100%;
     height: 40px;
     position: absolute;
     bottom: 0;
-    background: linear-gradient(0deg, rgb(22 22 22 / 90%) 0%, rgb(22 22 22 / 0%) 100%);
+    background: linear-gradient(
+      0deg,
+      rgb(22 22 22 / 90%) 0%,
+      rgb(22 22 22 / 0%) 100%
+    );
     z-index: 4;
   }
 }
@@ -327,7 +333,3 @@
     }
   }
 }
-
-
-
-

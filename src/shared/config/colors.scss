@@ -1,36 +1,52 @@
 :root {
   /* Base Colors */
-  --color-accent: #C3FF00;
-  --color-accent-dark: #8D32FD;
-  --color-accent-blue: #26758F;
-  --color-white: #FFF;
+  --color-accent: #c3ff00;
+  --color-accent-dark: #8d32fd;
+  --color-accent-blue: #26758f;
+  --color-white: #fff;
   --color-black: #000;
 
   /* Background Colors */
   --color-background: #000;
-  --color-background-button: #2B2B2B;
+  --color-background-button: #2b2b2b;
   --color-surface: #161616;
-  --color-surface-light: #1A1A1A;
-  --color-surface-lighter: #1C1C1C;
-  --color-icon-bg: #3D3D3D;
+  --color-surface-light: #1a1a1a;
+  --color-surface-lighter: #1c1c1c;
+  --color-icon-bg: #3d3d3d;
   --color-element-bg: #232323;
 
   /* Text Colors */
-  --color-text-primary: #FFF;
+  --color-text-primary: #fff;
   --color-text-secondary: rgb(255 255 255 / 60%);
   --color-text-muted: rgb(255 255 255 / 50%);
   --color-text-disabled: rgb(255 255 255 / 30%);
-  
+
   /* Border Colors */
   --color-border: rgb(255 255 255 / 8%);
   --color-border-light: rgb(255 255 255 / 26%);
-  
+
   /* Gradients */
-  --gradient-primary: linear-gradient(90deg, rgb(62 62 62 / 0%) 15%, rgb(62 62 62 / 100%) 79%);
-  --gradient-accent: linear-gradient(90deg, rgb(34 39 225 / 100%) 0%, rgb(237 205 247 / 100%) 100%);
-  --gradient-overlay: linear-gradient(180deg, rgb(22 22 22 / 90%) 0%, rgb(22 22 22 / 0%) 100%);
-  --gradient-background: linear-gradient(180deg, rgb(217 217 217 / 80%) 31%, rgb(115 115 115 / 0%) 60%);
-  
+  --gradient-primary: linear-gradient(
+    90deg,
+    rgb(62 62 62 / 0%) 15%,
+    rgb(62 62 62 / 100%) 79%
+  );
+  --gradient-accent: linear-gradient(
+    90deg,
+    rgb(34 39 225 / 100%) 0%,
+    rgb(237 205 247 / 100%) 100%
+  );
+  --gradient-overlay: linear-gradient(
+    180deg,
+    rgb(22 22 22 / 90%) 0%,
+    rgb(22 22 22 / 0%) 100%
+  );
+  --gradient-background: linear-gradient(
+    180deg,
+    rgb(217 217 217 / 80%) 31%,
+    rgb(115 115 115 / 0%) 60%
+  );
+
   /* Shadows */
   --shadow-primary: 0px 0px 17.31px 0px rgb(0 0 0 / 25%);
   --shadow-blur: blur(250.65px);

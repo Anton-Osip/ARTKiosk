@@ -12,15 +12,15 @@ export interface LocaleStore {
 
 export const useLocaleStore = create<LocaleStore>()(
   persist(
-    (set) => ({
+    set => ({
       locale: 'ru',
       messages: {},
-      setLocale: (locale) => set({ locale }),
-      setMessages: (messages) => set({ messages }),
+      setLocale: locale => set({ locale }),
+      setMessages: messages => set({ messages }),
     }),
     {
       name: 'locale-storage',
-      partialize: (state) => ({ locale: state.locale }),
+      partialize: state => ({ locale: state.locale }),
     }
   )
 );

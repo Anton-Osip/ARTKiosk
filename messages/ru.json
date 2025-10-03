@@ -1,4 +1,14 @@
 {
+  "CreativityScreen": {
+    "selectedPhoto": {
+      "title": "Выбранное фото",
+      "subtitle": "Молодая леди"
+    },
+    "creativeIdea": {
+      "subtitle": "Реализуй творческую идею:",
+      "title": "Боевой динозавр"
+    }
+  },
   "MobileScreen": {
     "common": {
       "instruction": "На фото должен быть только один человек.Убедитесь что селфи удачное и хорошего качества."

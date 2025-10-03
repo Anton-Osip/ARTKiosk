@@ -120,9 +120,12 @@ export function addFullscreenListener(
   callback: (event: Event) => void
 ): void {
   const eventName = event === 'change' ? 'fullscreenchange' : 'fullscreenerror';
-  const webkitEventName = event === 'change' ? 'webkitfullscreenchange' : 'webkitfullscreenerror';
-  const mozEventName = event === 'change' ? 'mozfullscreenchange' : 'mozfullscreenerror';
-  const msEventName = event === 'change' ? 'msfullscreenchange' : 'msfullscreenerror';
+  const webkitEventName =
+    event === 'change' ? 'webkitfullscreenchange' : 'webkitfullscreenerror';
+  const mozEventName =
+    event === 'change' ? 'mozfullscreenchange' : 'mozfullscreenerror';
+  const msEventName =
+    event === 'change' ? 'msfullscreenchange' : 'msfullscreenerror';
 
   document.addEventListener(eventName, callback);
   document.addEventListener(webkitEventName, callback);
@@ -138,9 +141,12 @@ export function removeFullscreenListener(
   callback: (event: Event) => void
 ): void {
   const eventName = event === 'change' ? 'fullscreenchange' : 'fullscreenerror';
-  const webkitEventName = event === 'change' ? 'webkitfullscreenchange' : 'webkitfullscreenerror';
-  const mozEventName = event === 'change' ? 'mozfullscreenchange' : 'mozfullscreenerror';
-  const msEventName = event === 'change' ? 'msfullscreenchange' : 'msfullscreenerror';
+  const webkitEventName =
+    event === 'change' ? 'webkitfullscreenchange' : 'webkitfullscreenerror';
+  const mozEventName =
+    event === 'change' ? 'mozfullscreenchange' : 'mozfullscreenerror';
+  const msEventName =
+    event === 'change' ? 'msfullscreenchange' : 'msfullscreenerror';
 
   document.removeEventListener(eventName, callback);
   document.removeEventListener(webkitEventName, callback);

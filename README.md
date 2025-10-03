@@ -37,6 +37,7 @@ src/
 ## Design System
 
 ### Colors
+
 - Primary: `#C3FF00` (Lime Green)
 - Background: `#000000` (Black)
 - Surface: `#161616` (Dark Gray)
@@ -44,22 +45,26 @@ src/
 - Text Secondary: `rgba(255, 255, 255, 0.6)` (Semi-transparent White)
 
 ### Typography
+
 - Primary Font: SF Pro Display
 - Secondary Font: Roboto Flex
 - Responsive font sizes with consistent line heights
 
 ### Spacing
+
 - Consistent spacing scale from 4px to 256px
 - Terminal-optimized aspect ratio (9:16)
 
 ## Getting Started
 
 1. Install dependencies:
+
    ```bash
    npm install
    ```
 
 2. Run the development server:
+
    ```bash
    npm run dev
    ```

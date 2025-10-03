@@ -2,10 +2,7 @@
 
 import { forwardRef, Ref, SVGProps } from 'react';
 
-const Loader = (
-  props: SVGProps<SVGSVGElement>,
-  ref: Ref<SVGSVGElement>
-) => {
+const Loader = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -62,7 +59,7 @@ const Loader = (
             fillOpacity="0.01"
           ></path>
         </g>
-        <g className="loader_f__enl_E" filter="url(#filter2_i)" >
+        <g className="loader_f__enl_E" filter="url(#filter2_i)">
           <path
             d="M326.448 156.236C346.632 212.15 332.809 259.232 284.98 291.481C237.151 323.731 192.504 332.917 149.039 323.041C105.574 313.164 89.3852 282.81 62.4734 237.98C35.5616 193.149 44.0955 149.683 88.0752 113.583C132.055 77.4825 162.066 60.7542 216.109 63.398C270.151 66.0419 306.264 100.321 326.448 156.236Z"
             fill="white"

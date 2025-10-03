@@ -1,6 +1,9 @@
 import { forwardRef, type Ref, type SVGProps } from 'react';
 
-const ArrowLeftToRight = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
+const ArrowLeftToRight = (
+  props: SVGProps<SVGSVGElement>,
+  ref: Ref<SVGSVGElement>
+) => (
   <svg
     width="210"
     height="81"

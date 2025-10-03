@@ -293,6 +293,7 @@ export function PhotoSection() {
             {t('bottomButtons.help')}
           </Button>
           <Button onClick={showError} variant={'primary'} size={'sm'}>
+            ыыыыыыыыы
             {t('bottomButtons.club')}
           </Button>
         </div>

@@ -1,3 +1,5 @@
+import styles from './catalog-section.module.scss';
+
 export const CatalogSection = () => {
-  return <div>CatalogSection</div>;
+  return <div className={styles.container}>CatalogSection</div>;
 };

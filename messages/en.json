@@ -1,4 +1,14 @@
 {
+  "CreativityScreen": {
+    "selectedPhoto": {
+      "title": "Selected photo",
+      "subtitle": "Young lady"
+    },
+    "creativeIdea": {
+      "subtitle": "Implement creative idea:",
+      "title": "Battle dinosaur"
+    }
+  },
   "MobileScreen": {
     "common": {
       "instruction": "There should be only one person in the photo. Make sure the selfie is successful and of good quality."

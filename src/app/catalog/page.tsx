@@ -1,6 +1,6 @@
 import { CatalogSection, Header } from '@/widgets';
 
-export default function Parameters() {
+export default function Catalog() {
   return (
     <>
       <Header activeTab="catalog" />

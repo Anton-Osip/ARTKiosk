@@ -9,7 +9,6 @@ type Props = {
 } & ComponentPropsWithoutRef<'button'>;
 
 export const LangButton = ({ icon, title, isCurrent, ...rest }: Props) => {
-
   return (
     <button
       className={clsx(styles.button, isCurrent && styles.active)}

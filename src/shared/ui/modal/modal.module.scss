@@ -25,7 +25,7 @@
 
 /* Base modal container */
 .modal {
-  background: var(--color-surface-light, #1A1A1A);
+  background: var(--color-surface-light, #1a1a1a);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 30px;
   position: relative;
@@ -93,7 +93,6 @@
   }
 
   svg {
-    color: var(--color-text-primary, #FFFFFF);
+    color: var(--color-text-primary, #ffffff);
   }
 }
-

@@ -18,6 +18,6 @@ export async function GET() {
     resultCode: 0,
     messages: [],
     fieldsErrors: [],
-    data: mockData
+    data: mockData,
   });
 }
