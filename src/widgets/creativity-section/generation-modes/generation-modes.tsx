@@ -21,11 +21,7 @@ export const GenerationModes = ({ withoutTitle = false }: Props) => {
         withoutTitle && styles.containerSecondary
       )}
     >
-      {!withoutTitle && (
-        <p className={styles.title}>
-          {t('title')}
-        </p>
-      )}
+      {!withoutTitle && <p className={styles.title}>{t('title')}</p>}
       <div className={styles.modes}>
         <div className={styles.mode}>
           <p

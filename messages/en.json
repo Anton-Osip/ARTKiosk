@@ -8,6 +8,13 @@
       "subtitle": "Implement creative idea:",
       "title": "Battle dinosaur"
     },
+    "footer": {
+      "quit": "Quit & Delete Everything",
+      "next": "Next",
+      "back": "Back to Catalog",
+      "club": "AIClub",
+      "help": "Help"
+    },
     "generationModes": {
       "title": "Two generation modes will be available next:",
       "generate": {

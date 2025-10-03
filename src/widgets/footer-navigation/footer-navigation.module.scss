@@ -1,0 +1,35 @@
+.footer {
+  width: 100%;
+  margin-top: auto;
+  display: flex;
+
+  & .back {
+    width: 200px;
+  }
+
+  & .removeAll {
+    width: 250px;
+  }
+
+  & .next {
+    width: 124px;
+  }
+
+  & button {
+    white-space: nowrap;
+  }
+
+  & .backArrow {
+    transform: rotate(180deg) translateY(-2px);
+  }
+
+  & .buttonsPanel {
+    display: inline-flex;
+    margin-left: 39px;
+    gap: 6px;
+
+    & .helpButton {
+      margin-left: auto;
+    }
+  }
+}
