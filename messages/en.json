@@ -7,6 +7,17 @@
     "creativeIdea": {
       "subtitle": "Implement creative idea:",
       "title": "Battle dinosaur"
+    },
+    "generationModes": {
+      "title": "Two generation modes will be available next:",
+      "generate": {
+        "title": "Generate",
+        "description": "Basic generation model"
+      },
+      "regenerate": {
+        "title": "Regenerate",
+        "description": "Generation based on selected image. \n Improves similarity with photo and more"
+      }
     }
   },
   "MobileScreen": {

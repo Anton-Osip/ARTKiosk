@@ -7,6 +7,17 @@
     "creativeIdea": {
       "subtitle": "Реализуй творческую идею:",
       "title": "Боевой динозавр"
+    },
+    "generationModes": {
+      "title": "Далее будет доступно два режима генерации:",
+      "generate": {
+        "title": "Generate",
+        "description": "Базовая модель генерации"
+      },
+      "regenerate": {
+        "title": "Regenerate",
+        "description": "Генерация на основе выбранного изображения.\n Улучшает сходство с фотографией, и не только"
+      }
     }
   },
   "MobileScreen": {

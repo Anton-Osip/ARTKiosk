@@ -1,6 +1,9 @@
+'use client';
+
 import { clsx } from 'clsx';
 
 import RefreshArrow from '@/shared/assets/refreshArrow';
+import { useTranslations } from '@/shared/lib';
 
 import styles from './generation-modes.module.scss';
 
@@ -9,11 +12,18 @@ interface Props {
 }
 
 export const GenerationModes = ({ withoutTitle = false }: Props) => {
+  const t = useTranslations('CreativityScreen.generationModes');
+
   return (
-    <div className={styles.container}>
+    <div
+      className={clsx(
+        styles.container,
+        withoutTitle && styles.containerSecondary
+      )}
+    >
       {!withoutTitle && (
         <p className={styles.title}>
-          Далее будет доступно два режима генерации:
+          {t('title')}
         </p>
       )}
       <div className={styles.modes}>
@@ -24,9 +34,9 @@ export const GenerationModes = ({ withoutTitle = false }: Props) => {
               withoutTitle && styles.modeTitleSecondary
             )}
           >
-            Generate
+            {t('generate.title')}
           </p>
-          <p className={styles.modeDescription}>Базовая модель генерации</p>
+          <p className={styles.modeDescription}>{t('generate.description')}</p>
         </div>
         <div className={styles.mode}>
           <p
@@ -35,13 +45,10 @@ export const GenerationModes = ({ withoutTitle = false }: Props) => {
               withoutTitle && styles.modeTitleSecondary
             )}
           >
-            <RefreshArrow />- Regenerate
+            <RefreshArrow />- {t('regenerate.title')}
           </p>
           <p className={styles.modeDescription}>
-            Генерация на основе выбранного изображения.{' '}
-          </p>
-          <p className={styles.modeDescription}>
-            Улучшает сходство с фотографией, и не только
+            {t('regenerate.description')}
           </p>
         </div>
       </div>
