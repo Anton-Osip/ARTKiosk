@@ -1,0 +1,98 @@
+.container {
+  width: 298px;
+  height: 298px;
+  position: relative;
+  border: 0.85px solid rgba(255, 255, 255, 0.1);
+  border-radius: 22px;
+  backdrop-filter: blur(25.991127014160156px);
+  background: rgba(255, 255, 255, 0.13);
+  padding: 7px;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 14.68px;
+}
+
+.refreshButton {
+  position: absolute;
+  bottom: 13px;
+  left: 13px;
+  width: 46px !important;
+  height: 46px !important;
+  border: 0.98px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 13.75px !important;
+  backdrop-filter: blur(6.482142925262451px) !important;
+  background: rgba(68, 68, 68, 0.6) !important;
+  overflow: hidden;
+}
+
+.blinkSection {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+
+  .star {
+    position: absolute;
+    opacity: 0;
+  }
+
+  &.first {
+    .star1 {
+      animation: blink 2s;
+    }
+  }
+
+  &.second {
+    .star2 {
+      animation: blink 2s;
+    }
+  }
+
+  &.third {
+    .star3 {
+      animation: blink 2s;
+    }
+  }
+
+  &.fourth {
+    .star4 {
+      animation: blink 2s;
+    }
+  }
+
+  .star1 {
+    top: -8px;
+    left: -8px;
+  }
+
+  .star2 {
+    top: -8px;
+    left: 8px;
+  }
+
+  .star3 {
+    top: 8px;
+    left: 8px;
+  }
+
+  .star4 {
+    top: 8px;
+    left: -8px;
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}

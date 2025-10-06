@@ -1,5 +1,7 @@
 'use client';
 
+import { memo } from 'react';
+
 import Basket from '@/shared/assets/basket';
 import SimpleArrow from '@/shared/assets/simpleArrow';
 import { useTranslations } from '@/shared/lib';
@@ -7,7 +9,7 @@ import { Button } from '@/shared/ui';
 
 import styles from './footer-navigation.module.scss';
 
-export const FooterNavigation = () => {
+export const FooterNavigation = memo(() => {
   const t = useTranslations('CreativityScreen.footer');
 
   return (
@@ -54,4 +56,5 @@ export const FooterNavigation = () => {
       </div>
     </footer>
   );
-};
+});
+FooterNavigation.displayName = 'FooterNavigation';

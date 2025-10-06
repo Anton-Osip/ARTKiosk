@@ -1,6 +1,7 @@
 'use client';
 
 import { clsx } from 'clsx';
+import { memo } from 'react';
 
 import RefreshArrow from '@/shared/assets/refreshArrow';
 import { useTranslations } from '@/shared/lib';
@@ -11,7 +12,7 @@ interface Props {
   withoutTitle?: boolean;
 }
 
-export const GenerationModes = ({ withoutTitle = false }: Props) => {
+export const GenerationModes = memo(({ withoutTitle = false }: Props) => {
   const t = useTranslations('CreativityScreen.generationModes');
 
   return (
@@ -50,4 +51,6 @@ export const GenerationModes = ({ withoutTitle = false }: Props) => {
       </div>
     </div>
   );
-};
+});
+
+GenerationModes.displayName = 'GenerationModes';
