@@ -7,6 +7,7 @@ import {
   GenderAgeModal,
   PhotoLoaderModal,
   PhotoPreviewModal,
+  SelectPaymentMethodModal,
 } from '@/widgets';
 
 export function ModalManager() {
@@ -14,8 +15,9 @@ export function ModalManager() {
 
   if (!modalData) return null;
 
-  // Type-safe rendering based on discriminated union
   switch (modalData.type) {
+    case 'select-payment-method-modal':
+      return <SelectPaymentMethodModal isOpen={true} onClose={closeModal} />;
     case 'camera-preview':
       return (
         <CameraPreview
