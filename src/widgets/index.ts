@@ -1,9 +1,9 @@
 export { CameraPreview } from './camera-preview-modal/camera-preview';
 export { CatalogSection } from './catalog-section/catalog-section';
 export { ChangeLanguage } from './change-language/change-language';
-export { CreativitySectionV1 } from './creativity-section/creativity-sectionV1';
 export { FooterNavigation } from './footer-navigation/footer-navigation';
 export { GenderAgeModal } from './gender-age-modal/gender-age-modal';
+export { GenerateSectionV1 } from './generate-section/generate-sectionV1';
 export { Header } from './header/header';
 export { MainLayout } from './layout/main-layout';
 export { MobileScreen } from './mobile-screen.tsx/mobile-screen';

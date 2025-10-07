@@ -5,8 +5,8 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useModalStore } from '@/shared/lib';
 import { FooterNavigation } from '@/widgets';
 
-import styles from './creativity-section.module.scss';
 import { GenerateButton } from './generate-button/generate-button';
+import styles from './generate-section.module.scss';
 import { GenerationModes } from './generation-modes';
 import { LoadingIndicator } from './loading-indicator';
 import { MainContent } from './main-content';
@@ -14,7 +14,7 @@ import { ResultsGallery } from './results-gallery';
 
 const RENDER_TIME = 3;
 
-export const CreativitySectionV1 = () => {
+export const GenerateSectionV1 = () => {
   const { openModal } = useModalStore();
   const [time, setTime] = useState<number>(0);
   const intervalRef = useRef<number | null>(null);
