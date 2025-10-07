@@ -1,4 +1,4 @@
-import SadFace from '@/shared/assets/sadFace';
+import { SadFace } from '@/shared/assets';
 import { useTranslations } from '@/shared/lib';
 import { Button, CornerBox } from '@/shared/ui';
 

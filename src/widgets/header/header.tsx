@@ -4,7 +4,7 @@ import { clsx } from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import Logotype from '@/shared/assets/logotype';
+import { Logotype } from '@/shared/assets';
 import { useTranslations } from '@/shared/lib';
 
 import styles from './header.module.scss';

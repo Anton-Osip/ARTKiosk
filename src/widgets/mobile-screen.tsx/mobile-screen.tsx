@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 
-import Logotype from '@/shared/assets/logotype';
+import { Logotype } from '@/shared/assets';
 import {
   useLocaleStore,
   useMobileSessionStore,

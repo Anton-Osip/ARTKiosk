@@ -3,7 +3,7 @@
 import { clsx } from 'clsx';
 import { memo } from 'react';
 
-import RefreshArrow from '@/shared/assets/refreshArrow';
+import { RefreshArrow } from '@/shared/assets';
 import { useTranslations } from '@/shared/lib';
 
 import styles from './generation-modes.module.scss';

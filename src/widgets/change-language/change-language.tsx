@@ -2,9 +2,7 @@
 
 import { useState } from 'react';
 
-import EnIcon from '@/shared/assets/lang/en';
-import FrIcon from '@/shared/assets/lang/fr';
-import RuIcon from '@/shared/assets/lang/ru';
+import { EnIcon, FrIcon, RuIcon } from '@/shared/assets';
 import { useLocale, useTranslations } from '@/shared/lib';
 import { Button, Overlay } from '@/shared/ui';
 import { LangButton } from '@/widgets/change-language/lang-button/lang-button';

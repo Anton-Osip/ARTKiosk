@@ -1,6 +1,4 @@
-import Download from '@/shared/assets/download';
-import PhotoCamera from '@/shared/assets/photoCamera';
-import Warning from '@/shared/assets/warningRound';
+import { Download, PhotoCamera, WarningRound } from '@/shared/assets';
 import { useTranslations } from '@/shared/lib';
 import { Button, CornerBox, InstructionPanel } from '@/shared/ui';
 
@@ -24,7 +22,7 @@ export const SelectPhotoScreen = ({ buttonClick }: Props) => {
       </div>
       <InstructionPanel
         className={styles.instructionPanel}
-        icon={<Warning width={24} height={24} />}
+        icon={<WarningRound width={24} height={24} />}
         text={
           <span className={styles.instructionText}>
             {t('common.instruction')}

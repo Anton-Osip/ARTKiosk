@@ -1,6 +1,6 @@
 'use client';
 
-import ArrowPay from '@/shared/assets/arrowPay';
+import { ArrowPay } from '@/shared/assets';
 
 import styles from './pay-with-card.module.scss';
 

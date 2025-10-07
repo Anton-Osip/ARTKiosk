@@ -3,12 +3,14 @@
 import Image from 'next/image';
 import { useState } from 'react';
 
-import Apply from '@/shared/assets/apply';
-import Basket from '@/shared/assets/basket';
-import Retry from '@/shared/assets/retry';
-import SquareStar from '@/shared/assets/squareStar';
-import User from '@/shared/assets/user';
-import UserGroup from '@/shared/assets/userGroup';
+import {
+  Apply,
+  Basket,
+  Retry,
+  SquareStar,
+  User,
+  UserGroup,
+} from '@/shared/assets';
 import { useTakePhoto } from '@/shared/hooks';
 import { AgeGroup, Gender, usePhotoStore, useTranslations } from '@/shared/lib';
 import { Button, IconContainer, Modal } from '@/shared/ui';

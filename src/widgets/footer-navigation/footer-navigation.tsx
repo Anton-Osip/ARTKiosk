@@ -2,8 +2,7 @@
 
 import { memo } from 'react';
 
-import Basket from '@/shared/assets/basket';
-import SimpleArrow from '@/shared/assets/simpleArrow';
+import { Basket, SimpleArrow } from '@/shared/assets';
 import { useTranslations } from '@/shared/lib';
 import { Button } from '@/shared/ui';
 

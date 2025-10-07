@@ -2,7 +2,7 @@
 
 import Image, { StaticImageData } from 'next/image';
 
-import ReloadArrow from '@/shared/assets/reloadArrow';
+import { ReloadArrow } from '@/shared/assets';
 import { useTranslations } from '@/shared/lib';
 import { Button } from '@/shared/ui';
 

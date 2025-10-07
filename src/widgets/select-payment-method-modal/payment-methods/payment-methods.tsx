@@ -1,7 +1,4 @@
-import Apple from '@/shared/assets/apple';
-import Cash from '@/shared/assets/cash';
-import CreditCard from '@/shared/assets/creditCard';
-import Pay from '@/shared/assets/pay';
+import { Apple, Cash, CreditCard, Pay } from '@/shared/assets';
 import { Button } from '@/shared/ui';
 
 import styles from './payment-methods.module.scss';

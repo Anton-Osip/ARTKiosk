@@ -1,8 +1,7 @@
 'use client';
 import { ChangeEvent, useCallback, useState } from 'react';
 
-import Apply from '@/shared/assets/apply';
-import HourglassIcon from '@/shared/assets/hourglassIcon';
+import { Apply, HourglassIcon } from '@/shared/assets';
 import { useModalStore } from '@/shared/lib';
 import { Button } from '@/shared/ui';
 

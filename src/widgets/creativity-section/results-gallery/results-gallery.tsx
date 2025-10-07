@@ -1,9 +1,8 @@
-import { ResultThumbnail } from '@/widgets/creativity-section/results-gallery/result-thumbnail/result-thumbnail';
-
 import mock1 from './mock/mock1.png';
 import mock2 from './mock/mock2.png';
 import mock3 from './mock/mock3.png';
 import mock4 from './mock/mock4.png';
+import { ResultThumbnail } from './result-thumbnail';
 import styles from './results-gallery.module.scss';
 
 const result = [

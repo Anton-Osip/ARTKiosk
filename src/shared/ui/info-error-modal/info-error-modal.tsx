@@ -1,6 +1,6 @@
 'use client';
 
-import SadFace from '@/shared/assets/sadFace';
+import { SadFace } from '@/shared/assets';
 import { Button, Modal } from '@/shared/ui';
 
 import styles from './info-error-modal.module.scss';

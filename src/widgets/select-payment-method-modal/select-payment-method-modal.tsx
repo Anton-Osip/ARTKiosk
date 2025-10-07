@@ -2,7 +2,7 @@
 
 import { useCallback, useState } from 'react';
 
-import WarningTriangle from '@/shared/assets/warningTriangle';
+import { WarningTriangle } from '@/shared/assets';
 import { useModalStore } from '@/shared/lib';
 import { Modal } from '@/shared/ui';
 

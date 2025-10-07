@@ -2,9 +2,7 @@
 
 import Image from 'next/image';
 
-import Apply from '@/shared/assets/apply';
-import Retry from '@/shared/assets/retry';
-import Warning from '@/shared/assets/warningRound';
+import { Apply, Retry, WarningRound } from '@/shared/assets';
 import { usePhotoStore, useTranslations } from '@/shared/lib';
 import { Button, InstructionPanel, Modal } from '@/shared/ui';
 
@@ -36,7 +34,7 @@ export function PhotoPreviewModal({
         infoElement={
           isOpen && (
             <InstructionPanel
-              icon={<Warning />}
+              icon={<WarningRound />}
               text={
                 <span className={styles.info}>
                   <span>{t('info1')}</span>

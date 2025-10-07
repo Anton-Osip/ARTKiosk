@@ -1,6 +1,6 @@
 'use client';
 
-import Loader from '@/shared/assets/loader';
+import { Loader } from '@/shared/assets';
 import { useTranslations } from '@/shared/lib';
 import { Modal } from '@/shared/ui';
 

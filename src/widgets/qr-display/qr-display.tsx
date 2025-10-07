@@ -4,7 +4,7 @@ import Image from 'next/image';
 import QRCode from 'qrcode';
 import { useEffect, useState } from 'react';
 
-import Loader from '@/shared/assets/loader';
+import { Loader } from '@/shared/assets';
 import { Locale, useLocaleStore } from '@/shared/lib';
 import { Button } from '@/shared/ui';
 

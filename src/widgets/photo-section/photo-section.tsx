@@ -3,14 +3,16 @@
 import Image from 'next/image';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import ArrowLeftToRight from '@/shared/assets/arrowLeftToRight';
-import ArrowScan from '@/shared/assets/arrowScan';
-import Basket from '@/shared/assets/basket';
-import Camera from '@/shared/assets/camera';
-import OrElement from '@/shared/assets/orBgElement';
-import SimpleArrow from '@/shared/assets/simpleArrow';
-import UserCube from '@/shared/assets/userCube';
-import WarningTriangle from '@/shared/assets/warningTriangle';
+import {
+  ArrowLeftToRight,
+  ArrowScan,
+  Basket,
+  Camera,
+  OrElement,
+  SimpleArrow,
+  UserCube,
+  WarningTriangle,
+} from '@/shared/assets';
 import { useTakePhoto } from '@/shared/hooks';
 import {
   ErrorData,

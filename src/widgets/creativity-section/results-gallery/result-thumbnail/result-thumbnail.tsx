@@ -3,8 +3,7 @@ import { StaticImageData } from 'next/image';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
-import RefreshArrow from '@/shared/assets/refreshArrow';
-import Star from '@/shared/assets/star';
+import { RefreshArrow, Star } from '@/shared/assets';
 import { Button } from '@/shared/ui';
 
 import styles from './result-thumbnail.module.scss';

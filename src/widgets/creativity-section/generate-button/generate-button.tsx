@@ -1,7 +1,7 @@
 import { clsx } from 'clsx';
 import { useEffect, useState } from 'react';
 
-import Star from '@/shared/assets/star';
+import { Star } from '@/shared/assets';
 
 import styles from './generate-button.module.scss';
 

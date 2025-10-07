@@ -1,7 +1,6 @@
 'use client';
 
-import HourglassIcon from '@/shared/assets/hourglassIcon';
-import Loader from '@/shared/assets/loader';
+import { HourglassIcon, Loader } from '@/shared/assets';
 import { useTranslations } from '@/shared/lib';
 
 import styles from './loading-indicator.module.scss';

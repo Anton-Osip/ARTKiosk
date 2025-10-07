@@ -1,7 +1,7 @@
 import { clsx } from 'clsx';
 import Image from 'next/image';
 
-import Warning from '@/shared/assets/warningRound';
+import { WarningRound } from '@/shared/assets';
 import { useTranslations } from '@/shared/lib';
 import { Button, InstructionPanel, LoadingSpinner } from '@/shared/ui';
 
@@ -39,7 +39,7 @@ export const UploadedPhotoSection = ({
           styles.instructionPanel,
           isUploading && styles.instructionPanelDisabled
         )}
-        icon={<Warning width={24} height={24} />}
+        icon={<WarningRound width={24} height={24} />}
         text={
           <span className={styles.instructionText}>
             {t('common.instruction')}

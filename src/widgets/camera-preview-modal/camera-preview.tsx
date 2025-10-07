@@ -2,9 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import Camera from '@/shared/assets/camera';
-import Loader from '@/shared/assets/loader';
-import Warning from '@/shared/assets/warningRound';
+import { Camera, Loader, WarningRound } from '@/shared/assets';
 import {
   AgeGroup,
   Gender,
@@ -202,7 +200,7 @@ export function CameraPreview({
         infoElement={
           isOpen && (
             <InstructionPanel
-              icon={<Warning />}
+              icon={<WarningRound />}
               text={
                 <span className={styles.info}>
                   <span>{t('info1')}</span>
