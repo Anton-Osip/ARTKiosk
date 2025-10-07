@@ -12,6 +12,8 @@ import { LoadingIndicator } from './loading-indicator';
 import { MainContent } from './main-content';
 import { ResultsGallery } from './results-gallery';
 
+const RENDER_TIME = 3;
+
 export const CreativitySection = () => {
   const { openModal } = useModalStore();
   const [time, setTime] = useState<number>(0);
@@ -21,13 +23,13 @@ export const CreativitySection = () => {
     intervalRef.current = window.setInterval(() => {
       setTime(prev => {
         const next = +(prev + 0.01).toFixed(2);
-        if (next >= 5) {
+        if (next >= RENDER_TIME) {
           if (intervalRef.current !== null) {
             clearInterval(intervalRef.current);
             intervalRef.current = null;
           }
 
-          return 5;
+          return RENDER_TIME;
         }
 
         return next;
@@ -50,9 +52,13 @@ export const CreativitySection = () => {
   return (
     <div className={styles.container}>
       <MainContent />
-      <GenerationModes withoutTitle={time === 5} />
-      {time !== 5 ? <LoadingIndicator time={time} /> : <ResultsGallery />}
-      {time === 5 && <GenerateButton onClick={showWrongModal} />}
+      <GenerationModes withoutTitle={time === RENDER_TIME} />
+      {time !== RENDER_TIME ? (
+        <LoadingIndicator time={time} />
+      ) : (
+        <ResultsGallery />
+      )}
+      {time === RENDER_TIME && <GenerateButton onClick={showWrongModal} />}
       <FooterNavigation />
     </div>
   );

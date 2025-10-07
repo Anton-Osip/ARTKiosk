@@ -2,13 +2,109 @@
   position: relative;
   width: 100%;
   height: 94px;
-  background-image: url('../../../../public/bg/buttonGenerate.png');
-  background-position: center bottom;
-  background-size: contain;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  border-radius: 26px;
+  backdrop-filter: blur(16.760652542114258px);
+  background: rgba(35, 35, 35, 1);
   margin-bottom: 64px;
   cursor: pointer;
 
+  &:after {
+    content: '';
+    position: absolute;
+    width: 437px;
+    height: 364px;
+    top: 185%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: radial-gradient(
+      rgba(243, 243, 243, 0.7) 1.5px,
+      transparent 1.5px
+    );
+    background-size: 20px 20px;
+    background-position: center bottom;
+
+    /* Маска для исчезновения к краям */
+    mask-image: radial-gradient(
+      circle at center,
+      white 0%,
+      rgba(255, 255, 255, 0) 60%
+    );
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    width: 442.6px;
+    height: 136.46px;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-180deg) scale(1.5);
+    opacity: 0.8;
+
+    background: /* Group 360 - три эллипса слева направо */
+      radial-gradient(
+        ellipse 53px 136px at 40% 50%,
+        rgba(94, 50, 253, 0.8),
+        transparent
+      ),
+      radial-gradient(
+        ellipse 53px 136px at 50% 50%,
+        rgba(255, 0, 153, 0.8),
+        transparent
+      ),
+      radial-gradient(
+        ellipse 53px 136px at 60% 50%,
+        rgba(94, 50, 253, 0.8),
+        transparent
+      ),
+      /* Group 358 - три эллипса слева направо */
+        radial-gradient(
+          ellipse 53px 136px at 40% 50%,
+          rgba(94, 50, 253, 0.6),
+          transparent
+        ),
+      radial-gradient(
+        ellipse 53px 136px at 50% 50%,
+        rgba(255, 0, 153, 0.6),
+        transparent
+      ),
+      radial-gradient(
+        ellipse 53px 136px at 60% 50%,
+        rgba(94, 50, 253, 0.6),
+        transparent
+      ),
+      /* Group 359 - три эллипса слева направо */
+        radial-gradient(
+          ellipse 53px 157px at 40% 50%,
+          rgba(94, 50, 253, 0.7),
+          transparent
+        ),
+      radial-gradient(
+        ellipse 53px 157px at 50% 50%,
+        rgba(255, 0, 153, 0.7),
+        transparent
+      ),
+      radial-gradient(
+        ellipse 53px 157px at 60% 50%,
+        rgba(94, 50, 253, 0.7),
+        transparent
+      );
+
+    filter: blur(40px);
+
+    mask-image: radial-gradient(
+      ellipse 250px 50px at center,
+      white 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+
   & span {
+    position: relative;
+    z-index: 2;
     color: rgba(255, 255, 255, 1);
     font-size: 25px;
     font-weight: 500;

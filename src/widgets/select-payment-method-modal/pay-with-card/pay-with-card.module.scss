@@ -3,9 +3,9 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 30px;
   padding: 20px;
-  background: #1c1c1c url("../../../../public/bg/cardsPayBg.png") center bottom no-repeat;
+  background: #1c1c1c url('../../../../public/bg/cardsPayBg.png') center bottom
+    no-repeat;
 }
-
 
 .headerRow {
   width: 100%;

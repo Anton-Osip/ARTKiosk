@@ -65,7 +65,11 @@
   height: 100px !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-radius: 20px !important;
-  background: linear-gradient(90.00deg, rgba(108.02506256103516, 185.64013671875, 39.815921783447266, 1), rgba(142, 212, 24, 1) 100%) !important;
+  background: linear-gradient(
+    90deg,
+    rgba(108.02506256103516, 185.64013671875, 39.815921783447266, 1),
+    rgba(142, 212, 24, 1) 100%
+  ) !important;
 
   & svg {
     color: var(--color-white);
