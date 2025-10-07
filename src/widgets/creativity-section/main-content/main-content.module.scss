@@ -14,3 +14,42 @@
   );
   border-radius: 25px;
 }
+
+.mainContentWithoutPhoto {
+  position: relative;
+  overflow: hidden;
+  width: 745px;
+  height: 340px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3);
+  background: linear-gradient(
+    180deg,
+    rgba(32.638671875, 32.638671875, 32.638671875, 1),
+    rgba(24.421154022216797, 24.421154022216797, 24.421154022216797, 1) 100%
+  );
+  border-radius: 25px;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 80px;
+    left: -40px;
+    width: 285.67px;
+    height: 273.08px;
+    transform: rotate(-124.23deg);
+    filter: blur(204.66831970214844px);
+    background: rgba(141, 50, 253, 1);
+    opacity: 0.5;
+  }
+
+  & .defaultsImage {
+    width: 241px;
+    height: 316px;
+    position: relative;
+    top: 15px;
+    left: -15px;
+  }
+}

@@ -1,15 +1,18 @@
 'use client';
 
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 
 import ReloadArrow from '@/shared/assets/reloadArrow';
 import { useTranslations } from '@/shared/lib';
 import { Button } from '@/shared/ui';
 
-import selectedPhoto from '../../../../../public/selectedPhoto.png';
 import styles from './selected-photo.module.scss';
 
-export const SelectedPhoto = () => {
+interface Props {
+  selectedPhoto: StaticImageData;
+}
+
+export const SelectedPhoto = ({ selectedPhoto }: Props) => {
   const t = useTranslations('CreativityScreen.selectedPhoto');
 
   return (
@@ -23,7 +26,7 @@ export const SelectedPhoto = () => {
           <ReloadArrow />
         </Button>
       </div>
-      <div className={styles.imageWrapper}>
+      <div className={styles.selectedPhoto}>
         <Image src={selectedPhoto} alt="selected phot" />
       </div>
     </div>
