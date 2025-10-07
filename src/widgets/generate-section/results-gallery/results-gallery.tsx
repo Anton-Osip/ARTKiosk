@@ -45,6 +45,9 @@ export const ResultsGallery = ({ isPaid }: Props) => {
     const el = containerRef.current;
     if (!el) return;
 
+    let rafId: number | null = null;
+    let lastScrollLeft = el.scrollLeft;
+
     const updateActive = () => {
       const containerRect = el.getBoundingClientRect();
       const containerCenterX = containerRect.left + containerRect.width / 2;
@@ -73,8 +76,23 @@ export const ResultsGallery = ({ isPaid }: Props) => {
       }
     };
 
+    const throttledUpdateActive = () => {
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        updateActive();
+        rafId = null;
+      });
+    };
+
+    const onScroll: EventListener = () => {
+      // Only update if scroll position actually changed
+      if (Math.abs(el.scrollLeft - lastScrollLeft) > 1) {
+        lastScrollLeft = el.scrollLeft;
+        throttledUpdateActive();
+      }
+    };
+
     requestAnimationFrame(updateActive);
-    const onScroll: EventListener = () => updateActive();
     el.addEventListener('scroll', onScroll, {
       passive: true,
     } as AddEventListenerOptions);
@@ -83,6 +101,7 @@ export const ResultsGallery = ({ isPaid }: Props) => {
     return () => {
       el.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', updateActive);
+      if (rafId) cancelAnimationFrame(rafId);
     };
   }, [isPaid]);
 
