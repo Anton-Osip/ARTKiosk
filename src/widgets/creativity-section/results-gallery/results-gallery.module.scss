@@ -1,9 +1,52 @@
 .container {
-  width: 615px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  margin: 0 auto;
-  padding: 40px 0;
+  width: 922px;
+  margin: 0 auto 0 -48px;
+  padding: 24px calc(50vw - ((298px * 2 + var(--space-4)) / 2));
+  display: flex;
+  align-items: center;
   gap: var(--space-4);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.container::-webkit-scrollbar {
+  display: none;
+}
+
+.group {
+  display: flex;
+  flex: 0 0 calc(298px * 2 + var(--space-4));
+  gap: var(--space-4);
+  scroll-snap-align: center;
+}
+
+.column {
+  flex: 0 0 298px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  transform-origin: center center;
+  transform: scale(0.9);
+  transition: transform 250ms ease;
+  position: relative;
+}
+
+.columnActive {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.staticContainer {
+  width: 745px;
+  margin: 0 auto;
+  padding: 24px 0;
+  display: grid;
+  grid-template-columns: repeat(2, 298px);
+  grid-auto-rows: 298px;
+  justify-content: center;
+  gap: var(--space-4);
+  overflow: hidden;
 }

@@ -63,7 +63,7 @@ export const CreativitySectionV1 = () => {
       {time !== RENDER_TIME ? (
         <LoadingIndicator time={time} />
       ) : (
-        <ResultsGallery />
+        <ResultsGallery isPaid={isPaidOff} />
       )}
       {time === RENDER_TIME && (
         <GenerateButton onClick={showSelectPaymentModal} />
