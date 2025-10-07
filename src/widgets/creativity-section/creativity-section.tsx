@@ -43,7 +43,8 @@ export const CreativitySection = () => {
       }
     };
   }, []);
-  const showWrongModal = useCallback(() => {
+
+  const showSelectPaymentModal = useCallback(() => {
     openModal({
       type: 'select-payment-method-modal',
     });
@@ -58,7 +59,9 @@ export const CreativitySection = () => {
       ) : (
         <ResultsGallery />
       )}
-      {time === RENDER_TIME && <GenerateButton onClick={showWrongModal} />}
+      {time === RENDER_TIME && (
+        <GenerateButton onClick={showSelectPaymentModal} />
+      )}
       <FooterNavigation />
     </div>
   );

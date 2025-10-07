@@ -1,7 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
+import WarningTriangle from '@/shared/assets/warningTriangle';
+import { useModalStore } from '@/shared/lib';
 import { Modal } from '@/shared/ui';
 
 import { PayWithCard } from './pay-with-card';
@@ -18,6 +20,7 @@ interface Props {
 export const SelectPaymentMethodModal = ({ isOpen, onClose }: Props) => {
   const [showPayWithCash, setShowPayWithCash] = useState(false);
   const [showPayWithCard, setShowPayWithCard] = useState(false);
+  const { openModal } = useModalStore();
 
   const showPayWithCashHandler = () => {
     setShowPayWithCash(true);
@@ -25,6 +28,21 @@ export const SelectPaymentMethodModal = ({ isOpen, onClose }: Props) => {
   const setShowPayWithCardHandler = () => {
     setShowPayWithCard(true);
   };
+
+  const showErrorModal = useCallback(() => {
+    openModal({
+      type: 'info-confirm',
+      title: 'Упс...',
+      description:
+        'Оплата не прошла, повторите оплату, или обратитесь к продавцу',
+      icon: <WarningTriangle />,
+      confirmButtonText: '',
+      onConfirm: () => {},
+      buttonVariant: 'primary',
+      onClose: () => {},
+      withoutButton: true,
+    });
+  }, [openModal]);
 
   return (
     <Modal
@@ -47,6 +65,7 @@ export const SelectPaymentMethodModal = ({ isOpen, onClose }: Props) => {
         <PaymentMethods
           showPayWithCashHandler={showPayWithCashHandler}
           setShowPayWithCardHandler={setShowPayWithCardHandler}
+          showErrorModal={showErrorModal}
         />
       )}
     </Modal>

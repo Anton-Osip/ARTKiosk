@@ -33,6 +33,7 @@ export type ModalData =
       onConfirm: () => void;
       buttonVariant?: 'primary' | 'secondary' | 'close';
       variant?: 'desktop' | 'mobile';
+      withoutButton?: boolean;
     }
   | null;
 

@@ -79,6 +79,7 @@ export function ModalManager() {
           onConfirm={modalData.onConfirm}
           mainButtonVariant={modalData.buttonVariant}
           variant={modalData.variant}
+          withoutButton={modalData.withoutButton}
         />
       );
 

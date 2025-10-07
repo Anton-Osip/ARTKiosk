@@ -10,12 +10,14 @@ interface Props {
   onSelect?: (method: 'applePay' | 'gPay' | 'card' | 'cash') => void;
   showPayWithCashHandler: () => void;
   setShowPayWithCardHandler: () => void;
+  showErrorModal: () => void;
 }
 
 export const PaymentMethods = ({
   onSelect,
   showPayWithCashHandler,
   setShowPayWithCardHandler,
+  showErrorModal,
 }: Props) => {
   return (
     <div className={styles.methods}>
@@ -25,7 +27,7 @@ export const PaymentMethods = ({
         <Button
           type="button"
           className={styles.method}
-          onClick={() => onSelect?.('applePay')}
+          onClick={showErrorModal}
         >
           <Apple /> Pay
         </Button>

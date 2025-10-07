@@ -15,6 +15,7 @@ interface InfoModalProps {
   onConfirm: () => void;
   mainButtonVariant?: 'primary' | 'secondary' | 'close';
   variant?: 'desktop' | 'mobile';
+  withoutButton?: boolean;
 }
 
 export function InfoModal({
@@ -28,7 +29,10 @@ export function InfoModal({
   onConfirm,
   mainButtonVariant = 'primary',
   variant = 'desktop',
+  withoutButton = false,
 }: InfoModalProps) {
+  console.log(withoutButton);
+
   return (
     <Modal
       isOpen={isOpen}
@@ -72,9 +76,11 @@ export function InfoModal({
               {cancelButtonText}
             </Button>
           )}
-          <Button variant={mainButtonVariant} size="md" onClick={onConfirm}>
-            {confirmButtonText}
-          </Button>
+          {withoutButton || (
+            <Button variant={mainButtonVariant} size="md" onClick={onConfirm}>
+              {confirmButtonText}
+            </Button>
+          )}
         </div>
       </div>
     </Modal>
