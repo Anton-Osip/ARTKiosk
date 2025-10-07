@@ -17,7 +17,13 @@ export function ModalManager() {
 
   switch (modalData.type) {
     case 'select-payment-method-modal':
-      return <SelectPaymentMethodModal isOpen={true} onClose={closeModal} />;
+      return (
+        <SelectPaymentMethodModal
+          isOpen={true}
+          onClose={closeModal}
+          setIsPaidOff={modalData.setIsPaidOff}
+        />
+      );
     case 'camera-preview':
       return (
         <CameraPreview

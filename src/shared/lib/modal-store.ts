@@ -6,7 +6,7 @@ import { create } from 'zustand';
 import { type AgeGroup, type Gender } from './photo-store';
 
 export type ModalData =
-  | { type: 'select-payment-method-modal' }
+  | { type: 'select-payment-method-modal'; setIsPaidOff: () => void }
   | { type: 'camera-preview'; onCapture: (imageData: string) => void }
   | { type: 'photo-preview'; onRetake: () => void; onConfirm: () => void }
   | {

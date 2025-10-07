@@ -15,9 +15,14 @@ import styles from './select-payment-method-modal.module.scss';
 interface Props {
   isOpen: boolean;
   onClose: () => void;
+  setIsPaidOff: () => void;
 }
 
-export const SelectPaymentMethodModal = ({ isOpen, onClose }: Props) => {
+export const SelectPaymentMethodModal = ({
+  isOpen,
+  onClose,
+  setIsPaidOff,
+}: Props) => {
   const [showPayWithCash, setShowPayWithCash] = useState(false);
   const [showPayWithCard, setShowPayWithCard] = useState(false);
   const { openModal } = useModalStore();
@@ -60,7 +65,9 @@ export const SelectPaymentMethodModal = ({ isOpen, onClose }: Props) => {
       {showPayWithCard && !showPayWithCash && <PayWithCard />}
       {!showPayWithCard && <PaymentSummaryCard />}
 
-      {showPayWithCash && !showPayWithCard && <PayWithCode />}
+      {showPayWithCash && !showPayWithCard && (
+        <PayWithCode setIsPaidOff={setIsPaidOff} />
+      )}
       {!showPayWithCash && !showPayWithCard && (
         <PaymentMethods
           showPayWithCashHandler={showPayWithCashHandler}

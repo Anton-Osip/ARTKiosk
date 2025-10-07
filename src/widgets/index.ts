@@ -1,7 +1,7 @@
 export { CameraPreview } from './camera-preview-modal/camera-preview';
 export { CatalogSection } from './catalog-section/catalog-section';
 export { ChangeLanguage } from './change-language/change-language';
-export { CreativitySection } from './creativity-section/creativity-section';
+export { CreativitySectionV1 } from './creativity-section/creativity-sectionV1';
 export { FooterNavigation } from './footer-navigation/footer-navigation';
 export { GenderAgeModal } from './gender-age-modal/gender-age-modal';
 export { Header } from './header/header';

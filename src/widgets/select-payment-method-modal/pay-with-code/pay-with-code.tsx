@@ -1,5 +1,5 @@
 'use client';
-import { ChangeEvent, useCallback, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 import { Apply, HourglassIcon } from '@/shared/assets';
 import { useModalStore } from '@/shared/lib';
@@ -7,20 +7,21 @@ import { Button } from '@/shared/ui';
 
 import styles from './pay-with-code.module.scss';
 
-export const PayWithCode = () => {
+interface Props {
+  setIsPaidOff: () => void;
+}
+
+export const PayWithCode = ({ setIsPaidOff }: Props) => {
   const [value, setValue] = useState('');
-  const { openModal } = useModalStore();
+  const { closeModal } = useModalStore();
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.currentTarget.value);
   };
-  const showError = useCallback(() => {
-    openModal({
-      type: 'info-error',
-      title: 'Упс, неверный код',
-      buttonText: 'Попробовать ещё раз',
-      onConfirm: () => {},
-    });
-  }, [openModal]);
+
+  const applyHandler = () => {
+    setIsPaidOff();
+    closeModal();
+  };
 
   return (
     <div className={styles.container}>
@@ -39,7 +40,7 @@ export const PayWithCode = () => {
         onChange={onChangeHandler}
         value={value}
       />
-      <Button className={styles.applyBtn} onClick={showError}>
+      <Button className={styles.applyBtn} onClick={applyHandler}>
         <Apply />
       </Button>
     </div>

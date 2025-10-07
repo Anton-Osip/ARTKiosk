@@ -14,10 +14,15 @@ import { ResultsGallery } from './results-gallery';
 
 const RENDER_TIME = 3;
 
-export const CreativitySection = () => {
+export const CreativitySectionV1 = () => {
   const { openModal } = useModalStore();
   const [time, setTime] = useState<number>(0);
   const intervalRef = useRef<number | null>(null);
+  const [isPaidOff, setIsPaidOff] = useState(false);
+
+  const setIsPaidOffHandler = useCallback(() => {
+    setIsPaidOff(true);
+  }, []);
 
   useEffect(() => {
     intervalRef.current = window.setInterval(() => {
@@ -47,13 +52,14 @@ export const CreativitySection = () => {
   const showSelectPaymentModal = useCallback(() => {
     openModal({
       type: 'select-payment-method-modal',
+      setIsPaidOff: setIsPaidOffHandler,
     });
-  }, [openModal]);
+  }, [openModal, setIsPaidOffHandler]);
 
   return (
     <div className={styles.container}>
       <MainContent />
-      <GenerationModes withoutTitle={time === RENDER_TIME} />
+      <GenerationModes withoutTitle={time === RENDER_TIME} isPaid={isPaidOff} />
       {time !== RENDER_TIME ? (
         <LoadingIndicator time={time} />
       ) : (

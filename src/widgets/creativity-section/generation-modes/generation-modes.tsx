@@ -10,47 +10,79 @@ import styles from './generation-modes.module.scss';
 
 interface Props {
   withoutTitle?: boolean;
+  isPaid: boolean;
 }
 
-export const GenerationModes = memo(({ withoutTitle = false }: Props) => {
-  const t = useTranslations('CreativityScreen.generationModes');
-
-  return (
-    <div
-      className={clsx(
-        styles.container,
-        withoutTitle && styles.containerSecondary
-      )}
-    >
-      {!withoutTitle && <p className={styles.title}>{t('title')}</p>}
-      <div className={styles.modes}>
-        <div className={styles.mode}>
-          <p
-            className={clsx(
-              styles.modeTitle,
-              withoutTitle && styles.modeTitleSecondary
-            )}
-          >
-            {t('generate.title')}
-          </p>
-          <p className={styles.modeDescription}>{t('generate.description')}</p>
+export const GenerationModes = memo(
+  ({ withoutTitle = false, isPaid }: Props) => {
+    const t = useTranslations('CreativityScreen.generationModes');
+    if (isPaid) {
+      return (
+        <div className={styles.containerWithPaid}>
+          <div className={clsx(styles.card, styles.createMore)}>
+            <p className={styles.title}>Создай ещё</p>
+            <p className={styles.subtitle}>12 дизайнов</p>
+          </div>
+          <div className={clsx(styles.card, styles.generate)}>
+            <p className={clsx(styles.title)}>{t('generate.title')}</p>
+            <p className={styles.subtitle}>{t('generate.description')}</p>
+          </div>
+          <div className={clsx(styles.card, styles.regenerate)}>
+            <p className={clsx(styles.title)}>
+              <RefreshArrow />- {t('regenerate.title')}
+            </p>
+            <p className={styles.subtitle}>
+              Генерация на основе выбранного изображения.
+            </p>
+            <div className={styles.info}>
+              <p className={styles.text}>
+                Улучшает сходство с фотографией, и не только
+              </p>
+            </div>
+          </div>
         </div>
-        <div className={styles.mode}>
-          <p
-            className={clsx(
-              styles.modeTitle,
-              withoutTitle && styles.modeTitleSecondary
-            )}
-          >
-            <RefreshArrow />- {t('regenerate.title')}
-          </p>
-          <p className={styles.modeDescription}>
-            {t('regenerate.description')}
-          </p>
+      );
+    } else {
+      return (
+        <div
+          className={clsx(
+            styles.container,
+            withoutTitle && styles.containerSecondary
+          )}
+        >
+          {!withoutTitle && <p className={styles.title}>{t('title')}</p>}
+          <div className={styles.modes}>
+            <div className={styles.mode}>
+              <p
+                className={clsx(
+                  styles.modeTitle,
+                  withoutTitle && styles.modeTitleSecondary
+                )}
+              >
+                {t('generate.title')}
+              </p>
+              <p className={styles.modeDescription}>
+                {t('generate.description')}
+              </p>
+            </div>
+            <div className={styles.mode}>
+              <p
+                className={clsx(
+                  styles.modeTitle,
+                  withoutTitle && styles.modeTitleSecondary
+                )}
+              >
+                <RefreshArrow />- {t('regenerate.title')}
+              </p>
+              <p className={styles.modeDescription}>
+                {t('regenerate.description')}
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  );
-});
+      );
+    }
+  }
+);
 
 GenerationModes.displayName = 'GenerationModes';
