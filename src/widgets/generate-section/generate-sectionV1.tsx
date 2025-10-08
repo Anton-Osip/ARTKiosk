@@ -61,7 +61,7 @@ export const GenerateSectionV1 = () => {
       <MainContent />
       <GenerationModes withoutTitle={time === RENDER_TIME} isPaid={isPaidOff} />
       {time !== RENDER_TIME ? (
-        <LoadingIndicator time={time} />
+        <LoadingIndicator time={time} regenerateMode={true} />
       ) : (
         <ResultsGallery isPaid={isPaidOff} />
       )}
