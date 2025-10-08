@@ -7,11 +7,12 @@ import styles from './generate-button.module.scss';
 
 interface Props {
   onClick?: () => void;
+  disabled?: boolean;
 }
 
 const elements = ['first', 'second', 'third', 'second', 'third', 'second'];
 
-export const GenerateButton = ({ onClick }: Props) => {
+export const GenerateButton = ({ onClick, disabled }: Props) => {
   const [active, setActive] = useState('first');
 
   useEffect(() => {
@@ -33,7 +34,11 @@ export const GenerateButton = ({ onClick }: Props) => {
   };
 
   return (
-    <button className={styles.generateButton} onClick={onClickHandler}>
+    <button
+      className={clsx(styles.generateButton, disabled && styles.disabledBtn)}
+      onClick={onClickHandler}
+      disabled={disabled}
+    >
       <span>Generate</span>
       <div className={clsx(styles.blinkSection, styles[active])}>
         <Star className={clsx(styles.star, styles.star1)} />
