@@ -1,5 +1,5 @@
 'use client';
-import { ChangeEvent, useEffect } from 'react';
+import { ChangeEvent, useCallback, useEffect } from 'react';
 
 import { Apply, HourglassIcon } from '@/shared/assets';
 import { useGenerateStore, useModalStore } from '@/shared/lib';
@@ -14,7 +14,7 @@ export const PayWithCode = () => {
     clearCodeEntryCountdown,
     startCodeEntryCountdown,
   } = useGenerateStore();
-  const { closeModal } = useModalStore();
+  const { closeModal, openModal } = useModalStore();
   const {
     value,
     setValue,
@@ -24,11 +24,9 @@ export const PayWithCode = () => {
     handleKeyPress,
   } = useVirtualKeyboard();
 
-  // Запускаем таймер при монтировании компонента
   useEffect(() => {
     startCodeEntryCountdown();
 
-    // Очищаем таймер при размонтировании
     return () => {
       clearCodeEntryCountdown();
     };
@@ -43,6 +41,27 @@ export const PayWithCode = () => {
     clearCodeEntryCountdown();
     closeModal();
   };
+
+  const showSelectPaymentModal = useCallback(() => {
+    openModal({
+      type: 'select-payment-method-modal',
+      showErrorModal: () => {},
+    });
+  }, [openModal]);
+
+  useEffect(() => {
+    if (codeEntryTimeLimit === 1) {
+      openModal({
+        type: 'info-error',
+        title: 'Упс, неверный код',
+        buttonText: 'Попробовать ещё раз',
+
+        onConfirm: () => {
+          showSelectPaymentModal();
+        },
+      });
+    }
+  }, [codeEntryTimeLimit, openModal, showSelectPaymentModal]);
 
   return (
     <div className={styles.container}>

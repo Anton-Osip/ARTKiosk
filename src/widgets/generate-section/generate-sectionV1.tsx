@@ -34,7 +34,6 @@ export const GenerateSectionV1 = () => {
       onConfirm: () => {},
       buttonVariant: 'primary',
       onClose: () => {
-        console.log('close');
         openModal({
           type: 'select-payment-method-modal',
           showErrorModal: showErrorModal,
