@@ -20,8 +20,12 @@ interface GenerateStore {
   timer: number;
   isGenerated: boolean;
   isPaid: boolean;
+  codeEntryTimeLimit: number;
+  startCodeEntryCountdown: () => void;
   makeAPayment: (method: MethodPay) => void;
   generatedThumbnail: () => void;
+  clearCodeEntryCountdown: () => void;
+  interval: NodeJS.Timeout | null;
 }
 
 export const useGenerateStore = create<GenerateStore>((set, get) => ({
@@ -30,6 +34,8 @@ export const useGenerateStore = create<GenerateStore>((set, get) => ({
   timer: 0,
   isGenerated: false,
   isPaid: false,
+  codeEntryTimeLimit: 5,
+  interval: null,
 
   generatedThumbnail: () => {
     if (get().generationCounter <= 0) return;
@@ -86,10 +92,35 @@ export const useGenerateStore = create<GenerateStore>((set, get) => ({
       case 'cash': {
         set(state => ({
           timer: 0,
-          generationCounter: state.generationCounter + 5,
+          generationCounter: state.generationCounter + 1,
         }));
         break;
       }
     }
+  },
+  clearCodeEntryCountdown: () => {
+    const currentInterval = get().interval;
+    if (currentInterval) clearInterval(currentInterval);
+    set({ interval: null, codeEntryTimeLimit: 0 });
+  },
+  startCodeEntryCountdown: () => {
+    const currentInterval = get().interval;
+    if (currentInterval) {
+      clearInterval(currentInterval);
+    }
+
+    set({ codeEntryTimeLimit: 5 });
+
+    const interval = setInterval(() => {
+      const currentTime = get().codeEntryTimeLimit;
+      if (currentTime <= 1) {
+        clearInterval(interval);
+        set({ interval: null, codeEntryTimeLimit: 0 });
+      } else {
+        set({ codeEntryTimeLimit: currentTime - 1 });
+      }
+    }, 1000);
+
+    set({ interval });
   },
 }));

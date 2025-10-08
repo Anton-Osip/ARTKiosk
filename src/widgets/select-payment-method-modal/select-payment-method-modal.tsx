@@ -24,7 +24,7 @@ export const SelectPaymentMethodModal = ({
   showErrorModal,
   isPayWithCard = false,
 }: Props) => {
-  const { generationCounter } = useGenerateStore();
+  const { generationCounter, clearCodeEntryCountdown } = useGenerateStore();
   const [showPayWithCash, setShowPayWithCash] = useState(false);
   const [showPayWithCard, setShowPayWithCard] = useState(isPayWithCard);
 
@@ -40,6 +40,12 @@ export const SelectPaymentMethodModal = ({
       onClose();
     }
   });
+
+  useEffect(() => {
+    return () => {
+      clearCodeEntryCountdown();
+    };
+  }, [clearCodeEntryCountdown]);
 
   return (
     <Modal

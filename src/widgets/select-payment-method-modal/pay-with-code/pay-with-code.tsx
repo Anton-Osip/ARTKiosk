@@ -1,5 +1,5 @@
 'use client';
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useEffect } from 'react';
 
 import { Apply, HourglassIcon } from '@/shared/assets';
 import { useGenerateStore, useModalStore } from '@/shared/lib';
@@ -8,7 +8,12 @@ import { Button, useVirtualKeyboard, VirtualKeyboard } from '@/shared/ui';
 import styles from './pay-with-code.module.scss';
 
 export const PayWithCode = () => {
-  const { makeAPayment } = useGenerateStore();
+  const {
+    makeAPayment,
+    codeEntryTimeLimit,
+    clearCodeEntryCountdown,
+    startCodeEntryCountdown,
+  } = useGenerateStore();
   const { closeModal } = useModalStore();
   const {
     value,
@@ -19,12 +24,23 @@ export const PayWithCode = () => {
     handleKeyPress,
   } = useVirtualKeyboard();
 
+  // Запускаем таймер при монтировании компонента
+  useEffect(() => {
+    startCodeEntryCountdown();
+
+    // Очищаем таймер при размонтировании
+    return () => {
+      clearCodeEntryCountdown();
+    };
+  }, [startCodeEntryCountdown, clearCodeEntryCountdown]);
+
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.currentTarget.value);
   };
 
   const applyHandler = () => {
     makeAPayment('cash');
+    clearCodeEntryCountdown();
     closeModal();
   };
 
@@ -36,7 +52,7 @@ export const PayWithCode = () => {
         </p>
         <div className={styles.time}>
           <HourglassIcon />
-          <span>48</span> сек
+          <span>{codeEntryTimeLimit}</span> сек
         </div>
       </div>
       <input
