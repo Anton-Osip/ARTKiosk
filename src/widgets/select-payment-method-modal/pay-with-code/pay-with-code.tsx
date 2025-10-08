@@ -2,24 +2,21 @@
 import { ChangeEvent, useState } from 'react';
 
 import { Apply, HourglassIcon } from '@/shared/assets';
-import { useModalStore } from '@/shared/lib';
+import { useGenerateStore, useModalStore } from '@/shared/lib';
 import { Button } from '@/shared/ui';
 
 import styles from './pay-with-code.module.scss';
 
-interface Props {
-  setIsPaidOff: () => void;
-}
-
-export const PayWithCode = ({ setIsPaidOff }: Props) => {
+export const PayWithCode = () => {
   const [value, setValue] = useState('');
+  const { makeAPayment } = useGenerateStore();
   const { closeModal } = useModalStore();
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.currentTarget.value);
   };
 
   const applyHandler = () => {
-    setIsPaidOff();
+    makeAPayment('cash');
     closeModal();
   };
 

@@ -1,9 +1,8 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import { WarningTriangle } from '@/shared/assets';
-import { useGenerateStore, useModalStore } from '@/shared/lib';
+import { useGenerateStore } from '@/shared/lib';
 import { Modal } from '@/shared/ui';
 
 import { PayWithCard } from './pay-with-card';
@@ -15,41 +14,26 @@ import styles from './select-payment-method-modal.module.scss';
 interface Props {
   isOpen: boolean;
   onClose: () => void;
-  setIsPaidOff: () => void;
+  showErrorModal: () => void;
+  isPayWithCard?: boolean;
 }
 
 export const SelectPaymentMethodModal = ({
   isOpen,
   onClose,
-  setIsPaidOff,
+  showErrorModal,
+  isPayWithCard = false,
 }: Props) => {
-  const { makeAPayment, generationCounter } = useGenerateStore();
+  const { generationCounter } = useGenerateStore();
   const [showPayWithCash, setShowPayWithCash] = useState(false);
-  const [showPayWithCard, setShowPayWithCard] = useState(false);
-  const { openModal } = useModalStore();
+  const [showPayWithCard, setShowPayWithCard] = useState(isPayWithCard);
 
   const showPayWithCashHandler = () => {
     setShowPayWithCash(true);
   };
   const setShowPayWithCardHandler = () => {
-    makeAPayment('card');
     setShowPayWithCard(true);
   };
-
-  const showErrorModal = useCallback(() => {
-    openModal({
-      type: 'info-confirm',
-      title: 'Упс...',
-      description:
-        'Оплата не прошла, повторите оплату, или обратитесь к продавцу',
-      icon: <WarningTriangle />,
-      confirmButtonText: '',
-      onConfirm: () => {},
-      buttonVariant: 'primary',
-      onClose: () => {},
-      withoutButton: true,
-    });
-  }, [openModal]);
 
   useEffect(() => {
     if (generationCounter !== 0) {
@@ -70,17 +54,16 @@ export const SelectPaymentMethodModal = ({
           Создание 20 уникальных дизайнов стоит всего $3
         </p>
       </div>
-      {showPayWithCard && !showPayWithCash && <PayWithCard />}
+      {showPayWithCard && !showPayWithCash && (
+        <PayWithCard showErrorModal={showErrorModal} />
+      )}
       {!showPayWithCard && <PaymentSummaryCard />}
 
-      {showPayWithCash && !showPayWithCard && (
-        <PayWithCode setIsPaidOff={setIsPaidOff} />
-      )}
+      {showPayWithCash && !showPayWithCard && <PayWithCode />}
       {!showPayWithCash && !showPayWithCard && (
         <PaymentMethods
           showPayWithCashHandler={showPayWithCashHandler}
           setShowPayWithCardHandler={setShowPayWithCardHandler}
-          showErrorModal={showErrorModal}
         />
       )}
     </Modal>

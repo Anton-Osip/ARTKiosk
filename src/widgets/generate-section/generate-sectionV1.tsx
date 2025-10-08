@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect } from 'react';
 
+import { WarningTriangle } from '@/shared/assets';
 import { useGenerateStore, useModalStore } from '@/shared/lib';
 import { FooterNavigation } from '@/widgets';
 
@@ -22,12 +23,42 @@ export const GenerateSectionV1 = () => {
     generatedThumbnail,
   } = useGenerateStore();
 
+  const showErrorModal = useCallback(() => {
+    openModal({
+      type: 'info-confirm',
+      title: 'Упс...',
+      description:
+        'Оплата не прошла, повторите оплату, или обратитесь к продавцу',
+      icon: <WarningTriangle />,
+      confirmButtonText: '',
+      onConfirm: () => {},
+      buttonVariant: 'primary',
+      onClose: () => {
+        console.log('close');
+        openModal({
+          type: 'select-payment-method-modal',
+          showErrorModal: showErrorModal,
+          isPayWithCard: true,
+        });
+      },
+      withoutButton: true,
+    });
+  }, [openModal]);
+
   const showSelectPaymentModal = useCallback(() => {
     openModal({
       type: 'select-payment-method-modal',
-      setIsPaidOff: () => {},
+      showErrorModal: showErrorModal,
     });
-  }, [openModal]);
+  }, [openModal, showErrorModal]);
+
+  const generatedThumbnailHandler = () => {
+    if (generationCounter <= 0) {
+      showSelectPaymentModal();
+    } else {
+      generatedThumbnail();
+    }
+  };
 
   useEffect(() => {
     generatedThumbnail();
@@ -56,7 +87,7 @@ export const GenerateSectionV1 = () => {
       )}
       {generateData?.length !== 0 && (
         <GenerateButton
-          onClick={generatedThumbnail}
+          onClick={generatedThumbnailHandler}
           disabled={generationCounter <= 0}
         />
       )}

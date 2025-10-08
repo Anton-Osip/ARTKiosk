@@ -13,7 +13,11 @@ export type ModalData =
       onConfirm: () => void;
       image: StaticImageData;
     }
-  | { type: 'select-payment-method-modal'; setIsPaidOff: () => void }
+  | {
+      type: 'select-payment-method-modal';
+      showErrorModal: () => void;
+      isPayWithCard?: boolean;
+    }
   | { type: 'camera-preview'; onCapture: (imageData: string) => void }
   | { type: 'photo-preview'; onRetake: () => void; onConfirm: () => void }
   | {

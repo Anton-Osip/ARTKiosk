@@ -83,13 +83,11 @@ export const useGenerateStore = create<GenerateStore>((set, get) => ({
   makeAPayment: (method: MethodPay) => {
     set({ timer: 0 });
     switch (method) {
-      case 'card': {
-        setTimeout(() => {
-          set(state => ({
-            timer: 0,
-            generationCounter: state.generationCounter + 5,
-          }));
-        }, 3000);
+      case 'cash': {
+        set(state => ({
+          timer: 0,
+          generationCounter: state.generationCounter + 5,
+        }));
         break;
       }
     }

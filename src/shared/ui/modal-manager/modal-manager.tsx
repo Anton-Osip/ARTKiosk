@@ -32,7 +32,8 @@ export function ModalManager() {
         <SelectPaymentMethodModal
           isOpen={true}
           onClose={closeModal}
-          setIsPaidOff={modalData.setIsPaidOff}
+          showErrorModal={modalData.showErrorModal}
+          isPayWithCard={modalData.isPayWithCard}
         />
       );
     case 'camera-preview':
@@ -87,7 +88,10 @@ export function ModalManager() {
       return (
         <InfoModal
           isOpen={true}
-          onClose={closeModal}
+          onClose={() => {
+            closeModal();
+            modalData.onClose();
+          }}
           title={modalData.title}
           description={modalData.description}
           icon={modalData.icon}
