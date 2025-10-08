@@ -9,4 +9,5 @@ export { LoadingSpinner } from './loading-spinner/loading-spinner';
 export { Modal } from './modal/modal';
 export { ModalManager } from './modal-manager/modal-manager';
 export { Overlay } from './overlay/overlay';
+export { useVirtualKeyboard } from './virtual-keyboard/use-virtual-keyboard';
 export { VirtualKeyboard } from './virtual-keyboard/virtual-keyboard';

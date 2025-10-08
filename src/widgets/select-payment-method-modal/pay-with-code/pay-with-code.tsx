@@ -1,17 +1,24 @@
 'use client';
-import { ChangeEvent, useCallback, useState } from 'react';
+import { ChangeEvent } from 'react';
 
 import { Apply, HourglassIcon } from '@/shared/assets';
 import { useGenerateStore, useModalStore } from '@/shared/lib';
-import { Button, VirtualKeyboard } from '@/shared/ui';
+import { Button, useVirtualKeyboard, VirtualKeyboard } from '@/shared/ui';
 
 import styles from './pay-with-code.module.scss';
 
 export const PayWithCode = () => {
-  const [value, setValue] = useState('');
-  const [isKeyboardOpen, setIsKeyboardOpen] = useState(false);
   const { makeAPayment } = useGenerateStore();
   const { closeModal } = useModalStore();
+  const {
+    value,
+    setValue,
+    isKeyboardOpen,
+    openKeyboard,
+    closeKeyboard,
+    handleKeyPress,
+  } = useVirtualKeyboard();
+
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.currentTarget.value);
   };
@@ -20,33 +27,6 @@ export const PayWithCode = () => {
     makeAPayment('cash');
     closeModal();
   };
-
-  const openKeyboard = () => setIsKeyboardOpen(true);
-  const closeKeyboard = () => setIsKeyboardOpen(false);
-
-  const handleKeyPress = useCallback((key: string) => {
-    if (key === 'backspace') {
-      setValue(prev => prev.slice(0, -1));
-
-      return;
-    }
-    if (key === 'space') {
-      setValue(prev => `${prev} `);
-
-      return;
-    }
-    if (key === 'clear') {
-      setValue('');
-
-      return;
-    }
-    if (key === 'done') {
-      closeKeyboard();
-
-      return;
-    }
-    setValue(prev => `${prev}${key}`);
-  }, []);
 
   return (
     <div className={styles.container}>
