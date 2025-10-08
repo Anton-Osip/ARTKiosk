@@ -3,40 +3,21 @@
 import { StaticImageData } from 'next/image';
 import { useEffect, useRef } from 'react';
 
-import { useModalStore } from '@/shared/lib';
+import { useGenerateStore, useModalStore } from '@/shared/lib';
 
-import mock1 from './mock/mock1.png';
-import mock2 from './mock/mock2.png';
-import mock3 from './mock/mock3.png';
-import mock4 from './mock/mock4.png';
 import { ResultThumbnail } from './result-thumbnail';
 import styles from './results-gallery.module.scss';
 
-const result = [
-  { id: '1', img: mock1 },
-  { id: '2', img: mock2 },
-  { id: '3', img: mock3 },
-  { id: '4', img: mock4 },
-  { id: '5', img: mock1 },
-  { id: '6', img: mock2 },
-  { id: '7', img: mock3 },
-  { id: '8', img: mock4 },
-  { id: '9', img: mock1 },
-  { id: '10', img: mock2 },
-  { id: '11', img: mock3 },
-  { id: '12', img: mock4 },
-];
-
 interface Props {
-  isPaid: boolean;
+  withScrolling: boolean;
 }
 
-export const ResultsGallery = ({ isPaid }: Props) => {
+export const ResultsGallery = ({ withScrolling }: Props) => {
   const { openModal } = useModalStore();
-
-  const columns = [] as (typeof result)[];
-  for (let i = 0; i < result.length; i += 2) {
-    columns.push(result.slice(i, i + 2));
+  const { generateData } = useGenerateStore();
+  const columns = [] as (typeof generateData)[];
+  for (let i = 0; i < generateData.length; i += 2) {
+    columns.push(generateData.slice(i, i + 2));
   }
   const groups = [] as (typeof columns)[];
   for (let i = 0; i < columns.length; i += 2) {
@@ -46,7 +27,7 @@ export const ResultsGallery = ({ isPaid }: Props) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    if (!isPaid) return;
+    if (!withScrolling) return;
     const el = containerRef.current;
     if (!el) return;
 
@@ -108,7 +89,7 @@ export const ResultsGallery = ({ isPaid }: Props) => {
       window.removeEventListener('resize', updateActive);
       if (rafId) cancelAnimationFrame(rafId);
     };
-  }, [isPaid]);
+  }, [withScrolling]);
 
   const showResultThumbnailModal = (image: StaticImageData) => {
     openModal({
@@ -123,8 +104,8 @@ export const ResultsGallery = ({ isPaid }: Props) => {
     });
   };
 
-  if (!isPaid) {
-    const firstFour = result.slice(0, 4);
+  if (!withScrolling) {
+    const firstFour = generateData.slice(0, 4);
 
     return (
       <div className={styles.staticContainer}>

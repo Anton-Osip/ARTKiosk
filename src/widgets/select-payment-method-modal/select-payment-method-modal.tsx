@@ -1,9 +1,9 @@
 'use client';
 
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { WarningTriangle } from '@/shared/assets';
-import { useModalStore } from '@/shared/lib';
+import { useGenerateStore, useModalStore } from '@/shared/lib';
 import { Modal } from '@/shared/ui';
 
 import { PayWithCard } from './pay-with-card';
@@ -23,6 +23,7 @@ export const SelectPaymentMethodModal = ({
   onClose,
   setIsPaidOff,
 }: Props) => {
+  const { makeAPayment, generationCounter } = useGenerateStore();
   const [showPayWithCash, setShowPayWithCash] = useState(false);
   const [showPayWithCard, setShowPayWithCard] = useState(false);
   const { openModal } = useModalStore();
@@ -31,6 +32,7 @@ export const SelectPaymentMethodModal = ({
     setShowPayWithCash(true);
   };
   const setShowPayWithCardHandler = () => {
+    makeAPayment('card');
     setShowPayWithCard(true);
   };
 
@@ -48,6 +50,12 @@ export const SelectPaymentMethodModal = ({
       withoutButton: true,
     });
   }, [openModal]);
+
+  useEffect(() => {
+    if (generationCounter !== 0) {
+      onClose();
+    }
+  });
 
   return (
     <Modal

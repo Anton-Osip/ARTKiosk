@@ -37,6 +37,8 @@
 .indicator {
   position: absolute;
   bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%);
   width: 440px;
   height: 88px;
   padding: var(--space-6);

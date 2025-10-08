@@ -14,7 +14,6 @@ const elements = ['first', 'second', 'third', 'second', 'third', 'second'];
 
 export const GenerateButton = ({ onClick, disabled }: Props) => {
   const [active, setActive] = useState('first');
-
   useEffect(() => {
     let currentIndex = 0;
     setActive(elements[currentIndex]);

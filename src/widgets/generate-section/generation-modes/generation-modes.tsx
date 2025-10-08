@@ -11,17 +11,18 @@ import styles from './generation-modes.module.scss';
 interface Props {
   withoutTitle?: boolean;
   isPaid: boolean;
+  generationCounter: number;
 }
 
 export const GenerationModes = memo(
-  ({ withoutTitle = false, isPaid }: Props) => {
+  ({ withoutTitle = false, isPaid, generationCounter }: Props) => {
     const t = useTranslations('CreativityScreen.generationModes');
     if (isPaid) {
       return (
         <div className={styles.containerWithPaid}>
           <div className={clsx(styles.card, styles.createMore)}>
             <p className={styles.title}>Создай ещё</p>
-            <p className={styles.subtitle}>12 дизайнов</p>
+            <p className={styles.subtitle}>{generationCounter} дизайнов</p>
           </div>
           <div className={clsx(styles.card, styles.generate)}>
             <p className={clsx(styles.title)}>{t('generate.title')}</p>
