@@ -85,3 +85,7 @@
   border-radius: var(--radius-none);
   z-index: 2;
 }
+
+.generate {
+  z-index: 999 !important;
+}

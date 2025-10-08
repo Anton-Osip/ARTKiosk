@@ -3,9 +3,10 @@
 import { clsx } from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 import { Logotype } from '@/shared/assets';
-import { useTranslations } from '@/shared/lib';
+import { useModalStore, useTranslations } from '@/shared/lib';
 
 import styles from './header.module.scss';
 
@@ -50,12 +51,24 @@ interface HeaderProps {
 export function Header({ activeTab, className }: HeaderProps) {
   const steps = useGetStepItems();
   const current = steps.find(({ id }) => id === activeTab);
+  const pathname = usePathname();
+  const isGenerateFirstPage = pathname === '/generate-first';
+  const { closeModal } = useModalStore();
+  const onClickHandler = () => {
+    closeModal();
+  };
 
   return (
-    <header className={clsx(styles.header, className)}>
+    <header
+      className={clsx(
+        styles.header,
+        className,
+        isGenerateFirstPage && styles.generate
+      )}
+    >
       {/* Logo Section */}
       <div className={styles.logoSection}>
-        <Link href="/">
+        <Link href="/" onClick={onClickHandler}>
           <Logotype width={125} height={83} />
         </Link>
       </div>
