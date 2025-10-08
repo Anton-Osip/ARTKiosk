@@ -1,6 +1,9 @@
 'use client';
 
+import { StaticImageData } from 'next/image';
 import { useEffect, useRef } from 'react';
+
+import { useModalStore } from '@/shared/lib';
 
 import mock1 from './mock/mock1.png';
 import mock2 from './mock/mock2.png';
@@ -29,6 +32,8 @@ interface Props {
 }
 
 export const ResultsGallery = ({ isPaid }: Props) => {
+  const { openModal } = useModalStore();
+
   const columns = [] as (typeof result)[];
   for (let i = 0; i < result.length; i += 2) {
     columns.push(result.slice(i, i + 2));
@@ -105,6 +110,19 @@ export const ResultsGallery = ({ isPaid }: Props) => {
     };
   }, [isPaid]);
 
+  const showResultThumbnailModal = (image: StaticImageData) => {
+    openModal({
+      type: 'thumbnail-preview-modal',
+      onRetake: () => {
+        console.log('onRetake');
+      },
+      onConfirm: () => {
+        console.log('onConfirm');
+      },
+      image,
+    });
+  };
+
   if (!isPaid) {
     const firstFour = result.slice(0, 4);
 
@@ -112,7 +130,7 @@ export const ResultsGallery = ({ isPaid }: Props) => {
       <div className={styles.staticContainer}>
         {firstFour.map(item => (
           <div key={item.id} className={styles.columnActive}>
-            <ResultThumbnail item={item} />
+            <ResultThumbnail item={item} onClick={showResultThumbnailModal} />
           </div>
         ))}
       </div>
@@ -129,7 +147,11 @@ export const ResultsGallery = ({ isPaid }: Props) => {
               className={styles.column}
             >
               {pair.map(item => (
-                <ResultThumbnail key={item.id} item={item} />
+                <ResultThumbnail
+                  key={item.id}
+                  item={item}
+                  onClick={showResultThumbnailModal}
+                />
               ))}
             </div>
           ))}

@@ -8,6 +8,7 @@ import {
   PhotoLoaderModal,
   PhotoPreviewModal,
   SelectPaymentMethodModal,
+  ThumbnailPreviewModal,
 } from '@/widgets';
 
 export function ModalManager() {
@@ -16,6 +17,16 @@ export function ModalManager() {
   if (!modalData) return null;
 
   switch (modalData.type) {
+    case 'thumbnail-preview-modal':
+      return (
+        <ThumbnailPreviewModal
+          isOpen={true}
+          onClose={closeModal}
+          onConfirm={modalData.onConfirm}
+          onRetake={modalData.onRetake}
+          image={modalData.image}
+        />
+      );
     case 'select-payment-method-modal':
       return (
         <SelectPaymentMethodModal

@@ -12,3 +12,4 @@ export { PhotoPreviewModal } from './photo-preview-modal/photo-preview-modal';
 export { PhotoSection } from './photo-section/photo-section';
 export { QRDisplay } from './qr-display/qr-display';
 export { SelectPaymentMethodModal } from './select-payment-method-modal';
+export { ThumbnailPreviewModal } from './thumbnail-preview-modal/thumbnail-preview-modal';

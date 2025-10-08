@@ -13,6 +13,7 @@ interface Props {
     id: string;
     img: StaticImageData;
   };
+  onClick?: (image: StaticImageData) => void;
 }
 
 const elements = [
@@ -30,8 +31,15 @@ const elements = [
   'second',
 ];
 
-export const ResultThumbnail = ({ item }: Props) => {
+export const ResultThumbnail = ({ item, onClick }: Props) => {
   const [active, setActive] = useState('first');
+
+  const showThumbnailModal = () => {
+    if (onClick) {
+      onClick(item.img);
+    }
+  };
+
   useEffect(() => {
     let currentIndex = 0;
     setActive(elements[currentIndex]);
@@ -49,7 +57,11 @@ export const ResultThumbnail = ({ item }: Props) => {
   return (
     <div className={styles.container}>
       <Image src={item.img} alt={'image'} className={styles.image} />
-      <Button className={styles.refreshButton} variant={'close'}>
+      <Button
+        className={styles.refreshButton}
+        variant={'close'}
+        onClick={showThumbnailModal}
+      >
         <RefreshArrow />
         <div className={clsx(styles.blinkSection, styles[active])}>
           <Star className={clsx(styles.star, styles.star1)} />

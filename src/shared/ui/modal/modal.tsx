@@ -1,5 +1,6 @@
 'use client';
 
+import { clsx } from 'clsx';
 import { ReactNode } from 'react';
 
 import { Button } from '@/shared/ui';
@@ -12,6 +13,7 @@ interface ModalProps {
   children: ReactNode;
   className?: string;
   overlayClassName?: string;
+  modalWrapperClassName?: string;
   closeButtonClassName?: string;
   showCloseButton?: boolean;
   closeOnOverlayClick?: boolean;
@@ -25,6 +27,7 @@ export function Modal({
   children,
   className = '',
   overlayClassName = '',
+  modalWrapperClassName = '',
   closeButtonClassName = '',
   showCloseButton = true,
   closeOnOverlayClick = true,
@@ -44,7 +47,12 @@ export function Modal({
       className={`${styles.overlay} ${overlayClassName}`}
       onClick={handleOverlayClick}
     >
-      <div className={styles.modalWrapper}>
+      <div
+        className={clsx(
+          styles.modalWrapper,
+          modalWrapperClassName && modalWrapperClassName
+        )}
+      >
         <div className={`${styles.modal} ${styles[size]} ${className}`}>
           {showCloseButton && (
             <Button
