@@ -11,7 +11,7 @@ A Next.js application designed for terminal screens with 9:16 aspect ratio, feat
 - **Camera Integration**: Built-in camera functionality for photo capture
 - **Responsive Design**: Mobile-first approach with terminal-specific optimizations
 
-## Project Structure
+## Project Structure 
 
 ```
 src/
