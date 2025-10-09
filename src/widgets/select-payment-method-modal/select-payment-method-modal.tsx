@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-import { useGenerateStore } from '@/shared/lib';
+import { useGenerateStore, useTranslations } from '@/shared/lib';
 import { Modal } from '@/shared/ui';
 
 import { PayWithCard } from './pay-with-card';
@@ -27,6 +27,7 @@ export const SelectPaymentMethodModal = ({
   isAgain = true,
 }: Props) => {
   const { generationCounter, clearCodeEntryCountdown } = useGenerateStore();
+  const t = useTranslations('PaymentModal.selectPaymentMethod');
   const [showPayWithCash, setShowPayWithCash] = useState(false);
   const [showPayWithCard, setShowPayWithCard] = useState(isPayWithCard);
 
@@ -58,10 +59,10 @@ export const SelectPaymentMethodModal = ({
     >
       <div className={styles.header}>
         <p className={styles.title}>
-          {isAgain ? 'Продолжи творчество' : 'Вы подошли к этапу творчества'}
+          {isAgain ? t('continueTitle') : t('stageTitle')}
         </p>
         <p className={styles.subTitle}>
-          Создание 20 уникальных дизайнов стоит всего $3
+          {t('description')}
         </p>
       </div>
       {showPayWithCard && !showPayWithCash && (

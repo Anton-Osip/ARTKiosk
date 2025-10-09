@@ -9,7 +9,7 @@ import {
 } from 'react';
 
 import { Close, SadFace, WarningRound } from '@/shared/assets';
-import { useGenerateStore, useModalStore } from '@/shared/lib';
+import { useGenerateStore, useModalStore, useTranslations } from '@/shared/lib';
 import { FooterNavigation } from '@/widgets';
 
 import { GenerateButton } from './generate-button/generate-button';
@@ -33,12 +33,14 @@ export const GenerateSection = ({ withEmptyGeneration = false }: Props) => {
     generatedThumbnail,
     setGenerationCounter,
   } = useGenerateStore();
+  const t = useTranslations('GenerateSection');
 
   const isAganShowSelectedPayModalRef = useRef<boolean>(false);
   const [hasCompletedFirstGeneration, setHasCompletedFirstGeneration] =
     useState(false);
   const [hasTriggeredAutoGeneration, setHasTriggeredAutoGeneration] =
     useState(false);
+  const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
 
   useLayoutEffect(() => {
     if (withEmptyGeneration) {
@@ -49,9 +51,8 @@ export const GenerateSection = ({ withEmptyGeneration = false }: Props) => {
   const showErrorModal = useCallback(() => {
     openModal({
       type: 'info-confirm',
-      title: 'Упс...',
-      description:
-        'Оплата не прошла, повторите оплату, или обратитесь к продавцу',
+      title: t('paymentError.title'),
+      description: t('paymentError.description'),
       icon: <SadFace />,
       confirmButtonText: '',
       onConfirm: () => {},
@@ -65,7 +66,7 @@ export const GenerateSection = ({ withEmptyGeneration = false }: Props) => {
       },
       withoutButton: true,
     });
-  }, [openModal]);
+  }, [openModal, t]);
 
   const selectPaymentModal = useCallback(() => {
     openModal({
@@ -76,33 +77,40 @@ export const GenerateSection = ({ withEmptyGeneration = false }: Props) => {
   }, [openModal, showErrorModal]);
 
   const showSelectPaymentModal = useCallback(() => {
+    if (isPaymentModalOpen) return; // Предотвращаем повторные вызовы
+    
     if (!isAganShowSelectedPayModalRef.current) {
+      setIsPaymentModalOpen(true);
       selectPaymentModal();
     } else {
+      setIsPaymentModalOpen(true);
       openModal({
         type: 'info-confirm',
-        title: 'Внимание',
-        description:
-          'Для продолжения творчества повтори оплату или закрой это окно и выбери лучшее из созданных изображений.',
-        subtitle: 'Закончились оплаченные попытки генерации',
+        title: t('attention.title'),
+        description: t('attention.description'),
+        subtitle: t('attention.subtitle'),
         icon: <WarningRound className={styles.warningRoundIcon} />,
         iconPosition: 'right',
-        confirmButtonText: 'Pay',
+        confirmButtonText: t('attention.confirmButtonText'),
         cancelButtonText: <Close className={styles.closeIcon} />,
         onConfirm: selectPaymentModal,
         onClose: () => {
           closeModal();
+          setIsPaymentModalOpen(false);
         },
         buttonVariant: 'primary',
       });
     }
-  }, [closeModal, openModal, selectPaymentModal]);
+  }, [closeModal, openModal, selectPaymentModal, t, isPaymentModalOpen]);
 
   useEffect(() => {
     if (generationCounter === 0) {
       showSelectPaymentModal();
+    } else {
+      // Сбрасываем флаг при изменении счетчика
+      setIsPaymentModalOpen(false);
     }
-  }, [generationCounter, showSelectPaymentModal]);
+  }, [generationCounter]); // Убираем showSelectPaymentModal из зависимостей
 
   useEffect(() => {
     if (!hasCompletedFirstGeneration) generatedThumbnail();

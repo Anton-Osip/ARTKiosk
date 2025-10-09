@@ -3,6 +3,7 @@
 import Image, { StaticImageData } from 'next/image';
 
 import { RefreshArrow } from '@/shared/assets';
+import { useTranslations } from '@/shared/lib';
 import { Button, Modal } from '@/shared/ui';
 
 import styles from './thumbnail-preview-modal.module.scss';
@@ -23,6 +24,8 @@ export function ThumbnailPreviewModal({
   onConfirm,
   image,
 }: PhotoPreviewModalProps) {
+  const t = useTranslations('ThumbnailPreviewModal');
+
   return (
     <Modal
       isOpen={isOpen}
@@ -35,7 +38,7 @@ export function ThumbnailPreviewModal({
         {image && (
           <Image
             src={image}
-            alt="Captured photo"
+            alt={t('imageAlt')}
             className={styles.thumbnail}
             width={630}
             height={840}
@@ -47,11 +50,11 @@ export function ThumbnailPreviewModal({
       <div className={styles.actionButtons}>
         <Button variant="secondary" size="md" onClick={onRetake}>
           <RefreshArrow />
-          Regenerate
+          {t('regenerateButton')}
         </Button>
 
         <Button variant="primary" size="md" onClick={onConfirm}>
-          Выбрать для печати
+          {t('selectForPrintButton')}
         </Button>
       </div>
     </Modal>

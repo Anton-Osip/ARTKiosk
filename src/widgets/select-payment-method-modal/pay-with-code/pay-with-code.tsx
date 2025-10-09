@@ -2,7 +2,7 @@
 import { ChangeEvent, useCallback, useEffect } from 'react';
 
 import { Apply, HourglassIcon } from '@/shared/assets';
-import { useGenerateStore, useModalStore } from '@/shared/lib';
+import { useGenerateStore, useModalStore, useTranslations } from '@/shared/lib';
 import { Button, useVirtualKeyboard, VirtualKeyboard } from '@/shared/ui';
 
 import styles from './pay-with-code.module.scss';
@@ -15,6 +15,7 @@ export const PayWithCode = () => {
     startCodeEntryCountdown,
   } = useGenerateStore();
   const { closeModal, openModal } = useModalStore();
+  const t = useTranslations('PaymentModal.payWithCode');
   const {
     value,
     setValue,
@@ -53,30 +54,30 @@ export const PayWithCode = () => {
     if (codeEntryTimeLimit === 1) {
       openModal({
         type: 'info-error',
-        title: 'Упс, неверный код',
-        buttonText: 'Попробовать ещё раз',
+        title: t('errorTitle'),
+        buttonText: t('errorButtonText'),
 
         onConfirm: () => {
           showSelectPaymentModal();
         },
       });
     }
-  }, [codeEntryTimeLimit, openModal, showSelectPaymentModal]);
+  }, [codeEntryTimeLimit, openModal, showSelectPaymentModal, t]);
 
   return (
     <div className={styles.container}>
       <div className={styles.header}>
         <p className={styles.title}>
-          Оплати у продавца, получи код и приступай к творчеству
+          {t('title')}
         </p>
         <div className={styles.time}>
           <HourglassIcon />
-          <span>{codeEntryTimeLimit}</span> сек
+          <span>{codeEntryTimeLimit}</span> {t('secondsShort')}
         </div>
       </div>
       <input
         className={styles.input}
-        placeholder={'Enter code'}
+        placeholder={t('placeholder')}
         onChange={onChangeHandler}
         onFocus={openKeyboard}
         value={value}

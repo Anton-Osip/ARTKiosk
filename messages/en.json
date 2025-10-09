@@ -17,19 +17,27 @@
     },
     "generationModes": {
       "title": "Two generation modes will be available next:",
+      "createMore": {
+        "title": "Create more",
+        "designs": "designs"
+      },
       "generate": {
         "title": "Generate",
         "description": "Basic generation model"
       },
       "regenerate": {
         "title": "Regenerate",
-        "description": "Generation based on selected image. \n Improves similarity with photo and more"
+        "description": "Generation based on selected image.",
+        "info": "Improves similarity with photo and more"
       }
     },
     "loadingIndicator": {
       "messagePrefix": "Generation of the first four images has started",
       "durationPrefix": "approximate duration",
-      "secondsShort": "sec"
+      "regenerateTimePrefix": "Generation time approximately",
+      "secondsShort": "sec",
+      "navigationAvailable": "Navigation available",
+      "navigationDescription": "During generation you can go to AiClub or return to Catalog to select a new idea"
     }
   },
   "MobileScreen": {
@@ -124,6 +132,54 @@
         "mature": "Mature"
       },
       "deletePhoto": "Delete photo"
+    }
+  },
+  "ThumbnailPreviewModal": {
+    "imageAlt": "Image preview",
+    "regenerateButton": "Regenerate",
+    "selectForPrintButton": "Select for printing"
+  },
+  "GenerateSection": {
+    "paymentError": {
+      "title": "Oops...",
+      "description": "Payment failed, please try again or contact the seller"
+    },
+    "attention": {
+      "title": "Attention",
+      "description": "To continue creating, repeat the payment or close this window and choose the best from the created images.",
+      "subtitle": "Paid generation attempts have ended",
+      "confirmButtonText": "Pay"
+    }
+  },
+  "PaymentModal": {
+    "selectPaymentMethod": {
+      "continueTitle": "Continue creativity",
+      "stageTitle": "You have reached the creativity stage",
+      "description": "Creating 20 unique designs costs only $3"
+    },
+    "paymentMethods": {
+      "title": "Choose payment method",
+      "applePay": "Pay",
+      "googlePay": "Pay",
+      "creditCard": "Credit Card",
+      "cashCode": "Cash / Code"
+    },
+    "paymentSummary": {
+      "amountLabel": "Amount to pay:",
+      "currencySymbol": "$",
+      "designs": "designs"
+    },
+    "payWithCard": {
+      "amountLabel": "Amount to pay:",
+      "currencySymbol": "$",
+      "instruction": "Use the terminal for payment"
+    },
+    "payWithCode": {
+      "title": "Pay at the seller, get the code and start creating",
+      "placeholder": "Enter code",
+      "secondsShort": "sec",
+      "errorTitle": "Oops, wrong code",
+      "errorButtonText": "Try again"
     }
   }
 }

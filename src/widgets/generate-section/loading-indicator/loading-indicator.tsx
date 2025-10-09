@@ -31,7 +31,7 @@ export const LoadingIndicator = ({ time, regenerateMode }: Props) => {
             <div className={styles.triangleClip} />
             {regenerateMode ? (
               <p>
-                <span> Время генерации порядка</span> <HourglassIcon />
+                <span>{t('regenerateTimePrefix')}</span> <HourglassIcon />
                 30 {t('secondsShort')}
               </p>
             ) : (
@@ -45,10 +45,9 @@ export const LoadingIndicator = ({ time, regenerateMode }: Props) => {
         </div>
         {regenerateMode && (
           <div className={styles.info}>
-            <p className={styles.infoTitle}>Доступна навигация</p>
+            <p className={styles.infoTitle}>{t('navigationAvailable')}</p>
             <p className={styles.description}>
-              Во время генерации Вы можете зайти в AiClub или вернуться в
-              Каталог для выбора новой идеи
+              {t('navigationDescription')}
             </p>
           </div>
         )}

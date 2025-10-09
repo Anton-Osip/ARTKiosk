@@ -1,4 +1,5 @@
 import { Apple, Cash, CreditCard, Pay } from '@/shared/assets';
+import { useTranslations } from '@/shared/lib';
 import { Button } from '@/shared/ui';
 
 import styles from './payment-methods.module.scss';
@@ -12,9 +13,11 @@ export const PaymentMethods = ({
   showPayWithCashHandler,
   setShowPayWithCardHandler,
 }: Props) => {
+  const t = useTranslations('PaymentModal.paymentMethods');
+
   return (
     <div className={styles.methods}>
-      <div className={styles.title}>Выбери способ оплаты</div>
+      <div className={styles.title}>{t('title')}</div>
 
       <div className={styles.grid}>
         <Button
@@ -22,7 +25,7 @@ export const PaymentMethods = ({
           className={styles.method}
           onClick={setShowPayWithCardHandler}
         >
-          <Apple /> Pay
+          <Apple /> {t('applePay')}
         </Button>
 
         <Button
@@ -30,7 +33,7 @@ export const PaymentMethods = ({
           className={styles.method}
           onClick={setShowPayWithCardHandler}
         >
-          <Pay /> Pay
+          <Pay /> {t('googlePay')}
         </Button>
 
         <Button
@@ -39,7 +42,7 @@ export const PaymentMethods = ({
           onClick={setShowPayWithCardHandler}
         >
           <CreditCard />
-          Credit Card
+          {t('creditCard')}
         </Button>
 
         <Button
@@ -47,7 +50,7 @@ export const PaymentMethods = ({
           className={styles.method}
           onClick={showPayWithCashHandler}
         >
-          <Cash /> Cash / Code
+          <Cash /> {t('cashCode')}
         </Button>
       </div>
     </div>

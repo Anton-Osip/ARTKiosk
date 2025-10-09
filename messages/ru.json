@@ -17,20 +17,27 @@
     },
     "generationModes": {
       "title": "Далее будет доступно два режима генерации:",
+      "createMore": {
+        "title": "Создай ещё",
+        "designs": "дизайнов"
+      },
       "generate": {
         "title": "Generate",
         "description": "Базовая модель генерации"
       },
-
       "regenerate": {
         "title": "Regenerate",
-        "description": "Генерация на основе выбранного изображения.\n Улучшает сходство с фотографией, и не только"
+        "description": "Генерация на основе выбранного изображения.",
+        "info": "Улучшает сходство с фотографией, и не только"
       }
     },
     "loadingIndicator": {
       "messagePrefix": "Началась генерация первых четырёх изображений",
       "durationPrefix": "продолжительность порядка",
-      "secondsShort": "сек"
+      "regenerateTimePrefix": "Время генерации порядка",
+      "secondsShort": "сек",
+      "navigationAvailable": "Доступна навигация",
+      "navigationDescription": "Во время генерации Вы можете зайти в AiClub или вернуться в Каталог для выбора новой идеи"
     }
   },
   "MobileScreen": {
@@ -126,6 +133,54 @@
         "mature": "Зрелый"
       },
       "deletePhoto": "Удалить фото"
+    }
+  },
+  "ThumbnailPreviewModal": {
+    "imageAlt": "Предварительный просмотр изображения",
+    "regenerateButton": "Regenerate",
+    "selectForPrintButton": "Выбрать для печати"
+  },
+  "GenerateSection": {
+    "paymentError": {
+      "title": "Упс...",
+      "description": "Оплата не прошла, повторите оплату, или обратитесь к продавцу"
+    },
+    "attention": {
+      "title": "Внимание",
+      "description": "Для продолжения творчества повтори оплату или закрой это окно и выбери лучшее из созданных изображений.",
+      "subtitle": "Закончились оплаченные попытки генерации",
+      "confirmButtonText": "Pay"
+    }
+  },
+  "PaymentModal": {
+    "selectPaymentMethod": {
+      "continueTitle": "Продолжи творчество",
+      "stageTitle": "Вы подошли к этапу творчества",
+      "description": "Создание 20 уникальных дизайнов стоит всего $3"
+    },
+    "paymentMethods": {
+      "title": "Выбери способ оплаты",
+      "applePay": "Pay",
+      "googlePay": "Pay",
+      "creditCard": "Credit Card",
+      "cashCode": "Cash / Code"
+    },
+    "paymentSummary": {
+      "amountLabel": "К оплате:",
+      "currencySymbol": "$",
+      "designs": "дизайнов"
+    },
+    "payWithCard": {
+      "amountLabel": "К оплате:",
+      "currencySymbol": "$",
+      "instruction": "Для оплаты воспользуйтесь терминалом"
+    },
+    "payWithCode": {
+      "title": "Оплати у продавца, получи код и приступай к творчеству",
+      "placeholder": "Введите код",
+      "secondsShort": "сек",
+      "errorTitle": "Упс, неверный код",
+      "errorButtonText": "Попробовать ещё раз"
     }
   }
 }
