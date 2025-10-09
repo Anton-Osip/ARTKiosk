@@ -37,6 +37,8 @@ export const GenerateSection = ({ withEmptyGeneration = false }: Props) => {
   const isAganShowSelectedPayModalRef = useRef<boolean>(false);
   const [hasCompletedFirstGeneration, setHasCompletedFirstGeneration] =
     useState(false);
+  const [hasTriggeredAutoGeneration, setHasTriggeredAutoGeneration] =
+    useState(false);
 
   useLayoutEffect(() => {
     if (withEmptyGeneration) {
@@ -105,6 +107,25 @@ export const GenerateSection = ({ withEmptyGeneration = false }: Props) => {
   useEffect(() => {
     if (!hasCompletedFirstGeneration) generatedThumbnail();
   }, [generatedThumbnail, hasCompletedFirstGeneration]);
+
+  // Автоматический запуск генерации после первой оплаты при withEmptyGeneration = false
+  useEffect(() => {
+    if (
+      !withEmptyGeneration &&
+      !hasTriggeredAutoGeneration &&
+      generationCounter > 0 &&
+      generateData.length === 0
+    ) {
+      setHasTriggeredAutoGeneration(true);
+      generatedThumbnail();
+    }
+  }, [
+    withEmptyGeneration,
+    hasTriggeredAutoGeneration,
+    generationCounter,
+    generateData.length,
+    generatedThumbnail,
+  ]);
 
   useEffect(() => {
     if (
