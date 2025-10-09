@@ -34,6 +34,7 @@ export function ModalManager() {
           onClose={closeModal}
           showErrorModal={modalData.showErrorModal}
           isPayWithCard={modalData.isPayWithCard}
+          isAgain={modalData.isAgain}
         />
       );
     case 'camera-preview':
@@ -93,6 +94,8 @@ export function ModalManager() {
             modalData.onClose();
           }}
           title={modalData.title}
+          subtitle={modalData.subtitle}
+          iconPosition={modalData.iconPosition}
           description={modalData.description}
           icon={modalData.icon}
           cancelButtonText={modalData.cancelButtonText}

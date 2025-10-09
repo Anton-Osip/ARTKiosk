@@ -17,6 +17,7 @@ export type ModalData =
       type: 'select-payment-method-modal';
       showErrorModal: () => void;
       isPayWithCard?: boolean;
+      isAgain?: boolean;
     }
   | { type: 'camera-preview'; onCapture: (imageData: string) => void }
   | { type: 'photo-preview'; onRetake: () => void; onConfirm: () => void }
@@ -38,8 +39,10 @@ export type ModalData =
       title: string;
       description: string;
       icon?: React.ReactNode;
-      confirmButtonText: string;
-      cancelButtonText?: string;
+      subtitle?: string;
+      iconPosition?: 'left' | 'right';
+      confirmButtonText: string | React.ReactNode;
+      cancelButtonText?: string | React.ReactNode;
       onClose: () => void;
       onConfirm: () => void;
       buttonVariant?: 'primary' | 'secondary' | 'close';

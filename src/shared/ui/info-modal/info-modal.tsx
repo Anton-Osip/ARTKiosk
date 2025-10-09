@@ -1,5 +1,7 @@
 'use client';
 
+import { ReactNode } from 'react';
+
 import { Button, IconContainer, Modal } from '@/shared/ui';
 
 import styles from './info-modal.module.scss';
@@ -8,9 +10,11 @@ interface InfoModalProps {
   isOpen: boolean;
   title: string;
   description?: string;
-  icon?: React.ReactNode;
-  confirmButtonText: string;
-  cancelButtonText?: string;
+  subtitle?: string;
+  iconPosition?: 'left' | 'right';
+  icon?: ReactNode;
+  confirmButtonText: string | ReactNode;
+  cancelButtonText?: string | ReactNode;
   onClose: () => void;
   onConfirm: () => void;
   mainButtonVariant?: 'primary' | 'secondary' | 'close';
@@ -23,6 +27,7 @@ export function InfoModal({
   onClose,
   title,
   description,
+  subtitle,
   icon,
   confirmButtonText = 'Confirm',
   cancelButtonText,
@@ -30,9 +35,8 @@ export function InfoModal({
   mainButtonVariant = 'primary',
   variant = 'desktop',
   withoutButton = false,
+  iconPosition = 'left',
 }: InfoModalProps) {
-  console.log(withoutButton);
-
   return (
     <Modal
       isOpen={isOpen}
@@ -47,12 +51,20 @@ export function InfoModal({
         <div
           className={`${styles.header} ${variant === 'mobile' ? styles.mobileHeader : ''}`}
         >
-          {icon && <IconContainer size="md">{icon}</IconContainer>}
+          {iconPosition === 'left' && icon && (
+            <IconContainer size="md">{icon}</IconContainer>
+          )}
           <h2
             className={`${styles.title} ${variant === 'mobile' ? styles.mobileTitle : ''}`}
           >
             {title}
+            {subtitle && <span className={styles.subtitle}>{subtitle}</span>}
           </h2>
+          {iconPosition === 'right' && icon && (
+            <IconContainer size="md" className={styles.iconPositionRight}>
+              {icon}
+            </IconContainer>
+          )}
         </div>
 
         {description && (

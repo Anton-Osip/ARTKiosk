@@ -30,10 +30,17 @@
   font-family: var(--font-primary), sans-serif;
   font-weight: var(--font-medium);
   font-size: var(--text-4xl);
-  line-height: var(--leading-relaxed);
+  line-height: var(--leading-loose);
   color: #ffffff;
   margin: 0;
   text-align: left;
+}
+.subtitle {
+  display: block;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  line-height: var(--leading-loose);
 }
 
 /* Description styling */
@@ -48,6 +55,10 @@
   padding: var(--space-10) var(--space-6);
   background-color: var(--color-surface-lighter);
   border-radius: var(--radius-3xl);
+}
+
+.iconPositionRight {
+  margin-left: auto;
 }
 
 /* Button container */

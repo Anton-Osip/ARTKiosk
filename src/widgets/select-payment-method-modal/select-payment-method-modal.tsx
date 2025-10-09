@@ -16,6 +16,7 @@ interface Props {
   onClose: () => void;
   showErrorModal: () => void;
   isPayWithCard?: boolean;
+  isAgain?: boolean;
 }
 
 export const SelectPaymentMethodModal = ({
@@ -23,6 +24,7 @@ export const SelectPaymentMethodModal = ({
   onClose,
   showErrorModal,
   isPayWithCard = false,
+  isAgain = true,
 }: Props) => {
   const { generationCounter, clearCodeEntryCountdown } = useGenerateStore();
   const [showPayWithCash, setShowPayWithCash] = useState(false);
@@ -46,6 +48,7 @@ export const SelectPaymentMethodModal = ({
       clearCodeEntryCountdown();
     };
   }, [clearCodeEntryCountdown]);
+  console.log(isAgain);
 
   return (
     <Modal
@@ -55,7 +58,9 @@ export const SelectPaymentMethodModal = ({
       className={styles.container}
     >
       <div className={styles.header}>
-        <p className={styles.title}>Продолжи творчество</p>
+        <p className={styles.title}>
+          {isAgain ? 'Продолжи творчество' : 'Вы подошли к этапу творчества'}
+        </p>
         <p className={styles.subTitle}>
           Создание 20 уникальных дизайнов стоит всего $3
         </p>

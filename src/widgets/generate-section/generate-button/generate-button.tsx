@@ -36,6 +36,7 @@ export const GenerateButton = ({ onClick, disabled }: Props) => {
     <button
       className={clsx(styles.generateButton, disabled && styles.disabledBtn)}
       onClick={onClickHandler}
+      disabled={disabled}
     >
       <span>Generate</span>
       <div className={clsx(styles.blinkSection, styles[active])}>
