@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 import { ReloadArrow } from '@/shared/assets';
 import { useTakePhoto } from '@/shared/hooks';
-import { useTranslations } from '@/shared/lib';
+import { usePhotoStore, useTranslations } from '@/shared/lib';
 import { Button } from '@/shared/ui';
 
 import styles from './selected-photo.module.scss';
@@ -16,13 +16,16 @@ interface Props {
 export const SelectedPhoto = ({ selectedPhoto }: Props) => {
   const t = useTranslations('CreativityScreen.selectedPhoto');
   const handleTakePhoto = useTakePhoto();
+  const { gender, ageGroup } = usePhotoStore();
 
   return (
     <div className={styles.container}>
       <div className={styles.header}>
         <div className={styles.titleWrapper}>
           <p className={styles.title}>{t('title')}</p>
-          <div className={styles.subtitle}>{t('subtitle')}</div>
+          <div
+            className={styles.subtitle}
+          >{`${ageGroup ? ageGroup : ''} ${gender}`}</div>
         </div>
         <Button
           variant={'close'}
