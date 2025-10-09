@@ -4,7 +4,7 @@ export default function Generate() {
   return (
     <>
       <Header activeTab="creativity" />
-      <GenerateSection />
+      <GenerateSection withEmptyGeneration={true} />
     </>
   );
 }

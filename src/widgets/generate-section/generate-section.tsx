@@ -1,6 +1,12 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
 
 import { Close, SadFace, WarningRound } from '@/shared/assets';
 import { useGenerateStore, useModalStore } from '@/shared/lib';
@@ -13,7 +19,11 @@ import { LoadingIndicator } from './loading-indicator';
 import { MainContent } from './main-content';
 import { ResultsGallery } from './results-gallery';
 
-export const GenerateSectionV1 = () => {
+interface Props {
+  withEmptyGeneration?: boolean;
+}
+
+export const GenerateSection = ({ withEmptyGeneration = false }: Props) => {
   const { openModal, closeModal } = useModalStore();
   const {
     generateData,
@@ -21,11 +31,18 @@ export const GenerateSectionV1 = () => {
     isGenerated,
     timer,
     generatedThumbnail,
+    setGenerationCounter,
   } = useGenerateStore();
 
   const isAganShowSelectedPayModalRef = useRef<boolean>(false);
   const [hasCompletedFirstGeneration, setHasCompletedFirstGeneration] =
     useState(false);
+
+  useLayoutEffect(() => {
+    if (withEmptyGeneration) {
+      setGenerationCounter(1);
+    }
+  }, [setGenerationCounter, withEmptyGeneration]);
 
   const showErrorModal = useCallback(() => {
     openModal({
@@ -59,7 +76,6 @@ export const GenerateSectionV1 = () => {
   const showSelectPaymentModal = useCallback(() => {
     if (!isAganShowSelectedPayModalRef.current) {
       selectPaymentModal();
-      isAganShowSelectedPayModalRef.current = true;
     } else {
       openModal({
         type: 'info-confirm',
@@ -87,8 +103,8 @@ export const GenerateSectionV1 = () => {
   }, [generationCounter, showSelectPaymentModal]);
 
   useEffect(() => {
-    generatedThumbnail();
-  }, [generatedThumbnail]);
+    if (!hasCompletedFirstGeneration) generatedThumbnail();
+  }, [generatedThumbnail, hasCompletedFirstGeneration]);
 
   useEffect(() => {
     if (
@@ -99,6 +115,16 @@ export const GenerateSectionV1 = () => {
       setHasCompletedFirstGeneration(true);
     }
   }, [generateData, isGenerated, hasCompletedFirstGeneration]);
+
+  useEffect(() => {
+    if (withEmptyGeneration) {
+      if (generateData.length > 0) {
+        isAganShowSelectedPayModalRef.current = true;
+      }
+    } else {
+      isAganShowSelectedPayModalRef.current = true;
+    }
+  }, [generateData.length, withEmptyGeneration]);
 
   return (
     <div className={styles.container}>
@@ -117,7 +143,7 @@ export const GenerateSectionV1 = () => {
       {generateData?.length !== 0 && !isGenerated && (
         <ResultsGallery withScrolling={generateData?.length >= 4} />
       )}
-      {hasCompletedFirstGeneration && (
+      {(hasCompletedFirstGeneration || !isGenerated) && (
         <GenerateButton
           onClick={generatedThumbnail}
           disabled={generationCounter <= 0}

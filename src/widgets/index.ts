@@ -3,7 +3,7 @@ export { CatalogSection } from './catalog-section/catalog-section';
 export { ChangeLanguage } from './change-language/change-language';
 export { FooterNavigation } from './footer-navigation/footer-navigation';
 export { GenderAgeModal } from './gender-age-modal/gender-age-modal';
-export { GenerateSectionV1 } from './generate-section/generate-sectionV1';
+export { GenerateSection } from './generate-section/generate-section';
 export { Header } from './header/header';
 export { MainLayout } from './layout/main-layout';
 export { MobileScreen } from './mobile-screen.tsx/mobile-screen';

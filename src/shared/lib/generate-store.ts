@@ -27,16 +27,22 @@ interface GenerateStore {
   generatedThumbnail: () => void;
   clearCodeEntryCountdown: () => void;
   replaceThumbnail: (id: string, img: StaticImageData) => void;
+
+  setGenerationCounter: (count: number) => void;
 }
 
 export const useGenerateStore = create<GenerateStore>((set, get) => ({
   generateData: [],
-  generationCounter: 1,
+  generationCounter: 0,
   timer: 0,
+  codeEntryTimeLimit: 10,
   isGenerated: false,
   isPaid: false,
-  codeEntryTimeLimit: 5,
   interval: null,
+
+  setGenerationCounter: count => {
+    set({ generationCounter: count });
+  },
 
   generatedThumbnail: () => {
     if (get().generationCounter <= 0) return;
@@ -87,6 +93,7 @@ export const useGenerateStore = create<GenerateStore>((set, get) => ({
       }));
     });
   },
+
   makeAPayment: (method: MethodPay) => {
     set({ timer: 0 });
     switch (method) {
@@ -110,7 +117,7 @@ export const useGenerateStore = create<GenerateStore>((set, get) => ({
       clearInterval(currentInterval);
     }
 
-    set({ codeEntryTimeLimit: 5 });
+    set({ codeEntryTimeLimit: 10 });
 
     const interval = setInterval(() => {
       const currentTime = get().codeEntryTimeLimit;
