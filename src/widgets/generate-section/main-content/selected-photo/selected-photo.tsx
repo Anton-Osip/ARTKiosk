@@ -1,19 +1,34 @@
 'use client';
 
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 
 import { ReloadArrow } from '@/shared/assets';
-import { useTranslations } from '@/shared/lib';
+import { useModalStore, useTranslations } from '@/shared/lib';
 import { Button } from '@/shared/ui';
 
 import styles from './selected-photo.module.scss';
 
 interface Props {
-  selectedPhoto: StaticImageData;
+  selectedPhoto: string;
 }
 
 export const SelectedPhoto = ({ selectedPhoto }: Props) => {
   const t = useTranslations('CreativityScreen.selectedPhoto');
+  const { openModal } = useModalStore();
+
+  const changePhotoHandler = () => {
+    openModal({
+      type: 'photo-preview',
+      onRetake: () => {},
+      onConfirm: () => {
+        openModal({
+          type: 'gender-age',
+          onConfirm: () => {},
+          onDeletePhoto: () => {},
+        });
+      },
+    });
+  };
 
   return (
     <div className={styles.container}>
@@ -22,7 +37,11 @@ export const SelectedPhoto = ({ selectedPhoto }: Props) => {
           <p className={styles.title}>{t('title')}</p>
           <div className={styles.subtitle}>{t('subtitle')}</div>
         </div>
-        <Button variant={'close'} className={styles.reloadBtn}>
+        <Button
+          variant={'close'}
+          className={styles.reloadBtn}
+          onClick={changePhotoHandler}
+        >
           <ReloadArrow />
         </Button>
       </div>

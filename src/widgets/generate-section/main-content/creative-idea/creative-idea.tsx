@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 import { ReloadArrow } from '@/shared/assets';
 import { useTranslations } from '@/shared/lib';
@@ -12,6 +13,11 @@ import styles from './creative-idea.module.scss';
 
 export const CreativeIdea = () => {
   const t = useTranslations('CreativityScreen.creativeIdea');
+  const router = useRouter();
+
+  const navigateHandler = () => {
+    router.push('/catalog');
+  };
 
   return (
     <div className={styles.container}>
@@ -20,7 +26,11 @@ export const CreativeIdea = () => {
           <p className={styles.subtitle}>{t('subtitle')}</p>
           <div className={styles.title}>{t('title')}</div>
         </div>
-        <Button variant={'close'} className={styles.reloadBtn}>
+        <Button
+          variant={'close'}
+          className={styles.reloadBtn}
+          onClick={navigateHandler}
+        >
           <ReloadArrow />
         </Button>
       </div>

@@ -1,20 +1,20 @@
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 import { memo } from 'react';
+
+import { usePhotoStore } from '@/shared/lib';
 
 import defaultsPhoto from '../../../../public/defaultsPhoto.png';
 import { CreativeIdea } from './creative-idea/creative-idea';
 import styles from './main-content.module.scss';
 import { SelectedPhoto } from './selected-photo/selected-photo';
 
-interface Props {
-  selectedPhoto?: StaticImageData;
-}
+export const MainContent = memo(() => {
+  const { capturedPhoto } = usePhotoStore();
 
-export const MainContent = memo(({ selectedPhoto }: Props) => {
-  if (selectedPhoto) {
+  if (capturedPhoto) {
     return (
       <div className={styles.mainContent}>
-        <SelectedPhoto selectedPhoto={selectedPhoto} />
+        <SelectedPhoto selectedPhoto={capturedPhoto} />
         <CreativeIdea />
       </div>
     );
