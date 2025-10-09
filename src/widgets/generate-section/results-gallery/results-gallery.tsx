@@ -91,7 +91,7 @@ export const ResultsGallery = ({ withScrolling }: Props) => {
         if (scrollTimeout) clearTimeout(scrollTimeout);
         scrollTimeout = setTimeout(() => {
           throttledUpdateActive();
-        }, 100);
+        }, 200);
       }
     };
 
