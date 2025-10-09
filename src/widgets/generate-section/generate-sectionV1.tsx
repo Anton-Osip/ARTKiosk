@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect } from 'react';
 
-import { WarningTriangle } from '@/shared/assets';
+import { SadFace } from '@/shared/assets';
 import { useGenerateStore, useModalStore } from '@/shared/lib';
 import { FooterNavigation } from '@/widgets';
 
@@ -29,7 +29,7 @@ export const GenerateSectionV1 = () => {
       title: 'Упс...',
       description:
         'Оплата не прошла, повторите оплату, или обратитесь к продавцу',
-      icon: <WarningTriangle />,
+      icon: <SadFace />,
       confirmButtonText: '',
       onConfirm: () => {},
       buttonVariant: 'primary',

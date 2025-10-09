@@ -1,4 +1,6 @@
 .modalContent {
+  max-width: 560px;
+  margin: 0 auto;
   padding: var(--space-6);
   display: flex;
   flex-direction: column;
