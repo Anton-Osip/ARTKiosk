@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 import {
@@ -40,7 +39,6 @@ export function PhotoSection() {
   const [showStatusError, setShowStatusError] = useState(true);
   const { fetchSessionData, sessionData, isLoading, error } = useSessionStore();
   const { sessionStatusData, fetchSessionStatus } = useSessionStatusStore();
-  const router = useRouter();
   const { errorData } = useErrorStore();
 
   const showWrongModal = useCallback(
@@ -119,9 +117,7 @@ export function PhotoSection() {
       type: 'info-error',
       title: tm('infoError.title'),
       buttonText: tm('infoError.reloadImage'),
-      onConfirm: () => {
-        router.push('/generate-first');
-      },
+      onConfirm: () => {},
     });
   }, [openModal, tm]);
 

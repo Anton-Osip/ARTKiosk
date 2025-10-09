@@ -1,4 +1,6 @@
 .container {
+  position: relative;
+  z-index: 5;
   background: var(--color-surface);
   width: 217px;
   height: 100%;
