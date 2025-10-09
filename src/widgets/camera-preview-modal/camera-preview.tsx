@@ -200,6 +200,7 @@ export function CameraPreview({
         infoElement={
           isOpen && (
             <InstructionPanel
+              className={styles.instructionPanelContainer}
               icon={<WarningRound />}
               text={
                 <span className={styles.info}>
