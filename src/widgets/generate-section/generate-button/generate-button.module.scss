@@ -1,5 +1,12 @@
+.container {
+  flex-grow: 1;
+  display: flex;
+  align-items: flex-end;
+}
+
 .generateButton {
   position: relative;
+
   width: 100%;
   height: 94px;
   overflow: hidden;
@@ -7,7 +14,7 @@
   border-radius: 26px;
   backdrop-filter: blur(16.760652542114258px);
   background: rgba(35, 35, 35, 1);
-  margin-top: 64px;
+  margin-bottom: 65px;
   cursor: pointer;
 
   &.disabledBtn {

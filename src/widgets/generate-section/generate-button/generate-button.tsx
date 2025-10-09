@@ -33,17 +33,19 @@ export const GenerateButton = ({ onClick, disabled }: Props) => {
   };
 
   return (
-    <button
-      className={clsx(styles.generateButton, disabled && styles.disabledBtn)}
-      onClick={onClickHandler}
-      disabled={disabled}
-    >
-      <span>Generate</span>
-      <div className={clsx(styles.blinkSection, styles[active])}>
-        <Star className={clsx(styles.star, styles.star1)} />
-        <Star className={clsx(styles.star, styles.star2)} />
-        <Star className={clsx(styles.star, styles.star3)} />
-      </div>
-    </button>
+    <div className={styles.container}>
+      <button
+        className={clsx(styles.generateButton, disabled && styles.disabledBtn)}
+        onClick={onClickHandler}
+        disabled={disabled}
+      >
+        <span>Generate</span>
+        <div className={clsx(styles.blinkSection, styles[active])}>
+          <Star className={clsx(styles.star, styles.star1)} />
+          <Star className={clsx(styles.star, styles.star2)} />
+          <Star className={clsx(styles.star, styles.star3)} />
+        </div>
+      </button>
+    </div>
   );
 };
