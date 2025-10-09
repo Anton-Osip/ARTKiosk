@@ -15,7 +15,8 @@ interface Props {
 
 export const ResultsGallery = ({ withScrolling }: Props) => {
   const { openModal, closeModal } = useModalStore();
-  const { generateData, replaceThumbnail } = useGenerateStore();
+  const { generateData, replaceThumbnail, scrollLeft, setScrollLeft } =
+    useGenerateStore();
   const columns = [] as (typeof generateData)[];
   for (let i = 0; i < generateData.length; i += 2) {
     columns.push(generateData.slice(i, i + 2));
@@ -32,8 +33,19 @@ export const ResultsGallery = ({ withScrolling }: Props) => {
     const el = containerRef.current;
     if (!el) return;
 
+    if (scrollLeft > 0) {
+      el.scrollLeft = scrollLeft;
+    }
+  }, [withScrolling]); // Убираем scrollLeft из зависимостей
+
+  useEffect(() => {
+    if (!withScrolling) return;
+    const el = containerRef.current;
+    if (!el) return;
+
     let rafId: number | null = null;
     let lastScrollLeft = el.scrollLeft;
+    let scrollTimeout: NodeJS.Timeout | null = null;
 
     const updateActive = () => {
       const containerRect = el.getBoundingClientRect();
@@ -74,7 +86,12 @@ export const ResultsGallery = ({ withScrolling }: Props) => {
     const onScroll: EventListener = () => {
       if (Math.abs(el.scrollLeft - lastScrollLeft) > 1) {
         lastScrollLeft = el.scrollLeft;
-        throttledUpdateActive();
+        setScrollLeft(lastScrollLeft);
+
+        if (scrollTimeout) clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+          throttledUpdateActive();
+        }, 100);
       }
     };
 
@@ -88,8 +105,9 @@ export const ResultsGallery = ({ withScrolling }: Props) => {
       el.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', updateActive);
       if (rafId) cancelAnimationFrame(rafId);
+      if (scrollTimeout) clearTimeout(scrollTimeout);
     };
-  }, [withScrolling]);
+  }, [withScrolling, setScrollLeft]);
 
   const showResultThumbnailModal = (id: string, image: StaticImageData) => {
     openModal({

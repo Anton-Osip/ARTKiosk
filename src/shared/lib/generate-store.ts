@@ -21,13 +21,14 @@ interface GenerateStore {
   isGenerated: boolean;
   isPaid: boolean;
   codeEntryTimeLimit: number;
+  scrollLeft: number;
   interval: NodeJS.Timeout | null;
   startCodeEntryCountdown: () => void;
   makeAPayment: (method: MethodPay) => void;
   generatedThumbnail: () => void;
   clearCodeEntryCountdown: () => void;
   replaceThumbnail: (id: string, img: StaticImageData) => void;
-
+  setScrollLeft: (scroll: number) => void;
   setGenerationCounter: (count: number) => void;
 }
 
@@ -39,7 +40,10 @@ export const useGenerateStore = create<GenerateStore>((set, get) => ({
   isGenerated: false,
   isPaid: false,
   interval: null,
-
+  scrollLeft: 0,
+  setScrollLeft: (scroll: number) => {
+    set({ scrollLeft: scroll });
+  },
   setGenerationCounter: count => {
     set({ generationCounter: count });
   },
