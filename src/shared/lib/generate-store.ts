@@ -21,11 +21,12 @@ interface GenerateStore {
   isGenerated: boolean;
   isPaid: boolean;
   codeEntryTimeLimit: number;
+  interval: NodeJS.Timeout | null;
   startCodeEntryCountdown: () => void;
   makeAPayment: (method: MethodPay) => void;
   generatedThumbnail: () => void;
   clearCodeEntryCountdown: () => void;
-  interval: NodeJS.Timeout | null;
+  replaceThumbnail: (id: string, img: StaticImageData) => void;
 }
 
 export const useGenerateStore = create<GenerateStore>((set, get) => ({
@@ -122,5 +123,12 @@ export const useGenerateStore = create<GenerateStore>((set, get) => ({
     }, 1000);
 
     set({ interval });
+  },
+  replaceThumbnail: (id: string, img: StaticImageData) => {
+    set(state => ({
+      generateData: state.generateData.map(item =>
+        item.id === id ? { ...item, img } : item
+      ),
+    }));
   },
 }));

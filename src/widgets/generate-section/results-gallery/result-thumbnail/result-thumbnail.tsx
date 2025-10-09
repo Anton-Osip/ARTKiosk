@@ -1,11 +1,13 @@
 import { clsx } from 'clsx';
 import { StaticImageData } from 'next/image';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { MouseEvent, useEffect, useState } from 'react';
 
 import { RefreshArrow, Star } from '@/shared/assets';
+import { useGenerateStore } from '@/shared/lib';
 import { Button } from '@/shared/ui';
 
+import img from './../../../../../public/selectedPhoto.png';
 import styles from './result-thumbnail.module.scss';
 
 interface Props {
@@ -13,7 +15,7 @@ interface Props {
     id: string;
     img: StaticImageData;
   };
-  onClick?: (image: StaticImageData) => void;
+  onClick?: (id: string, image: StaticImageData) => void;
 }
 
 const elements = [
@@ -33,11 +35,17 @@ const elements = [
 
 export const ResultThumbnail = ({ item, onClick }: Props) => {
   const [active, setActive] = useState('first');
+  const { replaceThumbnail } = useGenerateStore();
 
   const showThumbnailModal = () => {
     if (onClick) {
-      onClick(item.img);
+      onClick(item.id, item.img);
     }
+  };
+
+  const changeImage = (e: MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    replaceThumbnail(item.id, img);
   };
 
   useEffect(() => {
@@ -60,7 +68,7 @@ export const ResultThumbnail = ({ item, onClick }: Props) => {
       <Button
         className={styles.refreshButton}
         variant={'close'}
-        onClick={showThumbnailModal}
+        onClick={changeImage}
       >
         <RefreshArrow />
         <div className={clsx(styles.blinkSection, styles[active])}>

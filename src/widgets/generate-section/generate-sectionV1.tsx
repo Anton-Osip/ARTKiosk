@@ -90,7 +90,6 @@ export const GenerateSectionV1 = () => {
     generatedThumbnail();
   }, [generatedThumbnail]);
 
-  // Mark first generation as completed once results appear (and loading stops)
   useEffect(() => {
     if (
       !hasCompletedFirstGeneration &&

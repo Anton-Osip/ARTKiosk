@@ -5,6 +5,7 @@ import { useEffect, useRef } from 'react';
 
 import { useGenerateStore, useModalStore } from '@/shared/lib';
 
+import img from '../../../../public/selectedPhoto.png';
 import { ResultThumbnail } from './result-thumbnail';
 import styles from './results-gallery.module.scss';
 
@@ -13,8 +14,8 @@ interface Props {
 }
 
 export const ResultsGallery = ({ withScrolling }: Props) => {
-  const { openModal } = useModalStore();
-  const { generateData } = useGenerateStore();
+  const { openModal, closeModal } = useModalStore();
+  const { generateData, replaceThumbnail } = useGenerateStore();
   const columns = [] as (typeof generateData)[];
   for (let i = 0; i < generateData.length; i += 2) {
     columns.push(generateData.slice(i, i + 2));
@@ -71,7 +72,6 @@ export const ResultsGallery = ({ withScrolling }: Props) => {
     };
 
     const onScroll: EventListener = () => {
-      // Only update if scroll position actually changed
       if (Math.abs(el.scrollLeft - lastScrollLeft) > 1) {
         lastScrollLeft = el.scrollLeft;
         throttledUpdateActive();
@@ -91,15 +91,17 @@ export const ResultsGallery = ({ withScrolling }: Props) => {
     };
   }, [withScrolling]);
 
-  const showResultThumbnailModal = (image: StaticImageData) => {
+  const showResultThumbnailModal = (id: string, image: StaticImageData) => {
     openModal({
       type: 'thumbnail-preview-modal',
       onRetake: () => {
-        console.log('onRetake');
+        replaceThumbnail(id, img);
+        closeModal();
       },
       onConfirm: () => {
         console.log('onConfirm');
       },
+      id,
       image,
     });
   };

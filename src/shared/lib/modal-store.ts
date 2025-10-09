@@ -12,6 +12,7 @@ export type ModalData =
       onRetake: () => void;
       onConfirm: () => void;
       image: StaticImageData;
+      id: string;
     }
   | {
       type: 'select-payment-method-modal';

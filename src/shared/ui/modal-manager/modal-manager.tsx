@@ -25,6 +25,7 @@ export function ModalManager() {
           onConfirm={modalData.onConfirm}
           onRetake={modalData.onRetake}
           image={modalData.image}
+          id={modalData.id}
         />
       );
     case 'select-payment-method-modal':

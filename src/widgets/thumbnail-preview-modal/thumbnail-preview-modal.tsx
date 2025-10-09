@@ -13,6 +13,7 @@ interface PhotoPreviewModalProps {
   onRetake: () => void;
   onConfirm: () => void;
   image: StaticImageData;
+  id: string;
 }
 
 export function ThumbnailPreviewModal({
