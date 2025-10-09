@@ -107,7 +107,7 @@ export const GenerateSectionV1 = () => {
       <GenerationModes
         withoutTitle={generateData?.length !== 0}
         isPaid={generationCounter > 1}
-        generationCounter={generationCounter}
+        generationCounter={generationCounter * 4}
       />
       {isGenerated && (
         <LoadingIndicator

@@ -3,8 +3,7 @@
 import Image from 'next/image';
 
 import { ReloadArrow } from '@/shared/assets';
-import { useTakePhoto } from '@/shared/hooks';
-import { usePhotoStore, useTranslations } from '@/shared/lib';
+import { useModalStore, usePhotoStore, useTranslations } from '@/shared/lib';
 import { Button } from '@/shared/ui';
 
 import styles from './selected-photo.module.scss';
@@ -15,8 +14,16 @@ interface Props {
 
 export const SelectedPhoto = ({ selectedPhoto }: Props) => {
   const t = useTranslations('CreativityScreen.selectedPhoto');
-  const handleTakePhoto = useTakePhoto();
   const { gender, ageGroup } = usePhotoStore();
+  const { openModal } = useModalStore();
+
+  const changePhoto = () => {
+    openModal({
+      type: 'gender-age',
+      onConfirm: () => {},
+      onDeletePhoto: () => {},
+    });
+  };
 
   return (
     <div className={styles.container}>
@@ -30,7 +37,7 @@ export const SelectedPhoto = ({ selectedPhoto }: Props) => {
         <Button
           variant={'close'}
           className={styles.reloadBtn}
-          onClick={handleTakePhoto}
+          onClick={changePhoto}
         >
           <ReloadArrow />
         </Button>

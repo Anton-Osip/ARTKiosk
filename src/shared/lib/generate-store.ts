@@ -92,7 +92,7 @@ export const useGenerateStore = create<GenerateStore>((set, get) => ({
       case 'cash': {
         set(state => ({
           timer: 0,
-          generationCounter: state.generationCounter + 1,
+          generationCounter: state.generationCounter + 5,
         }));
         break;
       }

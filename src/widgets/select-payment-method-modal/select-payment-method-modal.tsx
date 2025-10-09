@@ -48,7 +48,6 @@ export const SelectPaymentMethodModal = ({
       clearCodeEntryCountdown();
     };
   }, [clearCodeEntryCountdown]);
-  console.log(isAgain);
 
   return (
     <Modal

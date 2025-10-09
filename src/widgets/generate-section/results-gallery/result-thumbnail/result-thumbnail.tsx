@@ -55,7 +55,7 @@ export const ResultThumbnail = ({ item, onClick }: Props) => {
   }, []);
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} onClick={showThumbnailModal}>
       <Image src={item.img} alt={'image'} className={styles.image} />
       <Button
         className={styles.refreshButton}
